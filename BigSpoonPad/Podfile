@@ -1,0 +1,10 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+use_frameworks!
+
+pod 'Alamofire', '~> 1.3'
+pod 'HanekeSwift'
+pod 'PagingMenuController'
+pod 'Dollar'
+pod 'SwiftEventBus', :git => 'https://github.com/cesarferreira/SwiftEventBus.git'
+pod 'SwiftOverlays', '~> 0.11'

@@ -1,0 +1,34 @@
+PODS:
+  - Alamofire (1.3.0)
+  - Dollar (3.0.2)
+  - HanekeSwift (0.9.1)
+  - PagingMenuController (0.4.4)
+  - SwiftEventBus (1.1.0)
+  - SwiftOverlays (0.11)
+
+DEPENDENCIES:
+  - Alamofire (~> 1.3)
+  - Dollar
+  - HanekeSwift
+  - PagingMenuController
+  - SwiftEventBus (from `https://github.com/cesarferreira/SwiftEventBus.git`)
+  - SwiftOverlays (~> 0.11)
+
+EXTERNAL SOURCES:
+  SwiftEventBus:
+    :git: https://github.com/cesarferreira/SwiftEventBus.git
+
+CHECKOUT OPTIONS:
+  SwiftEventBus:
+    :commit: 4b8cbb5a8227b3c29af75e0416689d26178733d8
+    :git: https://github.com/cesarferreira/SwiftEventBus.git
+
+SPEC CHECKSUMS:
+  Alamofire: 220403a8d5840e0b4c946a6fbaf209dbca124282
+  Dollar: fa1c277042a5e8208f2276abba056f27a812fcfe
+  HanekeSwift: 50d37bfbc4432edc649167e538c259feccb4a2bb
+  PagingMenuController: 83ecd1959044b332b91b914f6a1aac7742e8f205
+  SwiftEventBus: d334f7aecbddbd995c3de5c262cf35c72db550f3
+  SwiftOverlays: 2e50c399053e20d4b694549cea3724c655db2ad9
+
+COCOAPODS: 0.38.1
