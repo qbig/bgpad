@@ -23,6 +23,7 @@ class ViewController: UIViewController {
                 println(error)
                 println("hahah")
         }
+        let value = BGData.sharedDataContainer.someInt ?? 0
     }
 
     override func didReceiveMemoryWarning() {
