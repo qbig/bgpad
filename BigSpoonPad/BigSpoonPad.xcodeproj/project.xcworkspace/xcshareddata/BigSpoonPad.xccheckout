@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>142C3C36-D6A5-4192-94DF-5CE550CD3488</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>BigSpoonPad</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>C13A6068EDC07BC0A6410E64B736B7ABEC56D9CB</key>
 		<string>https://github.com/qbig/bgpad</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>BigSpoonPad/BigSpoonPad.xcodeproj/project.xcworkspace</string>
+	<string>BigSpoonPad/BigSpoonPad.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>C13A6068EDC07BC0A6410E64B736B7ABEC56D9CB</key>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2Ns-ec-2qG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6tE-4l-LQS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -7,7 +7,7 @@
         <!--StartingVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="StartingVC" customClass="ViewController" customModule="BigSpoonPad" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="StartingVC" customClass="StartingVC" customModule="BigSpoonPad" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -45,7 +45,8 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
-                        <segue destination="sv7-eY-xvA" kind="show" id="Yd8-AB-YWq"/>
+                        <outlet property="mainView" destination="8bC-Xf-vdC" id="GWZ-1I-j4R"/>
+                        <segue destination="sv7-eY-xvA" kind="show" identifier="startToMain" id="Yd8-AB-YWq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -55,7 +56,7 @@
         <!--MainGroupSelectVC-->
         <scene sceneID="5LG-33-m6M">
             <objects>
-                <viewController id="sv7-eY-xvA" userLabel="MainGroupSelectVC" sceneMemberID="viewController">
+                <viewController id="sv7-eY-xvA" userLabel="MainGroupSelectVC" customClass="MainGroupSelectVC" customModule="BigSpoonPad" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="72s-9B-1td"/>
                         <viewControllerLayoutGuide type="bottom" id="VCP-sy-40v"/>
@@ -90,22 +91,38 @@
                                 <color key="textColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MAKE YOUR SELECTION" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qK-Vo-CLB">
+                                <rect key="frame" x="69" y="230" width="200" height="21"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Italic" family="Avenir Next Condensed" pointSize="16"/>
+                                <color key="textColor" red="0.96078431372549022" green="0.65098039215686276" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qz-2k-HaT">
                                 <rect key="frame" x="716" y="456" width="76" height="41"/>
                                 <state key="normal" image="more-arrow.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="scrollNextPressed" destination="sv7-eY-xvA" eventType="touchUpInside" id="iVg-hE-Zbf"/>
+                                </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" directionalLockEnabled="YES" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZr-R2-p9D">
-                                <rect key="frame" x="16" y="297" width="724" height="383"/>
+                                <rect key="frame" x="54" y="285" width="678" height="383"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1ZE-5R-fM0">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o7d-CV-hct">
                                         <rect key="frame" x="14" y="28" width="140" height="318"/>
-                                        <color key="backgroundColor" red="0.8862745098" green="0.4823529412" blue="0.047058823530000002" alpha="1" colorSpace="deviceRGB"/>
-                                    </imageView>
+                                        <color key="backgroundColor" red="0.94509803920000002" green="0.56862745100000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="groupSelected:" destination="sv7-eY-xvA" eventType="touchUpInside" id="Neq-EJ-AbR"/>
+                                        </connections>
+                                    </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JvQ-bd-Fun">
                                         <rect key="frame" x="184" y="28" width="140" height="318"/>
                                         <color key="backgroundColor" red="0.8862745098" green="0.4823529412" blue="0.047058823530000002" alpha="1" colorSpace="deviceRGB"/>
+                                        <gestureRecognizers/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AUO-lS-7Es">
                                         <rect key="frame" x="353" y="28" width="140" height="318"/>
@@ -116,19 +133,19 @@
                                         <color key="backgroundColor" red="0.8862745098" green="0.4823529412" blue="0.047058823530000002" alpha="1" colorSpace="deviceRGB"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xhP-lS-JQF">
-                                        <rect key="frame" x="738" y="28" width="140" height="318"/>
+                                        <rect key="frame" x="705" y="28" width="140" height="318"/>
                                         <color key="backgroundColor" red="0.8862745098" green="0.4823529412" blue="0.047058823530000002" alpha="1" colorSpace="deviceRGB"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YGY-1Z-fyG">
-                                        <rect key="frame" x="908" y="28" width="140" height="318"/>
+                                        <rect key="frame" x="875" y="28" width="140" height="318"/>
                                         <color key="backgroundColor" red="0.8862745098" green="0.4823529412" blue="0.047058823530000002" alpha="1" colorSpace="deviceRGB"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tuK-ca-vmT">
-                                        <rect key="frame" x="1077" y="28" width="140" height="318"/>
+                                        <rect key="frame" x="1044" y="28" width="140" height="318"/>
                                         <color key="backgroundColor" red="0.8862745098" green="0.4823529412" blue="0.047058823530000002" alpha="1" colorSpace="deviceRGB"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YYI-hm-4BR">
-                                        <rect key="frame" x="1248" y="28" width="140" height="318"/>
+                                        <rect key="frame" x="1215" y="28" width="140" height="318"/>
                                         <color key="backgroundColor" red="0.8862745098" green="0.4823529412" blue="0.047058823530000002" alpha="1" colorSpace="deviceRGB"/>
                                     </imageView>
                                 </subviews>
@@ -138,17 +155,36 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </scrollView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MAKE YOUR SELECTION" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qK-Vo-CLB">
-                                <rect key="frame" x="69" y="230" width="200" height="21"/>
-                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Italic" family="Avenir Next Condensed" pointSize="16"/>
-                                <color key="textColor" red="0.96078431372549022" green="0.65098039215686276" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z4A-9R-Vx3">
+                                <rect key="frame" x="0.0" y="674" width="170" height="60"/>
+                                <color key="backgroundColor" red="0.97647058819999999" green="0.90196078430000004" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="30"/>
+                                <state key="normal" title="           Back">
+                                    <color key="titleColor" red="0.54901960780000003" green="0.4941176471" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backPressed" destination="sv7-eY-xvA" eventType="touchUpInside" id="jH3-xS-fZb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DLH-bB-pTP">
+                                <rect key="frame" x="-5" y="456" width="76" height="41"/>
+                                <state key="normal" image="more-arrow-fliped.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="scrollBackPressed" destination="sv7-eY-xvA" eventType="touchUpInside" id="9JQ-jn-QS9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="myf-ur-7kX" kind="show" id="K0D-TK-DdD"/>
+                        <outlet property="groupSelectScrollView" destination="qZr-R2-p9D" id="YiQ-76-adW"/>
+                        <outlet property="lastItem" destination="YYI-hm-4BR" id="AZa-BA-K2P"/>
+                        <outlet property="scrollBackButton" destination="DLH-bB-pTP" id="nwv-oY-cjI"/>
+                        <outlet property="scrollNextButton" destination="9qz-2k-HaT" id="iKb-Q1-a7R"/>
+                        <segue destination="myf-ur-7kX" kind="show" identifier="MainToItem" id="K0D-TK-DdD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gID-a2-y6o" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -395,7 +431,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="2Ns-ec-2qG" kind="show" id="Us0-nh-LsJ"/>
+                        <segue destination="2Ns-ec-2qG" kind="show" identifier="ItemToMod" id="Us0-nh-LsJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AKG-8i-2Ja" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1085,6 +1121,7 @@
         <image name="girl.png" width="1021" height="1013"/>
         <image name="logo-store.png" width="552" height="397"/>
         <image name="logo.png" width="809" height="826"/>
+        <image name="more-arrow-fliped.png" width="21" height="41"/>
         <image name="more-arrow.png" width="21" height="41"/>
         <image name="yellow-right-border.png" width="234" height="768"/>
     </resources>
