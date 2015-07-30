@@ -106,55 +106,53 @@
                                     <action selector="scrollNextPressed" destination="sv7-eY-xvA" eventType="touchUpInside" id="iVg-hE-Zbf"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" directionalLockEnabled="YES" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZr-R2-p9D">
-                                <rect key="frame" x="54" y="285" width="678" height="383"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o7d-CV-hct">
-                                        <rect key="frame" x="14" y="28" width="140" height="318"/>
-                                        <color key="backgroundColor" red="0.94509803920000002" green="0.56862745100000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Button">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7o3-cb-xmp">
+                                <rect key="frame" x="47" y="285" width="683" height="383"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Wjf-Jf-SE9">
+                                    <size key="itemSize" width="140" height="228"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mainGroupSelect" id="eLd-9T-SUZ" customClass="MainGroupSelectCell" customModule="BigSpoonPad" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="140" height="318"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KTK-aX-kwf">
+                                                    <rect key="frame" x="0.0" y="0.0" width="140" height="318"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mT-Sk-jfG">
+                                                    <rect key="frame" x="29" y="24" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKE-0f-PJA">
+                                                    <rect key="frame" x="33" y="222" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <size key="customSize" width="140" height="318"/>
                                         <connections>
-                                            <action selector="groupSelected:" destination="sv7-eY-xvA" eventType="touchUpInside" id="Neq-EJ-AbR"/>
+                                            <outlet property="GroupOptionImage" destination="KTK-aX-kwf" id="6hq-xf-Z2D"/>
+                                            <outlet property="groupDescription" destination="tKE-0f-PJA" id="d9Y-fJ-Pmm"/>
+                                            <outlet property="groupTitle" destination="6mT-Sk-jfG" id="t8u-oj-IJx"/>
                                         </connections>
-                                    </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JvQ-bd-Fun">
-                                        <rect key="frame" x="184" y="28" width="140" height="318"/>
-                                        <color key="backgroundColor" red="0.8862745098" green="0.4823529412" blue="0.047058823530000002" alpha="1" colorSpace="deviceRGB"/>
-                                        <gestureRecognizers/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AUO-lS-7Es">
-                                        <rect key="frame" x="353" y="28" width="140" height="318"/>
-                                        <color key="backgroundColor" red="0.8862745098" green="0.4823529412" blue="0.047058823530000002" alpha="1" colorSpace="deviceRGB"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8gA-Wj-wxP">
-                                        <rect key="frame" x="524" y="28" width="140" height="318"/>
-                                        <color key="backgroundColor" red="0.8862745098" green="0.4823529412" blue="0.047058823530000002" alpha="1" colorSpace="deviceRGB"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xhP-lS-JQF">
-                                        <rect key="frame" x="705" y="28" width="140" height="318"/>
-                                        <color key="backgroundColor" red="0.8862745098" green="0.4823529412" blue="0.047058823530000002" alpha="1" colorSpace="deviceRGB"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YGY-1Z-fyG">
-                                        <rect key="frame" x="875" y="28" width="140" height="318"/>
-                                        <color key="backgroundColor" red="0.8862745098" green="0.4823529412" blue="0.047058823530000002" alpha="1" colorSpace="deviceRGB"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tuK-ca-vmT">
-                                        <rect key="frame" x="1044" y="28" width="140" height="318"/>
-                                        <color key="backgroundColor" red="0.8862745098" green="0.4823529412" blue="0.047058823530000002" alpha="1" colorSpace="deviceRGB"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YYI-hm-4BR">
-                                        <rect key="frame" x="1215" y="28" width="140" height="318"/>
-                                        <color key="backgroundColor" red="0.8862745098" green="0.4823529412" blue="0.047058823530000002" alpha="1" colorSpace="deviceRGB"/>
-                                    </imageView>
-                                </subviews>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="contentSize">
-                                        <size key="value" width="1402" height="383"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </scrollView>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="sv7-eY-xvA" id="wdk-fI-EAo"/>
+                                    <outlet property="delegate" destination="sv7-eY-xvA" id="b3x-gC-Qtt"/>
+                                </connections>
+                            </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z4A-9R-Vx3">
                                 <rect key="frame" x="0.0" y="674" width="170" height="60"/>
                                 <color key="backgroundColor" red="0.97647058819999999" green="0.90196078430000004" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -173,15 +171,14 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="scrollBackPressed" destination="sv7-eY-xvA" eventType="touchUpInside" id="9JQ-jn-QS9"/>
+                                    <action selector="scrollBackPressed" destination="sv7-eY-xvA" eventType="touchUpInside" id="Y5K-Jh-iNT"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="groupSelectScrollView" destination="qZr-R2-p9D" id="YiQ-76-adW"/>
-                        <outlet property="lastItem" destination="YYI-hm-4BR" id="AZa-BA-K2P"/>
+                        <outlet property="groupSelectCollectionView" destination="7o3-cb-xmp" id="TvC-m4-kXA"/>
                         <outlet property="scrollBackButton" destination="DLH-bB-pTP" id="nwv-oY-cjI"/>
                         <outlet property="scrollNextButton" destination="9qz-2k-HaT" id="iKb-Q1-a7R"/>
                         <segue destination="myf-ur-7kX" kind="show" identifier="MainToItem" id="K0D-TK-DdD"/>
