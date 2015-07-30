@@ -34,20 +34,17 @@ class MainGroupSelectVC: UIViewController, UICollectionViewDelegate, UICollectio
 
     @IBOutlet weak var scrollBackButton: UIButton!
     @IBAction func scrollBackPressed() {
-        var frame = self.firstItem.frame
-        frame.origin.x = 0
-        self.groupSelectCollectionView.scrollRectToVisible(frame, animated: true)
+        var lastItemIndex = NSIndexPath(forItem: 0, inSection: 0)
+        self.groupSelectCollectionView.scrollToItemAtIndexPath(lastItemIndex, atScrollPosition: UICollectionViewScrollPosition.Right, animated: true)
     }
     
     @IBOutlet weak var scrollNextButton: UIButton!
     @IBAction func scrollNextPressed() {
-        var frame = self.firstItem.frame
-        frame.origin.x = frame.origin.x + 170 * 7
-        self.groupSelectCollectionView.scrollRectToVisible(frame, animated: true)
+        var lastItemIndex = NSIndexPath(forItem: numOfOptions - 1, inSection: 0)
+        self.groupSelectCollectionView.scrollToItemAtIndexPath(lastItemIndex, atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
     }
     
     // MARK: UICollectionViewDataSource
-    
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return numOfSections
     }
@@ -68,6 +65,7 @@ class MainGroupSelectVC: UIViewController, UICollectionViewDelegate, UICollectio
             self.firstItem = cell
         }
         return cell
+
     }
     
     
