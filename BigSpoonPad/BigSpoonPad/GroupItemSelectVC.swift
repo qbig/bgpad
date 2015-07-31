@@ -18,6 +18,18 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     let items = ["Royal Milk Tea", "Afternoon Milk Tea", "Thai Shaved Ice Milk Tea", "Espresso Milk Tea", "Royal Milk Tea", "Afternoon Milk Tea", "Thai Shaved Ice Milk Tea", "Espresso Milk Tea"]
     let itemDescription = ["Mild fruity notes and cold-pressed juice concentrates", "Floral blossoms and nectarine pairings", "Accentuated refreshing flavors with bubbles", "Intensity and creaminess of milk tea","Mild fruity notes and cold-pressed juice concentrates", "Floral blossoms and nectarine pairings", "Accentuated refreshing flavors with bubbles", "Intensity and creaminess of milk tea"]
     
+    @IBOutlet weak var scrollNextBtn: UIButton!
+    @IBAction func scrollNextPressed(sender: AnyObject) {
+        var lastItemIndex = NSIndexPath(forItem: numOfOptions - 1, inSection: 0)
+        self.itemSelectCollectionView.scrollToItemAtIndexPath(lastItemIndex, atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
+
+    }
+    @IBOutlet weak var scrollBackBtn: UIButton!
+    @IBAction func scrollBackPressed(sender: AnyObject) {
+        var lastItemIndex = NSIndexPath(forItem: 0, inSection: 0)
+        self.itemSelectCollectionView.scrollToItemAtIndexPath(lastItemIndex, atScrollPosition: UICollectionViewScrollPosition.Right, animated: true)
+
+    }
     let reuseIdentifier = "ItemSelectCell"
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 5.0, bottom: 10.0, right: 5.0)
     let numOfSections = 1
@@ -93,7 +105,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
-//        performSegueWithIdentifier("MainToItem", sender: nil);
+        performSegueWithIdentifier("ItemToMod", sender: nil);
     }
 
 }

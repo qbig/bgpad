@@ -21,6 +21,10 @@
     
     self.backgroundColor = [UIColor whiteColor];
     self.nameLabel.text = nil;
+    CGFloat borderWidth = 3.0f;
+    UIView *bgView = [[UIView alloc] initWithFrame:self.frame];
+    bgView.layer.borderColor = [UIColor redColor].CGColor;
+    bgView.layer.borderWidth = borderWidth;
 }
 
 - (void)prepareForReuse

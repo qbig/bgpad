@@ -208,16 +208,22 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tE5-S6-B07">
-                                <rect key="frame" x="740" y="456" width="76" height="41"/>
+                                <rect key="frame" x="740" y="415" width="76" height="41"/>
                                 <state key="normal" image="more-arrow.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="scrollNextPressed:" destination="myf-ur-7kX" eventType="touchUpInside" id="hYl-w8-4bj"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fF6-0a-UyB">
-                                <rect key="frame" x="6" y="456" width="43" height="41"/>
+                                <rect key="frame" x="6" y="415" width="43" height="41"/>
                                 <state key="normal" image="more-arrow-fliped.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="scrollBackPressed:" destination="myf-ur-7kX" eventType="touchUpInside" id="3yR-fw-VqJ"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="efy-II-kQ5">
                                 <rect key="frame" x="0.0" y="120" width="794" height="151"/>
@@ -338,6 +344,8 @@
                     </view>
                     <connections>
                         <outlet property="itemSelectCollectionView" destination="Dub-ao-sTX" id="YYz-Qz-Vf3"/>
+                        <outlet property="scrollBackBtn" destination="fF6-0a-UyB" id="uan-T6-M9F"/>
+                        <outlet property="scrollNextBtn" destination="tE5-S6-B07" id="cFA-MD-vKF"/>
                         <outlet property="selectedGroupDescription" destination="fAP-Dd-9jL" id="UsN-MY-75R"/>
                         <outlet property="selectedGroupLabel" destination="cEQ-so-GAg" id="1xE-BN-pwy"/>
                         <segue destination="2Ns-ec-2qG" kind="show" identifier="ItemToMod" id="Us0-nh-LsJ"/>
@@ -350,7 +358,7 @@
         <!--ItemModifierVC-->
         <scene sceneID="1tP-Bm-t4C">
             <objects>
-                <viewController id="2Ns-ec-2qG" userLabel="ItemModifierVC" sceneMemberID="viewController">
+                <viewController id="2Ns-ec-2qG" userLabel="ItemModifierVC" customClass="ModifierSelectVC" customModule="BigSpoonPad" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dB4-1U-6kk"/>
                         <viewControllerLayoutGuide type="bottom" id="8dn-EB-ctG"/>
@@ -458,6 +466,9 @@
                                     <color key="titleColor" red="0.54901960780000003" green="0.4941176471" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="backPressed" destination="2Ns-ec-2qG" eventType="touchUpInside" id="mgJ-Ci-C4X"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gsB-ID-5kA">
                                 <rect key="frame" x="631" y="678" width="170" height="60"/>
@@ -467,9 +478,12 @@
                                     <color key="titleColor" red="0.54901960780000003" green="0.4941176471" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="nextPressed" destination="2Ns-ec-2qG" eventType="touchUpInside" id="TNt-zp-2kV"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="urk-hv-s5w">
-                                <rect key="frame" x="0.0" y="143" width="801" height="190"/>
+                                <rect key="frame" x="0.0" y="121" width="801" height="190"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Temperature" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBj-Km-K0W">
                                         <rect key="frame" x="307" y="2" width="151" height="25"/>
@@ -721,10 +735,17 @@
                                     </button>
                                 </subviews>
                             </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ne9-mq-8oZ">
+                                <rect key="frame" x="0.0" y="329" width="794" height="314"/>
+                                <connections>
+                                    <segue destination="sMf-6m-FTk" kind="embed" identifier="ModifierCollection" id="lZc-V5-cIm"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="selectedItemLabel" destination="5JF-5f-d2B" id="pwU-WX-kdH"/>
                         <segue destination="SuE-8z-yeB" kind="show" identifier="ModToConfirm" id="M1q-f2-7EH"/>
                     </connections>
                 </viewController>
@@ -1088,6 +1109,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wyq-jG-wZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1796.5" y="652"/>
+        </scene>
+        <!--Color Collection View Controller-->
+        <scene sceneID="mdx-H9-eRw">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3VU-jF-gML" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="sMf-6m-FTk" customClass="ColorCollectionViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tOP-kO-Klc"/>
+                        <viewControllerLayoutGuide type="bottom" id="FP7-Mf-jdA"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="34D-WH-PEi">
+                        <rect key="frame" x="0.0" y="0.0" width="794" height="314"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+            </objects>
         </scene>
     </scenes>
     <resources>

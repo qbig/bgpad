@@ -13,6 +13,7 @@
 #import "AddCell.h"
 #import "ColorSectionHeaderView.h"
 #import "ColorSectionFooterView.h"
+#import "UIColor+ColorFromHex.h"
 
 
 @interface ColorCollectionViewController () <ColorSectionHeaderDelegate, ColorSectionFooterDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
@@ -202,6 +203,9 @@
         cell = cnCell;
     }
     
+    cell.layer.masksToBounds = YES;
+    cell.layer.cornerRadius = 16;
+    cell.layer.borderColor = [UIColor colorFromHexString:@"#F5CD91"].CGColor;
     return cell;
 }
 
