@@ -14,7 +14,9 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     let numOfSections = 1
     let numOfOptions = 8
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 5.0, bottom: 10.0, right: 5.0)
-    let titles = ["Sand Harbor, Lake Tahoe - California","Beautiful View of Manhattan skyline.","Watcher in the Fog","Great Smoky Mountains National Park, Tennessee","Most beautiful place"]
+    let titles = ["Terror", "Fresh", "Texture", "Rich", "Sparkling", "Sour", "Scent", "Unique"]
+    let descriptions = ["Single-estate teas, whole leaves, exquisite iced teas", "Mild fruity notes and cold-pressed juice concentrates", "Handmade fruit jellies, mochi textures, natural fibers", "Intensity and creaminess of milk tea",
+        "Single-estate teas, whole leaves, exquisite iced teas", "Mild fruity notes and cold-pressed juice concentrates", "Handmade fruit jellies, mochi textures, natural fibers", "Intensity and creaminess of milk tea"]
 
     
     @IBOutlet weak var groupSelectCollectionView: UICollectionView!
@@ -59,7 +61,8 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! MainGroupSelectCell
-        cell.groupTitle.text = self.titles[indexPath.row % 5]
+        cell.groupTitle.text = self.titles[indexPath.row]
+        cell.groupDescription.text = self.descriptions[indexPath.row]
         let curr = indexPath.row % 5  + 1
         let imgName = "pin\(curr).jpg"
         cell.GroupOptionImage.image = UIImage(named: imgName)
