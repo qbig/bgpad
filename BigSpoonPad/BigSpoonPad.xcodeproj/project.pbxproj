@@ -31,6 +31,20 @@
 		0320EBA91B64CF8400E91EBB /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0320EB931B64CF8400E91EBB /* bg.png */; };
 		0320EBAA1B64CF8400E91EBB /* bg-order-summary@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0320EB941B64CF8400E91EBB /* bg-order-summary@2x.png */; };
 		0320EBAB1B64CF8400E91EBB /* bg-order-summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 0320EB951B64CF8400E91EBB /* bg-order-summary.png */; };
+		0397C7DE1B6B3CE600F43E6D /* LessBoringFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0397C7CA1B6B3CE600F43E6D /* LessBoringFlowLayout.m */; };
+		0397C7DF1B6B3CE600F43E6D /* ColorCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0397C7CC1B6B3CE600F43E6D /* ColorCollectionViewController.m */; };
+		0397C7E01B6B3CE600F43E6D /* ColorName.m in Sources */ = {isa = PBXBuildFile; fileRef = 0397C7CE1B6B3CE600F43E6D /* ColorName.m */; };
+		0397C7E11B6B3CE600F43E6D /* ColorNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0397C7D01B6B3CE600F43E6D /* ColorNameCell.m */; };
+		0397C7E21B6B3CE600F43E6D /* ColorNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0397C7D11B6B3CE600F43E6D /* ColorNameCell.xib */; };
+		0397C7E31B6B3CE600F43E6D /* ColorSectionFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0397C7D31B6B3CE600F43E6D /* ColorSectionFooterView.m */; };
+		0397C7E41B6B3CE600F43E6D /* ColorSectionFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0397C7D41B6B3CE600F43E6D /* ColorSectionFooterView.xib */; };
+		0397C7E51B6B3CE600F43E6D /* ColorSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0397C7D61B6B3CE600F43E6D /* ColorSectionHeaderView.m */; };
+		0397C7E61B6B3CE600F43E6D /* ColorSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0397C7D71B6B3CE600F43E6D /* ColorSectionHeaderView.xib */; };
+		0397C7E71B6B3CE600F43E6D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0397C7D81B6B3CE600F43E6D /* Default-568h@2x.png */; };
+		0397C7E81B6B3CE600F43E6D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0397C7D91B6B3CE600F43E6D /* Default.png */; };
+		0397C7E91B6B3CE600F43E6D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0397C7DA1B6B3CE600F43E6D /* Default@2x.png */; };
+		0397C7EA1B6B3CE600F43E6D /* AddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0397C7DC1B6B3CE600F43E6D /* AddCell.m */; };
+		0397C7EB1B6B3CE600F43E6D /* AddCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0397C7DD1B6B3CE600F43E6D /* AddCell.xib */; };
 		03B245C11B63B947002A31DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B245C01B63B947002A31DE /* AppDelegate.swift */; };
 		03B245C61B63B947002A31DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03B245C41B63B947002A31DE /* Main.storyboard */; };
 		03B245C81B63B947002A31DE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03B245C71B63B947002A31DE /* Images.xcassets */; };
@@ -86,6 +100,28 @@
 		0320EB931B64CF8400E91EBB /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		0320EB941B64CF8400E91EBB /* bg-order-summary@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-order-summary@2x.png"; sourceTree = "<group>"; };
 		0320EB951B64CF8400E91EBB /* bg-order-summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-order-summary.png"; sourceTree = "<group>"; };
+		0397C7C81B6B3CE600F43E6D /* BigSpoonPad-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BigSpoonPad-Bridging-Header.h"; sourceTree = "<group>"; };
+		0397C7C91B6B3CE600F43E6D /* LessBoringFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessBoringFlowLayout.h; sourceTree = "<group>"; };
+		0397C7CA1B6B3CE600F43E6D /* LessBoringFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessBoringFlowLayout.m; sourceTree = "<group>"; };
+		0397C7CB1B6B3CE600F43E6D /* ColorCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorCollectionViewController.h; sourceTree = "<group>"; };
+		0397C7CC1B6B3CE600F43E6D /* ColorCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorCollectionViewController.m; sourceTree = "<group>"; };
+		0397C7CD1B6B3CE600F43E6D /* ColorName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorName.h; sourceTree = "<group>"; };
+		0397C7CE1B6B3CE600F43E6D /* ColorName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorName.m; sourceTree = "<group>"; };
+		0397C7CF1B6B3CE600F43E6D /* ColorNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorNameCell.h; sourceTree = "<group>"; };
+		0397C7D01B6B3CE600F43E6D /* ColorNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorNameCell.m; sourceTree = "<group>"; };
+		0397C7D11B6B3CE600F43E6D /* ColorNameCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorNameCell.xib; sourceTree = "<group>"; };
+		0397C7D21B6B3CE600F43E6D /* ColorSectionFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorSectionFooterView.h; sourceTree = "<group>"; };
+		0397C7D31B6B3CE600F43E6D /* ColorSectionFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorSectionFooterView.m; sourceTree = "<group>"; };
+		0397C7D41B6B3CE600F43E6D /* ColorSectionFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorSectionFooterView.xib; sourceTree = "<group>"; };
+		0397C7D51B6B3CE600F43E6D /* ColorSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorSectionHeaderView.h; sourceTree = "<group>"; };
+		0397C7D61B6B3CE600F43E6D /* ColorSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorSectionHeaderView.m; sourceTree = "<group>"; };
+		0397C7D71B6B3CE600F43E6D /* ColorSectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorSectionHeaderView.xib; sourceTree = "<group>"; };
+		0397C7D81B6B3CE600F43E6D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		0397C7D91B6B3CE600F43E6D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		0397C7DA1B6B3CE600F43E6D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		0397C7DB1B6B3CE600F43E6D /* AddCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCell.h; sourceTree = "<group>"; };
+		0397C7DC1B6B3CE600F43E6D /* AddCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCell.m; sourceTree = "<group>"; };
+		0397C7DD1B6B3CE600F43E6D /* AddCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddCell.xib; sourceTree = "<group>"; };
 		03B245BB1B63B946002A31DE /* BigSpoonPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BigSpoonPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03B245BF1B63B947002A31DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03B245C01B63B947002A31DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +170,7 @@
 		0320EB7C1B64CF2100E91EBB /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				0397C7C71B6B3CA600F43E6D /* ColorCollectionViewController */,
 				0320EB7D1B64CF3500E91EBB /* FlourishUI */,
 				0320EB7A1B64CE6700E91EBB /* SwiftColors.swift */,
 			);
@@ -174,6 +211,67 @@
 				0320EB951B64CF8400E91EBB /* bg-order-summary.png */,
 			);
 			name = assets;
+			sourceTree = "<group>";
+		};
+		0397C7C71B6B3CA600F43E6D /* ColorCollectionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0397C7EE1B6B3DC900F43E6D /* Layout */,
+				0397C7EF1B6B3DDF00F43E6D /* View Controller */,
+				0397C7ED1B6B3DBC00F43E6D /* Model */,
+				0397C7EC1B6B3D9D00F43E6D /* Cells and Supplementary Views */,
+				0397C7D81B6B3CE600F43E6D /* Default-568h@2x.png */,
+				0397C7D91B6B3CE600F43E6D /* Default.png */,
+				0397C7DA1B6B3CE600F43E6D /* Default@2x.png */,
+				0397C7C81B6B3CE600F43E6D /* BigSpoonPad-Bridging-Header.h */,
+			);
+			name = ColorCollectionViewController;
+			sourceTree = "<group>";
+		};
+		0397C7EC1B6B3D9D00F43E6D /* Cells and Supplementary Views */ = {
+			isa = PBXGroup;
+			children = (
+				0397C7D21B6B3CE600F43E6D /* ColorSectionFooterView.h */,
+				0397C7D31B6B3CE600F43E6D /* ColorSectionFooterView.m */,
+				0397C7D41B6B3CE600F43E6D /* ColorSectionFooterView.xib */,
+				0397C7D51B6B3CE600F43E6D /* ColorSectionHeaderView.h */,
+				0397C7D61B6B3CE600F43E6D /* ColorSectionHeaderView.m */,
+				0397C7D71B6B3CE600F43E6D /* ColorSectionHeaderView.xib */,
+				0397C7DB1B6B3CE600F43E6D /* AddCell.h */,
+				0397C7DC1B6B3CE600F43E6D /* AddCell.m */,
+				0397C7DD1B6B3CE600F43E6D /* AddCell.xib */,
+				0397C7CF1B6B3CE600F43E6D /* ColorNameCell.h */,
+				0397C7D01B6B3CE600F43E6D /* ColorNameCell.m */,
+				0397C7D11B6B3CE600F43E6D /* ColorNameCell.xib */,
+			);
+			name = "Cells and Supplementary Views";
+			sourceTree = "<group>";
+		};
+		0397C7ED1B6B3DBC00F43E6D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0397C7CD1B6B3CE600F43E6D /* ColorName.h */,
+				0397C7CE1B6B3CE600F43E6D /* ColorName.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		0397C7EE1B6B3DC900F43E6D /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				0397C7C91B6B3CE600F43E6D /* LessBoringFlowLayout.h */,
+				0397C7CA1B6B3CE600F43E6D /* LessBoringFlowLayout.m */,
+			);
+			name = Layout;
+			sourceTree = "<group>";
+		};
+		0397C7EF1B6B3DDF00F43E6D /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0397C7CB1B6B3CE600F43E6D /* ColorCollectionViewController.h */,
+				0397C7CC1B6B3CE600F43E6D /* ColorCollectionViewController.m */,
+			);
+			name = "View Controller";
 			sourceTree = "<group>";
 		};
 		03B245B21B63B946002A31DE = {
@@ -343,6 +441,7 @@
 				0320EBAA1B64CF8400E91EBB /* bg-order-summary@2x.png in Resources */,
 				03D6653C1B69EAB500402F23 /* pin3.jpg in Resources */,
 				0320EBA21B64CF8400E91EBB /* btn-edit.png in Resources */,
+				0397C7E71B6B3CE600F43E6D /* Default-568h@2x.png in Resources */,
 				0320EB7E1B64CF3500E91EBB /* FlourishUI in Resources */,
 				0320EBA91B64CF8400E91EBB /* bg.png in Resources */,
 				0320EBA01B64CF8400E91EBB /* girl-flipped.png in Resources */,
@@ -350,6 +449,9 @@
 				0320EB9C1B64CF8400E91EBB /* logo.png in Resources */,
 				0320EB971B64CF8400E91EBB /* logo@2x.png in Resources */,
 				03B245C61B63B947002A31DE /* Main.storyboard in Resources */,
+				0397C7E81B6B3CE600F43E6D /* Default.png in Resources */,
+				0397C7E21B6B3CE600F43E6D /* ColorNameCell.xib in Resources */,
+				0397C7EB1B6B3CE600F43E6D /* AddCell.xib in Resources */,
 				03D6653F1B69EAB500402F23 /* pin5.jpg in Resources */,
 				0320EBA71B64CF8400E91EBB /* btn-discard.png in Resources */,
 				0320EBA31B64CF8400E91EBB /* btn-edit@2x.png in Resources */,
@@ -357,6 +459,7 @@
 				0320EB961B64CF8400E91EBB /* yellow-right-border@2x.png in Resources */,
 				03D5AA6E1B67734100ABFF7E /* more-arrow-fliped@2x.png in Resources */,
 				0320EB981B64CF8400E91EBB /* more-arrow.png in Resources */,
+				0397C7E41B6B3CE600F43E6D /* ColorSectionFooterView.xib in Resources */,
 				0320EBA41B64CF8400E91EBB /* bg@2x.png in Resources */,
 				03D5AA6D1B67734100ABFF7E /* more-arrow-fliped.png in Resources */,
 				03D6653E1B69EAB500402F23 /* pin4.jpg in Resources */,
@@ -365,6 +468,8 @@
 				03B245CB1B63B947002A31DE /* LaunchScreen.xib in Resources */,
 				03D6653D1B69EAB500402F23 /* pin2.jpg in Resources */,
 				0320EB9F1B64CF8400E91EBB /* logo-store.png in Resources */,
+				0397C7E61B6B3CE600F43E6D /* ColorSectionHeaderView.xib in Resources */,
+				0397C7E91B6B3CE600F43E6D /* Default@2x.png in Resources */,
 				0320EBAB1B64CF8400E91EBB /* bg-order-summary.png in Resources */,
 				03B245C81B63B947002A31DE /* Images.xcassets in Resources */,
 				0320EBA51B64CF8400E91EBB /* bird.png in Resources */,
@@ -438,13 +543,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0397C7E11B6B3CE600F43E6D /* ColorNameCell.m in Sources */,
+				0397C7DF1B6B3CE600F43E6D /* ColorCollectionViewController.m in Sources */,
 				03B245C11B63B947002A31DE /* AppDelegate.swift in Sources */,
+				0397C7E01B6B3CE600F43E6D /* ColorName.m in Sources */,
 				03D5AA701B677AF200ABFF7E /* GroupItemSelectVC.swift in Sources */,
+				0397C7E31B6B3CE600F43E6D /* ColorSectionFooterView.m in Sources */,
 				03D665351B69EA0A00402F23 /* MainGroupSelectCell.swift in Sources */,
 				03D5AA681B674EBF00ABFF7E /* StartingVC.swift in Sources */,
 				03D5AA621B64FA9500ABFF7E /* BGData.swift in Sources */,
 				03D5AA6A1B67530800ABFF7E /* MainGroupSelectVC.swift in Sources */,
 				0320EB7B1B64CE6700E91EBB /* SwiftColors.swift in Sources */,
+				0397C7DE1B6B3CE600F43E6D /* LessBoringFlowLayout.m in Sources */,
+				0397C7E51B6B3CE600F43E6D /* ColorSectionHeaderView.m in Sources */,
+				0397C7EA1B6B3CE600F43E6D /* AddCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,9 +686,12 @@
 			baseConfigurationReference = 3BC70519A8858C79E2D2F4F8 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = BigSpoonPad/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BigSpoonPad/BigSpoonPad-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -586,9 +701,11 @@
 			baseConfigurationReference = 80EEFB123042BA5F2434615C /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = BigSpoonPad/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BigSpoonPad/BigSpoonPad-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
