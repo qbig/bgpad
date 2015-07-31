@@ -55,15 +55,11 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Pods/Alamofire.framework'
   install_framework 'Pods/Dollar.framework'
   install_framework 'Pods/Haneke.framework'
-  install_framework 'Pods/PagingMenuController.framework'
-  install_framework 'Pods/SwiftEventBus.framework'
   install_framework 'Pods/SwiftOverlays.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Pods/Alamofire.framework'
   install_framework 'Pods/Dollar.framework'
   install_framework 'Pods/Haneke.framework'
-  install_framework 'Pods/PagingMenuController.framework'
-  install_framework 'Pods/SwiftEventBus.framework'
   install_framework 'Pods/SwiftOverlays.framework'
 fi

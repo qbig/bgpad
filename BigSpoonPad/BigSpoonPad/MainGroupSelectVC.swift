@@ -7,16 +7,18 @@
 //
 
 import UIKit
-let reuseIdentifier = "mainGroupSelect"
-let numOfSections = 1
-let numOfOptions = 8
-class MainGroupSelectVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+
+class MainGroupSelectVC: UIViewController, UICollectionViewDelegate,
+UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+    let reuseIdentifier = "mainGroupSelect"
+    let numOfSections = 1
+    let numOfOptions = 8
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 5.0, bottom: 10.0, right: 5.0)
     let titles = ["Sand Harbor, Lake Tahoe - California","Beautiful View of Manhattan skyline.","Watcher in the Fog","Great Smoky Mountains National Park, Tennessee","Most beautiful place"]
 
     
     @IBOutlet weak var groupSelectCollectionView: UICollectionView!
-    @IBOutlet weak var firstItem: MainGroupSelectCell!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.groupSelectCollectionView.backgroundColor = UIColor.clearColor();
@@ -61,9 +63,7 @@ class MainGroupSelectVC: UIViewController, UICollectionViewDelegate, UICollectio
         let curr = indexPath.row % 5  + 1
         let imgName = "pin\(curr).jpg"
         cell.GroupOptionImage.image = UIImage(named: imgName)
-        if indexPath.item == 0 {
-            self.firstItem = cell
-        }
+
         return cell
 
     }

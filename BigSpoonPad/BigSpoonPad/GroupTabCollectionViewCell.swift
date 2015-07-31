@@ -8,6 +8,7 @@
 
 import UIKit
 
-class GroupTabCollectionVCCollectionViewCell: UICollectionViewCell {
+class GroupTabCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var groupNameLabel: UILabel!
     
 }

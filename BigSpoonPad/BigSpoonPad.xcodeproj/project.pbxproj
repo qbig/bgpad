@@ -62,6 +62,8 @@
 		03D6653D1B69EAB500402F23 /* pin2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03D665381B69EAB500402F23 /* pin2.jpg */; };
 		03D6653E1B69EAB500402F23 /* pin4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03D665391B69EAB500402F23 /* pin4.jpg */; };
 		03D6653F1B69EAB500402F23 /* pin5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03D6653A1B69EAB500402F23 /* pin5.jpg */; };
+		03D665411B6B7A4400402F23 /* GroupTabCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D665401B6B7A4400402F23 /* GroupTabCollectionVC.swift */; };
+		03D665441B6B7AA300402F23 /* GroupTabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D665431B6B7AA300402F23 /* GroupTabCollectionViewCell.swift */; };
 		50EBBAD25FE42E276604BEE8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B26B1FF0D978DED2A9EA9DF /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -143,6 +145,8 @@
 		03D665381B69EAB500402F23 /* pin2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pin2.jpg; sourceTree = "<group>"; };
 		03D665391B69EAB500402F23 /* pin4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pin4.jpg; sourceTree = "<group>"; };
 		03D6653A1B69EAB500402F23 /* pin5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pin5.jpg; sourceTree = "<group>"; };
+		03D665401B6B7A4400402F23 /* GroupTabCollectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTabCollectionVC.swift; sourceTree = "<group>"; };
+		03D665431B6B7AA300402F23 /* GroupTabCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTabCollectionViewCell.swift; sourceTree = "<group>"; };
 		3BC70519A8858C79E2D2F4F8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		4B26B1FF0D978DED2A9EA9DF /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80EEFB123042BA5F2434615C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -305,6 +309,8 @@
 				03D5AA691B67530800ABFF7E /* MainGroupSelectVC.swift */,
 				03D665341B69EA0A00402F23 /* MainGroupSelectCell.swift */,
 				03D5AA6F1B677AF200ABFF7E /* GroupItemSelectVC.swift */,
+				03D665401B6B7A4400402F23 /* GroupTabCollectionVC.swift */,
+				03D665431B6B7AA300402F23 /* GroupTabCollectionViewCell.swift */,
 				03B245C41B63B947002A31DE /* Main.storyboard */,
 				03B245C71B63B947002A31DE /* Images.xcassets */,
 				03B245C91B63B947002A31DE /* LaunchScreen.xib */,
@@ -550,11 +556,13 @@
 				03D5AA701B677AF200ABFF7E /* GroupItemSelectVC.swift in Sources */,
 				0397C7E31B6B3CE600F43E6D /* ColorSectionFooterView.m in Sources */,
 				03D665351B69EA0A00402F23 /* MainGroupSelectCell.swift in Sources */,
+				03D665441B6B7AA300402F23 /* GroupTabCollectionViewCell.swift in Sources */,
 				03D5AA681B674EBF00ABFF7E /* StartingVC.swift in Sources */,
 				03D5AA621B64FA9500ABFF7E /* BGData.swift in Sources */,
 				03D5AA6A1B67530800ABFF7E /* MainGroupSelectVC.swift in Sources */,
 				0320EB7B1B64CE6700E91EBB /* SwiftColors.swift in Sources */,
 				0397C7DE1B6B3CE600F43E6D /* LessBoringFlowLayout.m in Sources */,
+				03D665411B6B7A4400402F23 /* GroupTabCollectionVC.swift in Sources */,
 				0397C7E51B6B3CE600F43E6D /* ColorSectionHeaderView.m in Sources */,
 				0397C7EA1B6B3CE600F43E6D /* AddCell.m in Sources */,
 			);

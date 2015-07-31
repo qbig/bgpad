@@ -19,22 +19,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>PagingMenuController-PagingMenuController.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>PagingMenuController.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>SwiftEventBus.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -52,37 +37,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1BEE70BB1AF55B2F5201E9D883BA99D8</key>
+		<key>45C0BC7D5A9BAD1EF0B9C872A6CBADEB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2B2DE859F39A01DC2C051D9A525B65F1</key>
+		<key>5870CB62BCCDA8B87ABC2E478B2BBB86</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3AAB471BCA689FF55A38B38CA96C0685</key>
+		<key>8FC07783EEAD5A85A52FB3167F595929</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4CB69E9D2210E6AB25FC2A6B3154540C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5A1C79224AF192AE465365F48D24101F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>71EEA5DE7257F9D7B661B8246F354E85</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>739EB5BAEC291A9AE60F9FA237442F97</key>
+		<key>F61EC9677D8C604B7312D762B49AE3AD</key>
 		<dict>
 			<key>primary</key>
 			<true/>

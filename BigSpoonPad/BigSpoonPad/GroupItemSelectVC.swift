@@ -8,12 +8,27 @@
 
 import UIKit
 
-class GroupItemSelectVC: UIViewController {
+class GroupItemSelectVC: UIViewController, TabCollectionProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     @IBAction func backPressed() {
-        self.navigationController?.popToRootViewControllerAnimated(true)
+        self.navigationController?.popViewControllerAnimated(true)
     }
+    
+    var tabsController: GroupTabCollectionVC!
+    
+    // MARK: Segue
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "TabsContained" {
+            tabsController = segue.destinationViewController as! GroupTabCollectionVC
+            tabsController.delegate = self
+        }
+    }
+    
+    func tabSelected(controller:GroupTabCollectionVC, cellSelcted:GroupTabCollectionViewCell) {
+        // TODO: update items select collection view
+    }
+
 }
