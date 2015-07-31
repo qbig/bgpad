@@ -31,6 +31,7 @@
 		0320EBA91B64CF8400E91EBB /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0320EB931B64CF8400E91EBB /* bg.png */; };
 		0320EBAA1B64CF8400E91EBB /* bg-order-summary@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0320EB941B64CF8400E91EBB /* bg-order-summary@2x.png */; };
 		0320EBAB1B64CF8400E91EBB /* bg-order-summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 0320EB951B64CF8400E91EBB /* bg-order-summary.png */; };
+		036C34A31B6BEEA7001541EB /* ItemSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036C34A21B6BEEA7001541EB /* ItemSelectCell.swift */; };
 		0397C7DE1B6B3CE600F43E6D /* LessBoringFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0397C7CA1B6B3CE600F43E6D /* LessBoringFlowLayout.m */; };
 		0397C7DF1B6B3CE600F43E6D /* ColorCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0397C7CC1B6B3CE600F43E6D /* ColorCollectionViewController.m */; };
 		0397C7E01B6B3CE600F43E6D /* ColorName.m in Sources */ = {isa = PBXBuildFile; fileRef = 0397C7CE1B6B3CE600F43E6D /* ColorName.m */; };
@@ -102,6 +103,7 @@
 		0320EB931B64CF8400E91EBB /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		0320EB941B64CF8400E91EBB /* bg-order-summary@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-order-summary@2x.png"; sourceTree = "<group>"; };
 		0320EB951B64CF8400E91EBB /* bg-order-summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-order-summary.png"; sourceTree = "<group>"; };
+		036C34A21B6BEEA7001541EB /* ItemSelectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemSelectCell.swift; sourceTree = "<group>"; };
 		0397C7C81B6B3CE600F43E6D /* BigSpoonPad-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BigSpoonPad-Bridging-Header.h"; sourceTree = "<group>"; };
 		0397C7C91B6B3CE600F43E6D /* LessBoringFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessBoringFlowLayout.h; sourceTree = "<group>"; };
 		0397C7CA1B6B3CE600F43E6D /* LessBoringFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessBoringFlowLayout.m; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 				03D5AA691B67530800ABFF7E /* MainGroupSelectVC.swift */,
 				03D665341B69EA0A00402F23 /* MainGroupSelectCell.swift */,
 				03D5AA6F1B677AF200ABFF7E /* GroupItemSelectVC.swift */,
+				036C34A21B6BEEA7001541EB /* ItemSelectCell.swift */,
 				03D665401B6B7A4400402F23 /* GroupTabCollectionVC.swift */,
 				03D665431B6B7AA300402F23 /* GroupTabCollectionViewCell.swift */,
 				03B245C41B63B947002A31DE /* Main.storyboard */,
@@ -563,6 +566,7 @@
 				0320EB7B1B64CE6700E91EBB /* SwiftColors.swift in Sources */,
 				0397C7DE1B6B3CE600F43E6D /* LessBoringFlowLayout.m in Sources */,
 				03D665411B6B7A4400402F23 /* GroupTabCollectionVC.swift in Sources */,
+				036C34A31B6BEEA7001541EB /* ItemSelectCell.swift in Sources */,
 				0397C7E51B6B3CE600F43E6D /* ColorSectionHeaderView.m in Sources */,
 				0397C7EA1B6B3CE600F43E6D /* AddCell.m in Sources */,
 			);
