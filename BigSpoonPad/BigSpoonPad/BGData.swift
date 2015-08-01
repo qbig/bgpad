@@ -39,6 +39,7 @@ class BGData
     var someString: String?
     var someOtherString: String?
     var someInt: Int?
+    var webToken: String?
     //------------------------------------------------------------
     
     var goToBackgroundObserver: AnyObject?

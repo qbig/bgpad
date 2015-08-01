@@ -9,6 +9,7 @@
 #import "ColorNameCell.h"
 #import "ColorName.h"
 #import <QuartzCore/QuartzCore.h>
+#import "UIColor+ColorFromHex.h"
 
 @implementation ColorNameCell
 
@@ -16,15 +17,13 @@
 {
     [super awakeFromNib];
     
-    self.layer.borderWidth = 1.0f;
-    self.layer.borderColor = [[UIColor blackColor] CGColor];
-    
     self.backgroundColor = [UIColor whiteColor];
     self.nameLabel.text = nil;
-    CGFloat borderWidth = 3.0f;
-    UIView *bgView = [[UIView alloc] initWithFrame:self.frame];
-    bgView.layer.borderColor = [UIColor redColor].CGColor;
-    bgView.layer.borderWidth = borderWidth;
+    
+    self.layer.borderWidth = 2.0f;
+    self.layer.masksToBounds = YES;
+    self.layer.cornerRadius = 16;
+    self.layer.borderColor = [UIColor colorFromHexString:@"#F5CD91"].CGColor;
 }
 
 - (void)prepareForReuse
@@ -40,7 +39,8 @@
     _colorName = colorName;
     if (colorName != nil)
     {
-        self.backgroundColor = colorName.color;
+        self.backgroundColor = [UIColor colorFromHexString:@"#F5CD91"];
+        //colorName.color;
         self.nameLabel.text = colorName.name;
     }
 }

@@ -67,6 +67,9 @@
 		03D665441B6B7AA300402F23 /* GroupTabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D665431B6B7AA300402F23 /* GroupTabCollectionViewCell.swift */; };
 		03F2E7401B6C0B1700A098CC /* ModifierSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2E73F1B6C0B1700A098CC /* ModifierSelectVC.swift */; };
 		03F2E7431B6C153800A098CC /* UIColor+ColorFromHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F2E7421B6C153800A098CC /* UIColor+ColorFromHex.m */; };
+		03F2E7471B6C91DC00A098CC /* ModifierSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F2E7461B6C91DC00A098CC /* ModifierSection.m */; };
+		03F2E74A1B6C9E6800A098CC /* ModifierOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F2E7491B6C9E6800A098CC /* ModifierOption.m */; };
+		03F2E74C1B6CA76200A098CC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2E74B1B6CA76200A098CC /* Constants.swift */; };
 		50EBBAD25FE42E276604BEE8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B26B1FF0D978DED2A9EA9DF /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -154,6 +157,11 @@
 		03F2E73F1B6C0B1700A098CC /* ModifierSelectVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifierSelectVC.swift; sourceTree = "<group>"; };
 		03F2E7411B6C153800A098CC /* UIColor+ColorFromHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ColorFromHex.h"; sourceTree = "<group>"; };
 		03F2E7421B6C153800A098CC /* UIColor+ColorFromHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ColorFromHex.m"; sourceTree = "<group>"; };
+		03F2E7451B6C91DC00A098CC /* ModifierSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifierSection.h; sourceTree = "<group>"; };
+		03F2E7461B6C91DC00A098CC /* ModifierSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifierSection.m; sourceTree = "<group>"; };
+		03F2E7481B6C9E6800A098CC /* ModifierOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifierOption.h; sourceTree = "<group>"; };
+		03F2E7491B6C9E6800A098CC /* ModifierOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifierOption.m; sourceTree = "<group>"; };
+		03F2E74B1B6CA76200A098CC /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3BC70519A8858C79E2D2F4F8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		4B26B1FF0D978DED2A9EA9DF /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80EEFB123042BA5F2434615C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -242,8 +250,7 @@
 		0397C7EC1B6B3D9D00F43E6D /* Cells and Supplementary Views */ = {
 			isa = PBXGroup;
 			children = (
-				03F2E7411B6C153800A098CC /* UIColor+ColorFromHex.h */,
-				03F2E7421B6C153800A098CC /* UIColor+ColorFromHex.m */,
+				03F2E7441B6C7A6600A098CC /* Color+Hex */,
 				0397C7D21B6B3CE600F43E6D /* ColorSectionFooterView.h */,
 				0397C7D31B6B3CE600F43E6D /* ColorSectionFooterView.m */,
 				0397C7D41B6B3CE600F43E6D /* ColorSectionFooterView.xib */,
@@ -265,6 +272,10 @@
 			children = (
 				0397C7CD1B6B3CE600F43E6D /* ColorName.h */,
 				0397C7CE1B6B3CE600F43E6D /* ColorName.m */,
+				03F2E7481B6C9E6800A098CC /* ModifierOption.h */,
+				03F2E7491B6C9E6800A098CC /* ModifierOption.m */,
+				03F2E7451B6C91DC00A098CC /* ModifierSection.h */,
+				03F2E7461B6C91DC00A098CC /* ModifierSection.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -313,6 +324,7 @@
 				0320EB7F1B64CF6300E91EBB /* assets */,
 				0320EB7C1B64CF2100E91EBB /* libs */,
 				03B245C01B63B947002A31DE /* AppDelegate.swift */,
+				03F2E74B1B6CA76200A098CC /* Constants.swift */,
 				03D5AA611B64FA9500ABFF7E /* BGData.swift */,
 				03D5AA671B674EBF00ABFF7E /* StartingVC.swift */,
 				03D5AA691B67530800ABFF7E /* MainGroupSelectVC.swift */,
@@ -353,6 +365,15 @@
 				03B245D51B63B947002A31DE /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		03F2E7441B6C7A6600A098CC /* Color+Hex */ = {
+			isa = PBXGroup;
+			children = (
+				03F2E7411B6C153800A098CC /* UIColor+ColorFromHex.h */,
+				03F2E7421B6C153800A098CC /* UIColor+ColorFromHex.m */,
+			);
+			name = "Color+Hex";
 			sourceTree = "<group>";
 		};
 		6DA1AFD0DC070B03BC1ADAE3 /* Frameworks */ = {
@@ -560,7 +581,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03F2E7471B6C91DC00A098CC /* ModifierSection.m in Sources */,
+				03F2E74C1B6CA76200A098CC /* Constants.swift in Sources */,
 				0397C7E11B6B3CE600F43E6D /* ColorNameCell.m in Sources */,
+				03F2E74A1B6C9E6800A098CC /* ModifierOption.m in Sources */,
 				0397C7DF1B6B3CE600F43E6D /* ColorCollectionViewController.m in Sources */,
 				03B245C11B63B947002A31DE /* AppDelegate.swift in Sources */,
 				0397C7E01B6B3CE600F43E6D /* ColorName.m in Sources */,

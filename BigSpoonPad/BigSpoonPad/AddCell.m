@@ -8,6 +8,7 @@
 
 #import "AddCell.h"
 #import <QuartzCore/QuartzCore.h>
+#import "UIColor+ColorFromHex.h"
 
 @implementation AddCell
 
@@ -15,8 +16,10 @@
 {
     [super awakeFromNib];
     
-    self.layer.borderWidth = 1.0f;
-    self.layer.borderColor = [[UIColor blackColor] CGColor];
+    self.layer.borderWidth = 2.0f;
+    self.layer.masksToBounds = YES;
+    self.layer.cornerRadius = 16;
+    self.layer.borderColor = [UIColor colorFromHexString:@"#F5CD91"].CGColor;
 }
 
 

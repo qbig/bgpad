@@ -47,7 +47,7 @@
     layout.sectionInset = UIEdgeInsetsMake(10.f, 20.f, 10.f, 20.f);
     
     // Bigger items for iPad
-    layout.itemSize = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? CGSizeMake(120, 120) : CGSizeMake(80, 80);
+    layout.itemSize = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? CGSizeMake(120, 60) : CGSizeMake(80, 80);
     
     // uncomment this to see the default flow layout behavior
     //[layout makeBoring];
@@ -76,10 +76,10 @@
     [collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([ColorSectionFooterView class]) bundle:nil]
      forSupplementaryViewOfKind:UICollectionElementKindSectionFooter
             withReuseIdentifier:NSStringFromClass([ColorSectionFooterView class])];
-    
+    collectionView.backgroundColor = [UIColor clearColor];
+
     // Add to view
     [self.view addSubview:collectionView];
-    
 }
 
 #pragma mark - Object insert/remove
@@ -203,9 +203,6 @@
         cell = cnCell;
     }
     
-    cell.layer.masksToBounds = YES;
-    cell.layer.cornerRadius = 16;
-    cell.layer.borderColor = [UIColor colorFromHexString:@"#F5CD91"].CGColor;
     return cell;
 }
 
@@ -215,13 +212,13 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
     // only the height component is used
-    return CGSizeMake(50, 50);
+    return CGSizeMake(50, 25);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
 {
     // only the height component is used
-    return CGSizeMake(50, 50);
+    return CGSizeMake(50, 10);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +17,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+
+        Alamofire.request(.POST, BgConst.Url.Login)
+            .responseJSON { request, response, RawJSON, error in
+                let jsonData = JSON(RawJSON!)
+                if let webToken = jsonData[BgConst.Key.Token].string {
+                    BGData.sharedDataContainer.webToken = webToken
+                }
+                println(jsonData)
+                println(request)
+                println(response)
+                println(error)
+                println("======= login done =======")
+        }
         return true
     }
 
