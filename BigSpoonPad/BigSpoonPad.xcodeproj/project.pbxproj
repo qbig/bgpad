@@ -67,6 +67,8 @@
 		03F2E7471B6C91DC00A098CC /* ModifierSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F2E7461B6C91DC00A098CC /* ModifierSection.m */; };
 		03F2E74A1B6C9E6800A098CC /* ModifierOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F2E7491B6C9E6800A098CC /* ModifierOption.m */; };
 		03F2E74C1B6CA76200A098CC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2E74B1B6CA76200A098CC /* Constants.swift */; };
+		03F2E74E1B6CFD7400A098CC /* ConfirmOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2E74D1B6CFD7400A098CC /* ConfirmOrderVC.swift */; };
+		03F2E7501B6CFD8B00A098CC /* CheckoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2E74F1B6CFD8B00A098CC /* CheckoutVC.swift */; };
 		50EBBAD25FE42E276604BEE8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B26B1FF0D978DED2A9EA9DF /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -154,6 +156,8 @@
 		03F2E7481B6C9E6800A098CC /* ModifierOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifierOption.h; sourceTree = "<group>"; };
 		03F2E7491B6C9E6800A098CC /* ModifierOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifierOption.m; sourceTree = "<group>"; };
 		03F2E74B1B6CA76200A098CC /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		03F2E74D1B6CFD7400A098CC /* ConfirmOrderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmOrderVC.swift; sourceTree = "<group>"; };
+		03F2E74F1B6CFD8B00A098CC /* CheckoutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutVC.swift; sourceTree = "<group>"; };
 		3BC70519A8858C79E2D2F4F8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		4B26B1FF0D978DED2A9EA9DF /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80EEFB123042BA5F2434615C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -321,6 +325,8 @@
 				03F2E73F1B6C0B1700A098CC /* ModifierSelectVC.swift */,
 				03D665401B6B7A4400402F23 /* GroupTabCollectionVC.swift */,
 				03D665431B6B7AA300402F23 /* GroupTabCollectionViewCell.swift */,
+				03F2E74D1B6CFD7400A098CC /* ConfirmOrderVC.swift */,
+				03F2E74F1B6CFD8B00A098CC /* CheckoutVC.swift */,
 				03B245C41B63B947002A31DE /* Main.storyboard */,
 				03B245C71B63B947002A31DE /* Images.xcassets */,
 				03B245C91B63B947002A31DE /* LaunchScreen.xib */,
@@ -581,8 +587,10 @@
 				03D5AA621B64FA9500ABFF7E /* BGData.swift in Sources */,
 				03D5AA6A1B67530800ABFF7E /* MainGroupSelectVC.swift in Sources */,
 				0320EB7B1B64CE6700E91EBB /* SwiftColors.swift in Sources */,
+				03F2E7501B6CFD8B00A098CC /* CheckoutVC.swift in Sources */,
 				0397C7DE1B6B3CE600F43E6D /* LessBoringFlowLayout.m in Sources */,
 				03D665411B6B7A4400402F23 /* GroupTabCollectionVC.swift in Sources */,
+				03F2E74E1B6CFD7400A098CC /* ConfirmOrderVC.swift in Sources */,
 				036C34A31B6BEEA7001541EB /* ItemSelectCell.swift in Sources */,
 				03F2E7431B6C153800A098CC /* UIColor+ColorFromHex.m in Sources */,
 				0397C7E51B6B3CE600F43E6D /* ColorSectionHeaderView.m in Sources */,

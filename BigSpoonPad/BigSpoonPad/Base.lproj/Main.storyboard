@@ -503,7 +503,7 @@
         <!--ConfirmationVC-->
         <scene sceneID="dmo-Fs-Qcd">
             <objects>
-                <viewController id="SuE-8z-yeB" userLabel="ConfirmationVC" sceneMemberID="viewController">
+                <viewController id="SuE-8z-yeB" userLabel="ConfirmationVC" customClass="ConfirmOrderVC" customModule="BigSpoonPad" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3wT-m5-sdb"/>
                         <viewControllerLayoutGuide type="bottom" id="PCk-rN-S13"/>
@@ -598,6 +598,9 @@
                                     <color key="titleColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="confirmBtnPressed" destination="SuE-8z-yeB" eventType="touchUpInside" id="Emv-pe-cHS"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwj-x9-Vw6">
                                 <rect key="frame" x="0.0" y="454" width="433" height="80"/>
@@ -607,6 +610,9 @@
                                     <color key="titleColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancelOrderBtnPressed:" destination="SuE-8z-yeB" eventType="touchUpInside" id="vwx-R7-Iha"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iie-NE-ITZ">
                                 <rect key="frame" x="0.0" y="344" width="472" height="80"/>
@@ -616,6 +622,9 @@
                                     <color key="titleColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="addAnotherBtnPressed" destination="SuE-8z-yeB" eventType="touchUpInside" id="KmX-Xe-mFM"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -631,7 +640,7 @@
         <!--CheckoutVC-->
         <scene sceneID="MZc-Fy-yTP">
             <objects>
-                <viewController id="wVV-8F-ctP" userLabel="CheckoutVC" sceneMemberID="viewController">
+                <viewController id="wVV-8F-ctP" userLabel="CheckoutVC" customClass="CheckoutVC" customModule="BigSpoonPad" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="z34-x8-zfu"/>
                         <viewControllerLayoutGuide type="bottom" id="51U-6a-uIY"/>
@@ -723,6 +732,9 @@
                                 <state key="normal" title="Button" image="bird.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="endBtnPressed:" destination="wVV-8F-ctP" eventType="touchUpInside" id="6vS-4C-Ehf"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mn-dq-uxR">
                                 <rect key="frame" x="372" y="505" width="76" height="30"/>
@@ -766,6 +778,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="queueNumLabel" destination="idY-6G-1Ln" id="2bZ-o7-zDx"/>
+                        <outlet property="tapToEndLabel" destination="6mn-dq-uxR" id="FOu-C6-RZW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HKt-lB-bQH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

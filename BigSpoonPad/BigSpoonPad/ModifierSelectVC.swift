@@ -27,6 +27,7 @@ class ModifierSelectVC: UIViewController {
     }
 
     @IBAction func nextPressed() {
+        self.performSegueWithIdentifier("ModToConfirm", sender: nil)
     }
 
 
@@ -36,6 +37,8 @@ class ModifierSelectVC: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ModifierCollection" {
             modifierCollectionsVC = segue.destinationViewController as! ColorCollectionViewController
+        } else if segue.identifier == "ModToConfirm" {
+            
         }
     }
 
