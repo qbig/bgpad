@@ -8,19 +8,19 @@
 
 #import "ColorCollectionViewController.h"
 #import "LessBoringFlowLayout.h"
-#import "ColorName.h"
-#import "ColorNameCell.h"
-#import "AddCell.h"
+#import "ModOptionCell.h"
 #import "ColorSectionHeaderView.h"
 #import "ColorSectionFooterView.h"
 #import "UIColor+ColorFromHex.h"
+#import "ModifierSection.h"
+#import "ModifierOption.h"
 
 
 @interface ColorCollectionViewController () <ColorSectionHeaderDelegate, ColorSectionFooterDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, weak) UICollectionView * collectionView;
 
-@property (nonatomic, strong) NSMutableArray * sectionedColorNames;
+@property (nonatomic, strong) NSMutableArray * sectionModifiers;
 
 - (void)addNewItemInSection:(NSUInteger)section;
 - (void)deleteItemAtIndexPath:(NSIndexPath*)indexPath;
@@ -37,7 +37,7 @@
     [super viewDidLoad];
     
     // This array will contain the ColorName objects that populate the CollectionView, one array per section
-    self.sectionedColorNames = [NSMutableArray arrayWithObjects:[NSMutableArray array], nil];
+    self.sectionModifiers = [NSMutableArray arrayWithObjects: [ModifierSection getDummyData] , nil];
     
     // Allocate and configure the layout.
     LessBoringFlowLayout *layout = [[LessBoringFlowLayout alloc] init];
@@ -64,11 +64,9 @@
     self.collectionView = collectionView;
 
     // Register reusable items
-    [collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([AddCell class]) bundle:nil]
-     forCellWithReuseIdentifier:NSStringFromClass([AddCell class])];
     
-    [collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([ColorNameCell class]) bundle:nil]
-     forCellWithReuseIdentifier:NSStringFromClass([ColorNameCell class])];
+    [collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([ModOptionCell class]) bundle:nil]
+     forCellWithReuseIdentifier:NSStringFromClass([ModOptionCell class])];
     
     [collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([ColorSectionHeaderView class]) bundle:nil]
      forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
@@ -86,22 +84,22 @@
 
 - (void)addNewItemInSection:(NSUInteger)section
 {
-    ColorName *cn = [ColorName randomColorName];
-    NSMutableArray *colorNames = self.sectionedColorNames[section];
-    [colorNames addObject:cn];
-    [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:colorNames.count-1 inSection:section]]];
+//    ColorName *cn = [ColorName randomColorName];
+//    NSMutableArray *colorNames = self.sectionedColorNames[section];
+//    [colorNames addObject:cn];
+//    [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:colorNames.count-1 inSection:section]]];
 }
 
 - (void)deleteItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSMutableArray *colorNames = self.sectionedColorNames[indexPath.section];
-    [colorNames removeObjectAtIndex:indexPath.item];
-    [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
+//    NSMutableArray *colorNames = self.sectionedColorNames[indexPath.section];
+//    [colorNames removeObjectAtIndex:indexPath.item];
+//    [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
 }
 
 - (void)insertSectionAtIndex:(NSUInteger)index
 {
-    [self.sectionedColorNames insertObject:[NSMutableArray array] atIndex:index];
+    [self.sectionModifiers insertObject:[ModifierSection getDummyData] atIndex:index];
     
     // Batch this so the other sections will be updated on completion
     [self.collectionView performBatchUpdates:^{
@@ -115,7 +113,7 @@
 - (void)deleteSectionAtIndex:(NSUInteger)index
 {
     // no checking if section exists - this is somewhat unsafe
-    [self.sectionedColorNames removeObjectAtIndex:index];
+    [self.sectionModifiers removeObjectAtIndex:index];
     
     // Batch this so the other sections will be updated on completion
     [self.collectionView performBatchUpdates:^{
@@ -149,14 +147,13 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return self.sectionedColorNames.count;
+    return self.sectionModifiers.count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    // Always one extra cell for the "add" cell
-    NSMutableArray *sectionColorNames = self.sectionedColorNames[section];
-    return sectionColorNames.count + 1;
+    ModifierSection *modSection = (ModifierSection *) self.sectionModifiers[section];
+    return modSection.options.count;
 }
 
 - (UICollectionReusableView*)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
@@ -171,6 +168,7 @@
         header.sectionIndex = indexPath.section;
         header.hideDelete = collectionView.numberOfSections == 1; // hide when only one section
         header.delegate = self;
+        header.modSectionNameLabel.text = ((ModifierSection*)self.sectionModifiers[indexPath.section]).name;
         view = header;
     }
     else if ([kind isEqualToString:UICollectionElementKindSectionFooter])
@@ -189,19 +187,12 @@
 - (UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = nil;
-    NSArray *colorNames = self.sectionedColorNames[indexPath.section];
-    if (indexPath.row == colorNames.count)
-    {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([AddCell class])
-                                                         forIndexPath:indexPath];
-    }
-    else
-    {
-        ColorNameCell *cnCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([ColorNameCell class])
-                                                                          forIndexPath:indexPath];
-        cnCell.colorName = colorNames[indexPath.item];
-        cell = cnCell;
-    }
+    NSArray *options = ((ModifierSection*) self.sectionModifiers[indexPath.section]).options;
+    
+    ModOptionCell *cnCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([ModOptionCell class]) forIndexPath:indexPath];
+    cnCell.optionModel = (ModifierOption*)options[indexPath.item];
+    cell = cnCell;
+    
     
     return cell;
 }
@@ -224,17 +215,21 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    
-    // Upon tapping an item, delete it. If it's the last item (the add cell), add a new one
-    NSArray *colorNames = self.sectionedColorNames[indexPath.section];
-
-    if (indexPath.item == colorNames.count)
-    {
-        [self addNewItemInSection:indexPath.section];
-    }
-    else
-    {
-        [self deleteItemAtIndexPath:indexPath];
+    ModifierSection * selectedSection = self.sectionModifiers[indexPath.section];
+    BOOL wasNotYetSelected = selectedSection.selectedOptionIndex == -1;
+    ModifierOption * selectedOption = (ModifierOption*)selectedSection.options[indexPath.item];
+    [selectedSection toggleOption:selectedOption];
+    BOOL notSelectedAfterToggle = selectedSection.selectedOptionIndex == -1;
+    if (wasNotYetSelected) {
+        [self insertSectionAtIndex:self.sectionModifiers.count];
+    } else {
+        if (notSelectedAfterToggle){
+            for (int i = self.sectionModifiers.count-1; i > indexPath.section; i--) {
+                [self deleteSectionAtIndex:i];
+            }
+        } else {
+            [self.collectionView reloadData];
+        }
     }
 }
 

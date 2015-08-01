@@ -6,12 +6,12 @@
 //  Copyright (c) 2013 nd. All rights reserved.
 //
 
-#import "ColorNameCell.h"
-#import "ColorName.h"
+#import "ModOptionCell.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UIColor+ColorFromHex.h"
 
-@implementation ColorNameCell
+
+@implementation ModOptionCell
 
 - (void)awakeFromNib
 {
@@ -31,17 +31,21 @@
     [super prepareForReuse];
     self.backgroundColor = [UIColor whiteColor];
     self.nameLabel.text = nil;
-    self.colorName = nil;
+    self.optionModel = nil;
 }
 
-- (void)setColorName:(ColorName *)colorName
+- (void)setOptionModel:(ModifierOption *)optionMod
 {
-    _colorName = colorName;
-    if (colorName != nil)
+    _optionModel = optionMod;
+    if (optionMod != nil)
     {
-        self.backgroundColor = [UIColor colorFromHexString:@"#F5CD91"];
-        //colorName.color;
-        self.nameLabel.text = colorName.name;
+        if(optionMod.selected) {
+            self.backgroundColor = [UIColor colorFromHexString:@"#F5CD91"];
+        } else {
+            self.backgroundColor = [UIColor clearColor];
+        }
+
+        self.nameLabel.text = optionMod.name;
     }
 }
 

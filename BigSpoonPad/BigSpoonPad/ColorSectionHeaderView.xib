@@ -68,6 +68,7 @@
             </constraints>
             <connections>
                 <outlet property="deleteButton" destination="15" id="16"/>
+                <outlet property="modSectionNameLabel" destination="18" id="a7o-Z7-i5Q"/>
                 <outlet property="sectionHeaderLabel" destination="9" id="14"/>
             </connections>
             <point key="canvasLocation" x="154" y="404.5"/>

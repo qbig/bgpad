@@ -34,9 +34,8 @@
 		036C34A31B6BEEA7001541EB /* ItemSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036C34A21B6BEEA7001541EB /* ItemSelectCell.swift */; };
 		0397C7DE1B6B3CE600F43E6D /* LessBoringFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0397C7CA1B6B3CE600F43E6D /* LessBoringFlowLayout.m */; };
 		0397C7DF1B6B3CE600F43E6D /* ColorCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0397C7CC1B6B3CE600F43E6D /* ColorCollectionViewController.m */; };
-		0397C7E01B6B3CE600F43E6D /* ColorName.m in Sources */ = {isa = PBXBuildFile; fileRef = 0397C7CE1B6B3CE600F43E6D /* ColorName.m */; };
-		0397C7E11B6B3CE600F43E6D /* ColorNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0397C7D01B6B3CE600F43E6D /* ColorNameCell.m */; };
-		0397C7E21B6B3CE600F43E6D /* ColorNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0397C7D11B6B3CE600F43E6D /* ColorNameCell.xib */; };
+		0397C7E11B6B3CE600F43E6D /* ModOptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0397C7D01B6B3CE600F43E6D /* ModOptionCell.m */; };
+		0397C7E21B6B3CE600F43E6D /* ModOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0397C7D11B6B3CE600F43E6D /* ModOptionCell.xib */; };
 		0397C7E31B6B3CE600F43E6D /* ColorSectionFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0397C7D31B6B3CE600F43E6D /* ColorSectionFooterView.m */; };
 		0397C7E41B6B3CE600F43E6D /* ColorSectionFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0397C7D41B6B3CE600F43E6D /* ColorSectionFooterView.xib */; };
 		0397C7E51B6B3CE600F43E6D /* ColorSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0397C7D61B6B3CE600F43E6D /* ColorSectionHeaderView.m */; };
@@ -44,8 +43,6 @@
 		0397C7E71B6B3CE600F43E6D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0397C7D81B6B3CE600F43E6D /* Default-568h@2x.png */; };
 		0397C7E81B6B3CE600F43E6D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0397C7D91B6B3CE600F43E6D /* Default.png */; };
 		0397C7E91B6B3CE600F43E6D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0397C7DA1B6B3CE600F43E6D /* Default@2x.png */; };
-		0397C7EA1B6B3CE600F43E6D /* AddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0397C7DC1B6B3CE600F43E6D /* AddCell.m */; };
-		0397C7EB1B6B3CE600F43E6D /* AddCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0397C7DD1B6B3CE600F43E6D /* AddCell.xib */; };
 		03B245C11B63B947002A31DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B245C01B63B947002A31DE /* AppDelegate.swift */; };
 		03B245C61B63B947002A31DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03B245C41B63B947002A31DE /* Main.storyboard */; };
 		03B245C81B63B947002A31DE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03B245C71B63B947002A31DE /* Images.xcassets */; };
@@ -114,11 +111,9 @@
 		0397C7CA1B6B3CE600F43E6D /* LessBoringFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessBoringFlowLayout.m; sourceTree = "<group>"; };
 		0397C7CB1B6B3CE600F43E6D /* ColorCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorCollectionViewController.h; sourceTree = "<group>"; };
 		0397C7CC1B6B3CE600F43E6D /* ColorCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorCollectionViewController.m; sourceTree = "<group>"; };
-		0397C7CD1B6B3CE600F43E6D /* ColorName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorName.h; sourceTree = "<group>"; };
-		0397C7CE1B6B3CE600F43E6D /* ColorName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorName.m; sourceTree = "<group>"; };
-		0397C7CF1B6B3CE600F43E6D /* ColorNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorNameCell.h; sourceTree = "<group>"; };
-		0397C7D01B6B3CE600F43E6D /* ColorNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorNameCell.m; sourceTree = "<group>"; };
-		0397C7D11B6B3CE600F43E6D /* ColorNameCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorNameCell.xib; sourceTree = "<group>"; };
+		0397C7CF1B6B3CE600F43E6D /* ModOptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModOptionCell.h; sourceTree = "<group>"; };
+		0397C7D01B6B3CE600F43E6D /* ModOptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModOptionCell.m; sourceTree = "<group>"; };
+		0397C7D11B6B3CE600F43E6D /* ModOptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModOptionCell.xib; sourceTree = "<group>"; };
 		0397C7D21B6B3CE600F43E6D /* ColorSectionFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorSectionFooterView.h; sourceTree = "<group>"; };
 		0397C7D31B6B3CE600F43E6D /* ColorSectionFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorSectionFooterView.m; sourceTree = "<group>"; };
 		0397C7D41B6B3CE600F43E6D /* ColorSectionFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorSectionFooterView.xib; sourceTree = "<group>"; };
@@ -128,9 +123,6 @@
 		0397C7D81B6B3CE600F43E6D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		0397C7D91B6B3CE600F43E6D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		0397C7DA1B6B3CE600F43E6D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		0397C7DB1B6B3CE600F43E6D /* AddCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCell.h; sourceTree = "<group>"; };
-		0397C7DC1B6B3CE600F43E6D /* AddCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCell.m; sourceTree = "<group>"; };
-		0397C7DD1B6B3CE600F43E6D /* AddCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddCell.xib; sourceTree = "<group>"; };
 		03B245BB1B63B946002A31DE /* BigSpoonPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BigSpoonPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03B245BF1B63B947002A31DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03B245C01B63B947002A31DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -257,12 +249,9 @@
 				0397C7D51B6B3CE600F43E6D /* ColorSectionHeaderView.h */,
 				0397C7D61B6B3CE600F43E6D /* ColorSectionHeaderView.m */,
 				0397C7D71B6B3CE600F43E6D /* ColorSectionHeaderView.xib */,
-				0397C7DB1B6B3CE600F43E6D /* AddCell.h */,
-				0397C7DC1B6B3CE600F43E6D /* AddCell.m */,
-				0397C7DD1B6B3CE600F43E6D /* AddCell.xib */,
-				0397C7CF1B6B3CE600F43E6D /* ColorNameCell.h */,
-				0397C7D01B6B3CE600F43E6D /* ColorNameCell.m */,
-				0397C7D11B6B3CE600F43E6D /* ColorNameCell.xib */,
+				0397C7CF1B6B3CE600F43E6D /* ModOptionCell.h */,
+				0397C7D01B6B3CE600F43E6D /* ModOptionCell.m */,
+				0397C7D11B6B3CE600F43E6D /* ModOptionCell.xib */,
 			);
 			name = "Cells and Supplementary Views";
 			sourceTree = "<group>";
@@ -270,8 +259,6 @@
 		0397C7ED1B6B3DBC00F43E6D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0397C7CD1B6B3CE600F43E6D /* ColorName.h */,
-				0397C7CE1B6B3CE600F43E6D /* ColorName.m */,
 				03F2E7481B6C9E6800A098CC /* ModifierOption.h */,
 				03F2E7491B6C9E6800A098CC /* ModifierOption.m */,
 				03F2E7451B6C91DC00A098CC /* ModifierSection.h */,
@@ -488,8 +475,7 @@
 				0320EB971B64CF8400E91EBB /* logo@2x.png in Resources */,
 				03B245C61B63B947002A31DE /* Main.storyboard in Resources */,
 				0397C7E81B6B3CE600F43E6D /* Default.png in Resources */,
-				0397C7E21B6B3CE600F43E6D /* ColorNameCell.xib in Resources */,
-				0397C7EB1B6B3CE600F43E6D /* AddCell.xib in Resources */,
+				0397C7E21B6B3CE600F43E6D /* ModOptionCell.xib in Resources */,
 				03D6653F1B69EAB500402F23 /* pin5.jpg in Resources */,
 				0320EBA71B64CF8400E91EBB /* btn-discard.png in Resources */,
 				0320EBA31B64CF8400E91EBB /* btn-edit@2x.png in Resources */,
@@ -583,11 +569,10 @@
 			files = (
 				03F2E7471B6C91DC00A098CC /* ModifierSection.m in Sources */,
 				03F2E74C1B6CA76200A098CC /* Constants.swift in Sources */,
-				0397C7E11B6B3CE600F43E6D /* ColorNameCell.m in Sources */,
+				0397C7E11B6B3CE600F43E6D /* ModOptionCell.m in Sources */,
 				03F2E74A1B6C9E6800A098CC /* ModifierOption.m in Sources */,
 				0397C7DF1B6B3CE600F43E6D /* ColorCollectionViewController.m in Sources */,
 				03B245C11B63B947002A31DE /* AppDelegate.swift in Sources */,
-				0397C7E01B6B3CE600F43E6D /* ColorName.m in Sources */,
 				03D5AA701B677AF200ABFF7E /* GroupItemSelectVC.swift in Sources */,
 				0397C7E31B6B3CE600F43E6D /* ColorSectionFooterView.m in Sources */,
 				03D665351B69EA0A00402F23 /* MainGroupSelectCell.swift in Sources */,
@@ -601,7 +586,6 @@
 				036C34A31B6BEEA7001541EB /* ItemSelectCell.swift in Sources */,
 				03F2E7431B6C153800A098CC /* UIColor+ColorFromHex.m in Sources */,
 				0397C7E51B6B3CE600F43E6D /* ColorSectionHeaderView.m in Sources */,
-				0397C7EA1B6B3CE600F43E6D /* AddCell.m in Sources */,
 				03F2E7401B6C0B1700A098CC /* ModifierSelectVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
         Alamofire.request(.POST, BgConst.Url.Login)
+            .authenticate(user: "1234", password: "1234")
             .responseJSON { request, response, RawJSON, error in
                 let jsonData = JSON(RawJSON!)
                 if let webToken = jsonData[BgConst.Key.Token].string {

@@ -20,6 +20,7 @@
 
 @property (nonatomic, assign) NSUInteger sectionIndex;
 @property (nonatomic, assign) BOOL hideDelete;
+@property (weak, nonatomic) IBOutlet UILabel *modSectionNameLabel;
 
 @property (nonatomic, weak) id<ColorSectionHeaderDelegate> delegate;
 

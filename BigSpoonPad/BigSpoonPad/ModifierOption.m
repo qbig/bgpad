@@ -14,6 +14,7 @@
     ModifierOption *op = [[ModifierOption alloc] init];
     op.price = price;
     op.name = name;
+    op.selected = false;
     return op;
 }
 

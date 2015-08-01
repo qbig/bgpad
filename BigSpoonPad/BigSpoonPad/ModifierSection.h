@@ -38,5 +38,12 @@
 @property (nonatomic) int selectedOptionIndex;
 
 + (ModifierSection*) sectionWithDict: (NSDictionary*) dict;
+- (void) toggleOption: (ModifierOption*) option;
+
+@end
+
+@interface ModifierSection (DummyData)
+
++ (ModifierSection*) getDummyData;
 
 @end

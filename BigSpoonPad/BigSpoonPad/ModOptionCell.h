@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ModifierOption.h"
 
 @class ColorName;
 
-@interface ColorNameCell : UICollectionViewCell
+@interface ModOptionCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 
-@property (nonatomic, weak) ColorName *colorName;
+@property (nonatomic, weak) ModifierOption *optionModel;
 
 @end
