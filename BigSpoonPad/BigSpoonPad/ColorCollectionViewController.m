@@ -166,7 +166,7 @@
                                                                             withReuseIdentifier:NSStringFromClass([ColorSectionHeaderView class])
                                                                                    forIndexPath:indexPath];
         header.sectionIndex = indexPath.section;
-        header.hideDelete = collectionView.numberOfSections == 1; // hide when only one section
+        //header.hideDelete = collectionView.numberOfSections == 1; // hide when only one section
         header.delegate = self;
         header.modSectionNameLabel.text = ((ModifierSection*)self.sectionModifiers[indexPath.section]).name;
         view = header;
