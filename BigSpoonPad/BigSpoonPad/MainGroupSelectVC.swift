@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Haneke
 
 class MainGroupSelectVC: UIViewController, UICollectionViewDelegate,
 UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
@@ -66,7 +67,6 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
         let curr = indexPath.row % 5  + 1
         let imgName = "pin\(curr).jpg"
         cell.GroupOptionImage.image = UIImage(named: imgName)
-
         return cell
 
     }

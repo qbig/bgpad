@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import SwiftyJSON
 
 /**
 This struct defines the keys used to save the data container singleton's properties to NSUserDefaults.
@@ -40,6 +40,11 @@ class BGData
     var someOtherString: String?
     var someInt: Int?
     var webToken: String?
+    var lastSync: String?
+    var groupItemJson : JSON?
+    var modiferJson : JSON?
+    var attributesJson : JSON?
+    var tableJson : JSON?
     //------------------------------------------------------------
     
     var goToBackgroundObserver: AnyObject?

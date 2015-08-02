@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-
+import Socket_IO_Client_Swift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -17,21 +17,115 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-
+        
         Alamofire.request(.POST, BgConst.Url.Login)
             .authenticate(user: "1234", password: "1234")
-            .responseJSON { request, response, RawJSON, error in
+            .responseJSON { _, _, RawJSON, error in
                 let jsonData = JSON(RawJSON!)
                 if let webToken = jsonData[BgConst.Key.Token].string {
                     BGData.sharedDataContainer.webToken = webToken
+                    NSNotificationCenter.defaultCenter().postNotificationName(BgConst.Key.NotifTokenDone, object:nil)
                 }
                 println(jsonData)
-                println(request)
-                println(response)
                 println(error)
                 println("======= login done =======")
         }
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("tokenReadyHandler"), name: BgConst.Key.NotifTokenDone, object: nil)
         return true
+    }
+    
+    func tokenReadyHandler() {
+        Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders = ["X-Web-Token": BGData.sharedDataContainer.webToken!]
+        loadOrderData()
+        createNewOrder()
+        loadTableData()
+        loadGroupItemData()
+        loadModifierData()
+        loadItemAttributeData()
+        startSocketIO()
+    }
+    
+    func startSocketIO() {
+        println("startSocketIO called.")
+//        let options = ["connectParams":["webToken" :BGData.sharedDataContainer.webToken!]]
+        println(BgConst.Url.Base + BGData.sharedDataContainer.webToken!)
+        let socket = SocketIOClient(socketURL: BgConst.Url.Base + BGData.sharedDataContainer.webToken!)
+
+        socket.on("connect") {data, ack in
+            println("socket connected")
+        }
+        
+        socket.on("productattribute") {data, ack in
+            println("something is out of stock!")
+        }
+        
+        socket.on("error") {data, ack in
+            println("socket connected FAILED")
+            println(data)
+            println(ack)
+        }
+        socket.onAny{event in
+            println(event)
+        }
+        
+        socket.connect()
+    }
+    
+    
+    func loadOrderData() {
+        loadData(BgConst.Url.Order).responseJSON { request, response, RawJSON, error in
+
+        }
+    }
+    
+    func createNewOrder() {
+        let postBody = [
+            "table_id":0,
+            "pax":1,
+            "type": "eat-in"
+        ]
+        Alamofire.request(.POST, BgConst.Url.Order, parameters:postBody)
+            .responseJSON { _, _, rawJson, error in
+                println("error: \(error)")
+                println("======= load \(BgConst.Url.Order) done =======")
+                println(JSON(rawJson!))
+        }
+    }
+
+    func loadTableData() {
+        loadData(BgConst.Url.Table).responseJSON { request, response, RawJSON, error in
+            BGData.sharedDataContainer.tableJson = JSON(RawJSON!)
+        }
+    }
+    
+    func loadGroupItemData() {
+        loadData(BgConst.Url.GroupItems).responseJSON { request, response, RawJSON, error in
+            if let lastSync = response?.allHeaderFields["Date"]  as? String{
+                println(lastSync)
+                BGData.sharedDataContainer.lastSync = lastSync
+            }
+            BGData.sharedDataContainer.groupItemJson = JSON(RawJSON!)
+        }
+    }
+    
+    func loadModifierData() {
+        loadData(BgConst.Url.Modifier).responseJSON { request, response, RawJSON, error in
+            BGData.sharedDataContainer.modiferJson = JSON(RawJSON!)
+        }
+    }
+    
+    func loadItemAttributeData() {
+        loadData(BgConst.Url.ItemsAttributes).responseJSON { request, response, RawJSON, error in
+            BGData.sharedDataContainer.attributesJson = JSON(RawJSON!)
+        }
+    }
+    
+    func loadData(url:String) -> Request{
+        return Alamofire.request(.GET, url).responseJSON { _, _, rawJson, error in
+            println("error: \(error)")
+            println("======= load \(url) done =======")
+            println(JSON(rawJson!))
+        }
     }
 
     func applicationWillResignActive(application: UIApplication) {

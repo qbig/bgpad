@@ -51,5 +51,101 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BigSpoonPad/AppDelegate.swift"
+            timestampString = "460205105.737935"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "loadGroupItemData()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BigSpoonPad.AppDelegate.loadGroupItemData (BigSpoonPad.AppDelegate)() -&gt; ()"
+                  moduleName = "BigSpoonPad"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qiaoliang89/Documents/bgpad/BigSpoonPad/BigSpoonPad/AppDelegate.swift"
+                  timestampString = "460204194.276479"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "19">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BigSpoonPad.AppDelegate.(loadGroupItemData (BigSpoonPad.AppDelegate) -&gt; () -&gt; ()).(closure #1)"
+                  moduleName = "BigSpoonPad"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qiaoliang89/Documents/bgpad/BigSpoonPad/BigSpoonPad/AppDelegate.swift"
+                  timestampString = "460204194.276686"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
+                  offsetFromSymbolStart = "45">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BigSpoonPad/AppDelegate.swift"
+            timestampString = "460205105.737935"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "createNewOrder()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BigSpoonPad.AppDelegate.loadGroupItemData (BigSpoonPad.AppDelegate)() -&gt; ()"
+                  moduleName = "BigSpoonPad"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qiaoliang89/Documents/bgpad/BigSpoonPad/BigSpoonPad/AppDelegate.swift"
+                  timestampString = "460204194.270395"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "128">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BigSpoonPad.AppDelegate.(loadGroupItemData (BigSpoonPad.AppDelegate) -&gt; () -&gt; ()).(closure #1)"
+                  moduleName = "BigSpoonPad"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qiaoliang89/Documents/bgpad/BigSpoonPad/BigSpoonPad/AppDelegate.swift"
+                  timestampString = "460204194.270738"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "1259">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
