@@ -13,6 +13,7 @@ import Foundation
 class ModifierSelectVC: UIViewController {
     var modifierCollectionsVC: ColorCollectionViewController!
     var currentItem: ItemModel?
+    var modChoices: [Int]?
     @IBOutlet weak var selectedItemLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     override func viewDidLoad() {
@@ -34,6 +35,10 @@ class ModifierSelectVC: UIViewController {
         if (modifierCollectionsVC.isComplete()){
             nextButton.hidden = false
             BGData.sharedDataContainer.modifiers = modifierCollectionsVC.sectionModifiers as NSArray as? [ModifierSection]
+            BGData.sharedDataContainer.currentOrder?.modChoices = BGData.sharedDataContainer.modifiers!.map({
+                modSec in
+                Int(modSec.selectedOptionIndex)
+            })
         } else {
             nextButton.hidden = true
         }
@@ -64,7 +69,8 @@ class ModifierSelectVC: UIViewController {
     }
 
     @IBAction func nextPressed() {
-        // TODO: add current order to orders
+        
+        BGData.sharedDataContainer.currentOrders!.append(BGData.sharedDataContainer.currentOrder!)
         self.performSegueWithIdentifier("ModToConfirm", sender: nil)
     }
 
@@ -79,6 +85,7 @@ class ModifierSelectVC: UIViewController {
                 modSec.unselect()
             }
             modifierCollectionsVC.sectionModifiers = NSMutableArray(array: BGData.sharedDataContainer.modifiers!)
+            modChoices = [Int]()
         } else if segue.identifier == "ModToConfirm" {
             
         }

@@ -50,6 +50,7 @@ class BGData
     var currentOrders:[BGOrder]?
     var currentOrder: BGOrder?
     var currentOrderJson: JSON?
+    var newOrderCreated:Bool = false
     //------------------------------------------------------------
     
     var goToBackgroundObserver: AnyObject?
@@ -147,24 +148,48 @@ class BGData
         //                "product_uuid":2,
         //                "qty": 1,
         //                "modifiers":[
-        //                {
-        //                "uuid":"extra_noodles",
-        //                "is_selected": true
-        //                },
-        //                {
-        //                "uuid":"menu_set_side_1",
-        //                "selected_radio_option_name": "Egg"
-        //                }
+        //                  {
+        //                      "uuid":"extra_noodles",
+        //                      "is_selected": true
+        //                  },
+        //                  {
+        //                      "uuid":"menu_set_side_1",
+        //                      "selected_radio_option_name": "Egg"
+        //                  }
         //                ],
-        //                "notes":"hi",
-        //                "item_adj_amt": 0,
-        //                "item_adj_type": "value",
-        //                "item_adj_entry_type": "discount",
-        //                "adjustments": [],
         //                "createdAt": "2015-02-03T08:07:56.188Z"
         //            }
         //        ]
         
+    }
+    
+    func completeOrder() {
+        var postBody = [[String:AnyObject]]()
+        for order in currentOrders! {
+            postBody.append(order.getParams())
+        }
+        if let uuid = BGData.sharedDataContainer.currentOrderJson?["uuid"].string {
+            var url = "\(BgConst.Url.Order)/\(uuid)/item"
+            let URL = NSURL(string: url)
+            var request = NSMutableURLRequest(URL: URL!)
+            request.HTTPMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue(webToken, forHTTPHeaderField: "X-Web-Token")
+            var error: NSError?
+            request.HTTPBody = NSJSONSerialization.dataWithJSONObject(postBody, options: nil, error: &error)
+            Alamofire.request(request)
+                .responseJSON { request, response, rawJson, error in
+                    println("error: \(error)")
+                    println("======= load \(url) ,add Items =======")
+                    println(JSON(rawJson!))
+                    if (error == nil) {
+                        BGData.sharedDataContainer.currentOrders = []
+                        BGData.sharedDataContainer.currentOrder = BGOrder()
+                        BGData.sharedDataContainer.currentOrderJson = JSON(rawJson!)
+                        NSNotificationCenter.defaultCenter().postNotificationName(BgConst.Key.NotifOrderItemsAdded, object: nil)
+                    }
+            }
+        }
     }
     
     func startSocketIO() {
@@ -228,11 +253,12 @@ class BGData
                 let descrip = modJson["description"].stringValue
                 let price:Double = modJson["price"].doubleValue
                 let name = modJson["name"].stringValue
+                let uuid = modJson["uuid"].stringValue
                 var opts = [AnyObject]()
                 for op in modJson["radio_options"].arrayValue {
                     opts.append(["name":op["name"].stringValue, "price":op["price"].numberValue])
                 }
-                let dict = ["name": name, "description": descrip, "price": price, "options": opts]
+                let dict = ["name": name, "description": descrip, "price": price, "options": opts, "uuid":uuid]
                 BGData.sharedDataContainer.modifiers?.append(ModifierSection(dict:dict as [NSObject : AnyObject]))
             }
         }

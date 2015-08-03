@@ -28,6 +28,17 @@ class BGOrder: NSObject {
     var productId:Int?
     var quantity: Int? = 1
     var fromGroup: Int?
+    var modChoices : [Int]? {
+        didSet {
+            modifiers = [Dictionary<String, String>]()
+            for (index, choice) in enumerate(modChoices!){
+                modifiers?.append([
+                    "uuid":BGData.sharedDataContainer.modifiers![index].uuid,
+                    "selected_radio_option_name": BGData.sharedDataContainer.modifiers![index].options![choice].name
+                    ])
+            }
+        }
+    }
     var itemIndex: Int? {
         didSet {
             productId = BGData.sharedDataContainer.groupItems?[fromGroup!].items![itemIndex!].uuid

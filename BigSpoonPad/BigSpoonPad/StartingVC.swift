@@ -13,7 +13,7 @@ import SwiftOverlays
 class StartingVC: UIViewController {
 
     @IBOutlet var mainView: UIView!
-    var newOrderCreated = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let tapGesture = UITapGestureRecognizer(target: self, action: "tapGesture:")
@@ -21,16 +21,25 @@ class StartingVC: UIViewController {
         mainView.userInteractionEnabled = true
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("newOrderReadyHandler"), name: BgConst.Key.NotifNewOrderCreated, object: nil)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     func startNewOrder () {
         let text = "Starting..."
         self.showWaitOverlayWithText(text)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("newOrderReadyHandler"), name: BgConst.Key.NotifNewOrderCreated, object: nil)
         BGData.sharedDataContainer.createNewOrder()
         mainView.userInteractionEnabled = false
     }
     
     func tapGesture(sender: AnyObject?) {
-        if (newOrderCreated) {
+        if (BGData.sharedDataContainer.newOrderCreated) {
             newOrderReadyHandler()
         } else {
             startNewOrder()
@@ -38,7 +47,7 @@ class StartingVC: UIViewController {
     }
     
     func newOrderReadyHandler() {
-        newOrderCreated = true
+        BGData.sharedDataContainer.newOrderCreated = true
         mainView.userInteractionEnabled = true
         self.removeAllOverlays()
         performSegueWithIdentifier("startToMain", sender: nil);

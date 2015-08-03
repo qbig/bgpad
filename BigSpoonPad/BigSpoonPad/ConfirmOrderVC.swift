@@ -7,13 +7,13 @@
 //
 
 import UIKit
+import SwiftOverlays
 
 class ConfirmOrderVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("orderCompleteHandler:"), name: BgConst.Key.NotifOrderItemsAdded, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,13 +22,23 @@ class ConfirmOrderVC: UIViewController {
     }
     
     @IBAction func confirmBtnPressed() {
+        let text = "Sending..."
+        self.showWaitOverlayWithText(text)
+        BGData.sharedDataContainer.completeOrder()
+    }
+    
+    func orderCompleteHandler(notification: NSNotification) {
+        self.removeAllOverlays()
+        BGData.sharedDataContainer.newOrderCreated = false
         self.performSegueWithIdentifier("ConfirmToCheckout", sender: nil)
     }
 
     @IBAction func addAnotherBtnPressed() {
+        self.navigationController?.popToViewController(self.navigationController?.viewControllers![1] as! UIViewController, animated: true)
     }
     
     @IBAction func cancelOrderBtnPressed(sender: AnyObject) {
+        
     }
     
     // MARK: - Navigation
