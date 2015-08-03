@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
         Alamofire.request(.POST, BgConst.Url.Login)
             .authenticate(user: "1234", password: "1234")
             .responseJSON { _, _, RawJSON, error in
@@ -80,7 +79,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func createNewOrder() {
         let postBody = [
-            "table_id":0,
             "pax":1,
             "type": "eat-in"
         ]
@@ -89,8 +87,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 println("error: \(error)")
                 println("======= load \(BgConst.Url.Order) done =======")
                 println(JSON(rawJson!))
+                if (error == nil) {
+                    BGData.sharedDataContainer.currentOrders = []
+                    BGData.sharedDataContainer.currentOrder = BGOrder()
+                    BGData.sharedDataContainer.currentOrderJson = JSON(rawJson!)
+                }
         }
+//        CREATE
+//        {
+//            "order_items": [],
+//            "uuid": "141129AMK00029",
+//            "staff_id": 1,
+//            "pax": 1,
+//            "type": "eat-in",
+//            "subtotal_adj_amt": 0,
+//            "subtotal_adj_type": "value",
+//            "subtotal_adj_entry_type": "discount",
+//            "adjustments": [
+//            {
+//            "uuid": "10_percent_off",
+//            "amt": 10,
+//            "type": "percent",
+//            "entry_type": "discount"
+//            }
+//            ],
+//            "createdAt": "2014-11-29T10:55:33.068Z",
+//            "updatedAt": "2014-11-29T10:55:33.078Z",
+//            "state": "opened",
+//            "table_id": 1,
+//            "notes": "Allergic to peanuts"
+//        }
+
+//        ADD ITEMS
+//        [
+//            {
+//                "product_uuid":2,
+//                "qty": 1,
+//                "modifiers":[
+//                {
+//                "uuid":"extra_noodles",
+//                "is_selected": true
+//                },
+//                {
+//                "uuid":"menu_set_side_1",
+//                "selected_radio_option_name": "Egg"
+//                }
+//                ],
+//                "notes":"hi",
+//                "item_adj_amt": 0,
+//                "item_adj_type": "value",
+//                "item_adj_entry_type": "discount",
+//                "adjustments": [],
+//                "createdAt": "2015-02-03T08:07:56.188Z"
+//            }
+//        ]
+        
     }
+    
+    
 
     func loadTableData() {
         loadData(BgConst.Url.Table).responseJSON { request, response, RawJSON, error in
@@ -104,13 +158,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 println(lastSync)
                 BGData.sharedDataContainer.lastSync = lastSync
             }
-            BGData.sharedDataContainer.groupItemJson = JSON(RawJSON!)
+            var json = JSON(RawJSON!)
+            BGData.sharedDataContainer.groupItemJson = json
+            BGData.sharedDataContainer.groupItems = json.arrayValue.map({groupJson in
+                GroupItemModel(json:groupJson)
+            })
         }
     }
     
     func loadModifierData() {
         loadData(BgConst.Url.Modifier).responseJSON { request, response, RawJSON, error in
             BGData.sharedDataContainer.modiferJson = JSON(RawJSON!)
+            BGData.sharedDataContainer.modifiers = [ModifierSection]()
+            for modJson in BGData.sharedDataContainer.modiferJson!.arrayValue {
+                let descrip = modJson["description"].stringValue
+                let price:Double = modJson["price"].doubleValue
+                let name = modJson["name"].stringValue
+                var opts = [AnyObject]()
+                for op in modJson["radio_options"].arrayValue {
+                    opts.append(["name":op["name"].stringValue, "price":op["price"].numberValue])
+                }
+                let dict = ["name": name, "description": descrip, "price": price, "options": opts]
+                BGData.sharedDataContainer.modifiers?.append(ModifierSection(dict:dict as [NSObject : AnyObject]))
+            }
         }
     }
     

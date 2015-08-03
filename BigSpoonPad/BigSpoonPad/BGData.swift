@@ -43,8 +43,13 @@ class BGData
     var lastSync: String?
     var groupItemJson : JSON?
     var modiferJson : JSON?
+    var modifiers: [ModifierSection]?
     var attributesJson : JSON?
     var tableJson : JSON?
+    var groupItems: [GroupItemModel]?
+    var currentOrders:[BGOrder]?
+    var currentOrder: BGOrder?
+    var currentOrderJson: JSON?
     //------------------------------------------------------------
     
     var goToBackgroundObserver: AnyObject?
@@ -52,6 +57,7 @@ class BGData
     init()
     {
         let defaults = NSUserDefaults.standardUserDefaults()
+        
         //-----------------------------------------------------------------------------
         //This code reads the singleton's properties from NSUserDefaults.
         //edit this code to load your custom properties

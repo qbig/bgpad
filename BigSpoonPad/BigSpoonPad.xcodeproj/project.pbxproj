@@ -75,6 +75,9 @@
 		03F2E7591B6DF51400A098CC /* SwiftOverlays.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03F2E7541B6DF51400A098CC /* SwiftOverlays.framework */; };
 		03F2E75A1B6DF51400A098CC /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03F2E7551B6DF51400A098CC /* SwiftyJSON.framework */; };
 		03F2E75C1B6DFDC200A098CC /* Socket_IO_Client_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03F2E75B1B6DFDC200A098CC /* Socket_IO_Client_Swift.framework */; };
+		03F2E75E1B6E546C00A098CC /* BGOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2E75D1B6E546C00A098CC /* BGOrder.swift */; };
+		03F2E7641B6E8CD300A098CC /* GroupItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2E7631B6E8CD300A098CC /* GroupItemModel.swift */; };
+		03F2E7661B6E95DA00A098CC /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2E7651B6E95DA00A098CC /* ItemModel.swift */; };
 		50EBBAD25FE42E276604BEE8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B26B1FF0D978DED2A9EA9DF /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -170,6 +173,9 @@
 		03F2E7541B6DF51400A098CC /* SwiftOverlays.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftOverlays.framework; path = "Pods/../build/Debug-iphoneos/SwiftOverlays.framework"; sourceTree = "<group>"; };
 		03F2E7551B6DF51400A098CC /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Pods/../build/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		03F2E75B1B6DFDC200A098CC /* Socket_IO_Client_Swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Socket_IO_Client_Swift.framework; path = "Pods/../build/Debug-iphoneos/Socket_IO_Client_Swift.framework"; sourceTree = "<group>"; };
+		03F2E75D1B6E546C00A098CC /* BGOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BGOrder.swift; sourceTree = "<group>"; };
+		03F2E7631B6E8CD300A098CC /* GroupItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupItemModel.swift; sourceTree = "<group>"; };
+		03F2E7651B6E95DA00A098CC /* ItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		3BC70519A8858C79E2D2F4F8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		4B26B1FF0D978DED2A9EA9DF /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80EEFB123042BA5F2434615C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -333,16 +339,11 @@
 				0320EB7F1B64CF6300E91EBB /* assets */,
 				0320EB7C1B64CF2100E91EBB /* libs */,
 				03B245C01B63B947002A31DE /* AppDelegate.swift */,
-				03F2E74B1B6CA76200A098CC /* Constants.swift */,
-				03D5AA611B64FA9500ABFF7E /* BGData.swift */,
+				03F2E75F1B6E548000A098CC /* Model */,
 				03D5AA671B674EBF00ABFF7E /* StartingVC.swift */,
-				03D5AA691B67530800ABFF7E /* MainGroupSelectVC.swift */,
-				03D665341B69EA0A00402F23 /* MainGroupSelectCell.swift */,
-				03D5AA6F1B677AF200ABFF7E /* GroupItemSelectVC.swift */,
-				036C34A21B6BEEA7001541EB /* ItemSelectCell.swift */,
-				03F2E73F1B6C0B1700A098CC /* ModifierSelectVC.swift */,
-				03D665401B6B7A4400402F23 /* GroupTabCollectionVC.swift */,
-				03D665431B6B7AA300402F23 /* GroupTabCollectionViewCell.swift */,
+				03F2E7601B6E549800A098CC /* MainGroupSelect */,
+				03F2E7611B6E54A800A098CC /* GroupItemSelect */,
+				03F2E7621B6E54B500A098CC /* ModiferSelect */,
 				03F2E74D1B6CFD7400A098CC /* ConfirmOrderVC.swift */,
 				03F2E74F1B6CFD8B00A098CC /* CheckoutVC.swift */,
 				03B245C41B63B947002A31DE /* Main.storyboard */,
@@ -385,6 +386,46 @@
 				03F2E7421B6C153800A098CC /* UIColor+ColorFromHex.m */,
 			);
 			name = "Color+Hex";
+			sourceTree = "<group>";
+		};
+		03F2E75F1B6E548000A098CC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				03F2E74B1B6CA76200A098CC /* Constants.swift */,
+				03D5AA611B64FA9500ABFF7E /* BGData.swift */,
+				03F2E75D1B6E546C00A098CC /* BGOrder.swift */,
+				03F2E7651B6E95DA00A098CC /* ItemModel.swift */,
+				03F2E7631B6E8CD300A098CC /* GroupItemModel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		03F2E7601B6E549800A098CC /* MainGroupSelect */ = {
+			isa = PBXGroup;
+			children = (
+				03D5AA691B67530800ABFF7E /* MainGroupSelectVC.swift */,
+				03D665341B69EA0A00402F23 /* MainGroupSelectCell.swift */,
+			);
+			name = MainGroupSelect;
+			sourceTree = "<group>";
+		};
+		03F2E7611B6E54A800A098CC /* GroupItemSelect */ = {
+			isa = PBXGroup;
+			children = (
+				03D5AA6F1B677AF200ABFF7E /* GroupItemSelectVC.swift */,
+				036C34A21B6BEEA7001541EB /* ItemSelectCell.swift */,
+			);
+			name = GroupItemSelect;
+			sourceTree = "<group>";
+		};
+		03F2E7621B6E54B500A098CC /* ModiferSelect */ = {
+			isa = PBXGroup;
+			children = (
+				03F2E73F1B6C0B1700A098CC /* ModifierSelectVC.swift */,
+				03D665401B6B7A4400402F23 /* GroupTabCollectionVC.swift */,
+				03D665431B6B7AA300402F23 /* GroupTabCollectionViewCell.swift */,
+			);
+			name = ModiferSelect;
 			sourceTree = "<group>";
 		};
 		6DA1AFD0DC070B03BC1ADAE3 /* Frameworks */ = {
@@ -607,8 +648,10 @@
 				0397C7E31B6B3CE600F43E6D /* ColorSectionFooterView.m in Sources */,
 				03D665351B69EA0A00402F23 /* MainGroupSelectCell.swift in Sources */,
 				03D665441B6B7AA300402F23 /* GroupTabCollectionViewCell.swift in Sources */,
+				03F2E7661B6E95DA00A098CC /* ItemModel.swift in Sources */,
 				03D5AA681B674EBF00ABFF7E /* StartingVC.swift in Sources */,
 				03D5AA621B64FA9500ABFF7E /* BGData.swift in Sources */,
+				03F2E7641B6E8CD300A098CC /* GroupItemModel.swift in Sources */,
 				03D5AA6A1B67530800ABFF7E /* MainGroupSelectVC.swift in Sources */,
 				0320EB7B1B64CE6700E91EBB /* SwiftColors.swift in Sources */,
 				03F2E7501B6CFD8B00A098CC /* CheckoutVC.swift in Sources */,
@@ -618,6 +661,7 @@
 				036C34A31B6BEEA7001541EB /* ItemSelectCell.swift in Sources */,
 				03F2E7431B6C153800A098CC /* UIColor+ColorFromHex.m in Sources */,
 				0397C7E51B6B3CE600F43E6D /* ColorSectionHeaderView.m in Sources */,
+				03F2E75E1B6E546C00A098CC /* BGOrder.swift in Sources */,
 				03F2E7401B6C0B1700A098CC /* ModifierSelectVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,6 +13,7 @@
 + (ModifierSection*) sectionWithDict: (NSDictionary*) dict {
     ModifierSection * modSec = [[ModifierSection alloc] init];
     modSec.name = dict[@"name"];
+    modSec.modifierDescription = dict[@"description"];
     NSMutableArray *options = [[NSMutableArray alloc] init];
     for (NSDictionary * pair in dict[@"options"]) {
         [options addObject: [ModifierOption optionWithPrice:[pair[@"price"] floatValue]  name:pair[@"name"]]];
