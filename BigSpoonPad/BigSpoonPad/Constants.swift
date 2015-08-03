@@ -21,5 +21,6 @@ struct BgConst {
     struct Key {
         static let Token = "webToken"
         static let NotifTokenDone = "tokenDone"
+        static let NotifNewOrderCreated = "newOrderCreated"
     }
 }

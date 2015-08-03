@@ -29,12 +29,10 @@ class BGOrder: NSObject {
     var modifiers: [Dictionary<String, String>]?
     
     func getParams() -> Dictionary<String, AnyObject>{
-        var dict:Dictionary<String, AnyObject> = [
-            "product_uuid":2,
-            "qty": 1,
-            "modifiers": modifiers!
-        ]
-
+        var dict:Dictionary<String, AnyObject> = Dictionary<String, AnyObject>()
+        dict["product_uuid"] = productId
+        dict["qty"] = quantity
+        dict["modifiers"] = modifiers
         return dict
     }
 }

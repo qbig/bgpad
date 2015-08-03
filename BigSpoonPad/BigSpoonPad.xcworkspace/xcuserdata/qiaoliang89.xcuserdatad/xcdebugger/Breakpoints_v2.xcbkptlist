@@ -58,75 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BigSpoonPad/AppDelegate.swift"
-            timestampString = "460234202.639846"
+            timestampString = "460274006.601985"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
-            landmarkName = "loadGroupItemData()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BigSpoonPad/AppDelegate.swift"
-            timestampString = "460229410.936273"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "createNewOrder()"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BigSpoonPad.AppDelegate.loadGroupItemData (BigSpoonPad.AppDelegate)() -&gt; ()"
-                  moduleName = "BigSpoonPad"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/qiaoliang89/Documents/bgpad/BigSpoonPad/BigSpoonPad/AppDelegate.swift"
-                  timestampString = "460204194.270395"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85"
-                  offsetFromSymbolStart = "128">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BigSpoonPad.AppDelegate.(loadGroupItemData (BigSpoonPad.AppDelegate) -&gt; () -&gt; ()).(closure #1)"
-                  moduleName = "BigSpoonPad"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/qiaoliang89/Documents/bgpad/BigSpoonPad/BigSpoonPad/AppDelegate.swift"
-                  timestampString = "460204194.270738"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85"
-                  offsetFromSymbolStart = "1259">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BigSpoonPad/AppDelegate.swift"
-            timestampString = "460234202.639846"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "loadGroupItemData()"
             landmarkType = "5">
          </BreakpointContent>
@@ -152,11 +88,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BigSpoonPad/BGData.swift"
-            timestampString = "460234414.957143"
+            timestampString = "460272261.737867"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "init()"
             landmarkType = "5">
          </BreakpointContent>
@@ -168,11 +104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BigSpoonPad/BGData.swift"
-            timestampString = "460234427.428255"
+            timestampString = "460272261.737867"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "init()"
             landmarkType = "5">
          </BreakpointContent>
@@ -200,11 +136,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BigSpoonPad/AppDelegate.swift"
-            timestampString = "460234629.285869"
+            timestampString = "460274006.601985"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "loadGroupItemData()"
             landmarkType = "5">
          </BreakpointContent>
@@ -222,38 +158,6 @@
             startingLineNumber = "15"
             endingLineNumber = "15"
             landmarkName = "+sectionWithDict:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BigSpoonPad/AppDelegate.swift"
-            timestampString = "460270680.863142"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
-            landmarkName = "loadModifierData()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BigSpoonPad/AppDelegate.swift"
-            timestampString = "460270749.112787"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
-            landmarkName = "loadModifierData()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
