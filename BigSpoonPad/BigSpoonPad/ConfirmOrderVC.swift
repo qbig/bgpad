@@ -40,6 +40,7 @@ class ConfirmOrderVC: UIViewController {
     }
 
     @IBAction func addAnotherBtnPressed() {
+        BGData.sharedDataContainer.currentOrder = BGOrder()
         self.navigationController?.popToViewController(self.navigationController?.viewControllers![1] as! UIViewController, animated: true)
     }
     

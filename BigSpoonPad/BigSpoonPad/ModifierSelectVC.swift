@@ -81,7 +81,6 @@ class ModifierSelectVC: UIViewController {
     }
 
     @IBAction func nextPressed() {
-        
         BGData.sharedDataContainer.currentOrders!.append(BGData.sharedDataContainer.currentOrder!)
         self.performSegueWithIdentifier("ModToConfirm", sender: nil)
     }
