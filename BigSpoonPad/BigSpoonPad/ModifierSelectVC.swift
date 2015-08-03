@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 
+
 class ModifierSelectVC: UIViewController {
     var modifierCollectionsVC: ColorCollectionViewController!
     var currentItem: ItemModel?
@@ -24,6 +25,7 @@ class ModifierSelectVC: UIViewController {
         }
         nextButton.hidden = true;
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("modSelectHandler:"), name: BgConst.Key.NotifModSelectChange, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("cancelCurrentOrderHandler"), name: BgConst.Key.NotifModalConfirmBtnPressed, object: nil)
     }
     
     func modSelectHandler(notification: NSNotification) {
@@ -36,17 +38,33 @@ class ModifierSelectVC: UIViewController {
             nextButton.hidden = true
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func cancelCurrentOrderHandler() {
+        BGData.sharedDataContainer.currentOrder = BGOrder()
+        if BGData.sharedDataContainer.currentOrders?.count > 0 {
+            self.performSegueWithIdentifier("ModToConfirm", sender: nil)
+        } else {
+            self.navigationController?.popToViewController(self.navigationController?.viewControllers![1] as! UIViewController, animated: true)
+        }
+        
     }
     
     @IBAction func backPressed() {
-        self.navigationController?.popViewControllerAnimated(true)
+        //self.navigationController?.popViewControllerAnimated(true)
+        var settings = Modal.Settings()
+        settings.backgroundColor = .whiteColor()
+        settings.shadowType = .Hover
+        settings.padding = CGFloat(30)
+        settings.shadowRadius = CGFloat(5)
+        settings.shadowOffset = CGSize(width: 0, height: 0)
+        settings.shadowOpacity = 0.05
+        settings.overlayBlurStyle = .Light
+        let body = "Your current order is not complete. Leave this screen and discard your current order?"
+        Modal(title: "", body: body, status: .Warning, settings: settings).show()
     }
 
     @IBAction func nextPressed() {
+        // TODO: add current order to orders
         self.performSegueWithIdentifier("ModToConfirm", sender: nil)
     }
 

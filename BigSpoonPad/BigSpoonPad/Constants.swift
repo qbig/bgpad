@@ -23,5 +23,7 @@ struct BgConst {
         static let NotifTokenDone = "tokenDone"
         static let NotifNewOrderCreated = "newOrderCreated"
         static let NotifModSelectChange = "modifierSelectChange"
+        static let NotifModalCancelBtnPressed = "cancelButtonPressed"
+        static let NotifModalConfirmBtnPressed = "confirmButtonPressed"
     }
 }

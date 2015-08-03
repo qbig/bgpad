@@ -230,9 +230,8 @@
                 [(ModifierSection*) [self.sectionModifiers objectAtIndex:i] unselect];
                 [self deleteSectionAtIndex:i];
             }
-        } else {
-            [self.collectionView reloadData];
         }
+        [self.collectionView reloadData];
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"modifierSelectChange" object:self];

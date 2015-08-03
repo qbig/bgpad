@@ -14,6 +14,7 @@ public class Modal: UIViewController
   private var titleLabel = UILabel()
   private var bodyLabel = UITextView()
   private var dismissButton = ModalButton(frame: CGRect())
+  private var confirmButton = ModalButton(frame: CGRect())
   private var status: Status = .Notice
   private var durationTimer: NSTimer!
   private var _bodyHeight: CGFloat = 90
@@ -52,15 +53,16 @@ public class Modal: UIViewController
     var equalAspectRatio = false
     var borderRadius: CGFloat = 5
     var borderWidth: CGFloat = 0.5
-    var height: CGFloat = 178
-    var maxWidth: CGFloat = 300
+    var height: CGFloat = 200
+    var maxWidth: CGFloat = 490
     var titleHeight: CGFloat = 40
     var bodyHeight: CGFloat = 90
     var margin: CGFloat = 20
-    var padding: CGFloat = 20
+    var padding: CGFloat = 100
     var buttonHeight: CGFloat = 40
     var buttonCornerRadius: Float = 3
-    var dismissText = "Close"
+    var dismissText = "Complete my Order"
+    var confirmText = "Leave and Discard"
     
     // Shadows
     var shadowType: Shadow = .Normal
@@ -90,8 +92,8 @@ public class Modal: UIViewController
   public struct Font
   {
     static var header = UIFont(name: "Avenir-Medium", size: 18.0)!
-    static var text = UIFont(name: "Avenir", size: 14.0)!
-    static var button = UIFont(name: "Avenir-Roman", size: 14.0)!
+    static var text = UIFont(name: "Avenir", size: 16.0)!
+    static var button = UIFont(name: "Avenir-Roman", size: 16.0)!
   }
   
   class ModalButton: Button
@@ -145,7 +147,7 @@ public class Modal: UIViewController
     
     // Body
     bodyLabel.backgroundColor = UIColor.clearColor()
-    bodyLabel.textColor = _settings.bodyColor
+    bodyLabel.textColor = UIColor(hexString: "#181c19")
     bodyLabel.editable = false
     bodyLabel.textAlignment = .Center
     bodyLabel.textContainerInset = UIEdgeInsetsZero
@@ -156,11 +158,22 @@ public class Modal: UIViewController
     // Button
     dismissButton.setTitle(_settings.dismissText, forState: .Normal)
     dismissButton.titleLabel?.font = Font.button
+    dismissButton.setTitleColor(UIColor(hexString: "#181c19"), forState: UIControlState.Normal)
     dismissButton.actionType = Action.Selector
     dismissButton.target = self
     dismissButton.selector = Selector("hide")
     dismissButton.addTarget(self, action: Selector("buttonTapped:"), forControlEvents: .TouchUpInside)
     dialog.addSubview(dismissButton)
+    
+    // Button
+    confirmButton.setTitle(_settings.confirmText, forState: .Normal)
+    confirmButton.titleLabel?.font = Font.button
+    confirmButton.setTitleColor(UIColor(hexString: "#181c19"), forState: UIControlState.Normal)
+    confirmButton.actionType = Action.Selector
+    confirmButton.target = self
+    confirmButton.selector = Selector("hide")
+    confirmButton.addTarget(self, action: Selector("buttonTapped:"), forControlEvents: .TouchUpInside)
+    dialog.addSubview(confirmButton)
   }
   
   
@@ -191,16 +204,27 @@ public class Modal: UIViewController
     
     let x = _settings.padding
     var y = _settings.padding + _settings.titleHeight
-    let w = width - (2 * _settings.padding)
+    let w = width - (4 * _settings.padding)
     
     bodyLabel.frame = CGRect(x: x, y: y, width: w, height: _bodyHeight)
-    dismissButton.frame = CGRect(x: x, y: y + _bodyHeight + _settings.padding, width: w, height: _settings.buttonHeight)
-    dismissButton.backgroundColor = metaForStatus(status).color
+    let yPos = y + _bodyHeight + _settings.padding
+    dismissButton.frame = CGRect(x: CGFloat(286), y: yPos, width: CGFloat(204), height: CGFloat(50))
+    dismissButton.backgroundColor = UIColor(hexString: "#fbeab0")
     dismissButton.layer.masksToBounds = true
+    
+    confirmButton.frame = CGRect(x:0, y: yPos, width: CGFloat(204), height: CGFloat(50))
+    confirmButton.backgroundColor = UIColor(hexString: "#edc299")
+    confirmButton.layer.masksToBounds = true
   }
   
   func buttonTapped(btn: ModalButton)
   {
+    if (btn == dismissButton) {
+        NSNotificationCenter.defaultCenter().postNotificationName(BgConst.Key.NotifModalCancelBtnPressed, object: nil)
+    } else if (btn == confirmButton) {
+        NSNotificationCenter.defaultCenter().postNotificationName(BgConst.Key.NotifModalConfirmBtnPressed, object: nil)
+    }
+    
     switch btn.actionType
     {
       case .Closure :

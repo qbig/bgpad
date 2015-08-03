@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0320EB7B1B64CE6700E91EBB /* SwiftColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0320EB7A1B64CE6700E91EBB /* SwiftColors.swift */; };
-		0320EB7E1B64CF3500E91EBB /* FlourishUI in Resources */ = {isa = PBXBuildFile; fileRef = 0320EB7D1B64CF3500E91EBB /* FlourishUI */; };
 		0320EB961B64CF8400E91EBB /* yellow-right-border@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0320EB801B64CF8400E91EBB /* yellow-right-border@2x.png */; };
 		0320EB971B64CF8400E91EBB /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0320EB811B64CF8400E91EBB /* logo@2x.png */; };
 		0320EB981B64CF8400E91EBB /* more-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0320EB821B64CF8400E91EBB /* more-arrow.png */; };
@@ -78,6 +77,10 @@
 		03F2E75E1B6E546C00A098CC /* BGOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2E75D1B6E546C00A098CC /* BGOrder.swift */; };
 		03F2E7641B6E8CD300A098CC /* GroupItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2E7631B6E8CD300A098CC /* GroupItemModel.swift */; };
 		03F2E7661B6E95DA00A098CC /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2E7651B6E95DA00A098CC /* ItemModel.swift */; };
+		03F2E7741B6F8D1E00A098CC /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2E7701B6F8D1E00A098CC /* Button.swift */; };
+		03F2E7751B6F8D1E00A098CC /* InputText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2E7711B6F8D1E00A098CC /* InputText.swift */; };
+		03F2E7761B6F8D1E00A098CC /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2E7721B6F8D1E00A098CC /* Modal.swift */; };
+		03F2E7771B6F8D1E00A098CC /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2E7731B6F8D1E00A098CC /* UIColor.swift */; };
 		50EBBAD25FE42E276604BEE8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B26B1FF0D978DED2A9EA9DF /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -93,7 +96,6 @@
 
 /* Begin PBXFileReference section */
 		0320EB7A1B64CE6700E91EBB /* SwiftColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftColors.swift; sourceTree = "<group>"; };
-		0320EB7D1B64CF3500E91EBB /* FlourishUI */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FlourishUI; sourceTree = "<group>"; };
 		0320EB801B64CF8400E91EBB /* yellow-right-border@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellow-right-border@2x.png"; sourceTree = "<group>"; };
 		0320EB811B64CF8400E91EBB /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		0320EB821B64CF8400E91EBB /* more-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more-arrow.png"; sourceTree = "<group>"; };
@@ -176,6 +178,10 @@
 		03F2E75D1B6E546C00A098CC /* BGOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BGOrder.swift; sourceTree = "<group>"; };
 		03F2E7631B6E8CD300A098CC /* GroupItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupItemModel.swift; sourceTree = "<group>"; };
 		03F2E7651B6E95DA00A098CC /* ItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
+		03F2E7701B6F8D1E00A098CC /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		03F2E7711B6F8D1E00A098CC /* InputText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputText.swift; sourceTree = "<group>"; };
+		03F2E7721B6F8D1E00A098CC /* Modal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
+		03F2E7731B6F8D1E00A098CC /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		3BC70519A8858C79E2D2F4F8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		4B26B1FF0D978DED2A9EA9DF /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80EEFB123042BA5F2434615C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -209,8 +215,8 @@
 		0320EB7C1B64CF2100E91EBB /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				03F2E7781B6F8D2200A098CC /* FlourishUI */,
 				0397C7C71B6B3CA600F43E6D /* ColorCollectionViewController */,
-				0320EB7D1B64CF3500E91EBB /* FlourishUI */,
 				0320EB7A1B64CE6700E91EBB /* SwiftColors.swift */,
 			);
 			name = libs;
@@ -428,6 +434,17 @@
 			name = ModiferSelect;
 			sourceTree = "<group>";
 		};
+		03F2E7781B6F8D2200A098CC /* FlourishUI */ = {
+			isa = PBXGroup;
+			children = (
+				03F2E7701B6F8D1E00A098CC /* Button.swift */,
+				03F2E7711B6F8D1E00A098CC /* InputText.swift */,
+				03F2E7721B6F8D1E00A098CC /* Modal.swift */,
+				03F2E7731B6F8D1E00A098CC /* UIColor.swift */,
+			);
+			name = FlourishUI;
+			sourceTree = "<group>";
+		};
 		6DA1AFD0DC070B03BC1ADAE3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -538,7 +555,6 @@
 				03D6653C1B69EAB500402F23 /* pin3.jpg in Resources */,
 				0320EBA21B64CF8400E91EBB /* btn-edit.png in Resources */,
 				0397C7E71B6B3CE600F43E6D /* Default-568h@2x.png in Resources */,
-				0320EB7E1B64CF3500E91EBB /* FlourishUI in Resources */,
 				0320EBA91B64CF8400E91EBB /* bg.png in Resources */,
 				0320EBA01B64CF8400E91EBB /* girl-flipped.png in Resources */,
 				0320EB991B64CF8400E91EBB /* more-arrow@2x.png in Resources */,
@@ -640,7 +656,9 @@
 			files = (
 				03F2E7471B6C91DC00A098CC /* ModifierSection.m in Sources */,
 				03F2E74C1B6CA76200A098CC /* Constants.swift in Sources */,
+				03F2E7751B6F8D1E00A098CC /* InputText.swift in Sources */,
 				0397C7E11B6B3CE600F43E6D /* ModOptionCell.m in Sources */,
+				03F2E7771B6F8D1E00A098CC /* UIColor.swift in Sources */,
 				03F2E74A1B6C9E6800A098CC /* ModifierOption.m in Sources */,
 				0397C7DF1B6B3CE600F43E6D /* ColorCollectionViewController.m in Sources */,
 				03B245C11B63B947002A31DE /* AppDelegate.swift in Sources */,
@@ -648,7 +666,9 @@
 				0397C7E31B6B3CE600F43E6D /* ColorSectionFooterView.m in Sources */,
 				03D665351B69EA0A00402F23 /* MainGroupSelectCell.swift in Sources */,
 				03D665441B6B7AA300402F23 /* GroupTabCollectionViewCell.swift in Sources */,
+				03F2E7761B6F8D1E00A098CC /* Modal.swift in Sources */,
 				03F2E7661B6E95DA00A098CC /* ItemModel.swift in Sources */,
+				03F2E7741B6F8D1E00A098CC /* Button.swift in Sources */,
 				03D5AA681B674EBF00ABFF7E /* StartingVC.swift in Sources */,
 				03D5AA621B64FA9500ABFF7E /* BGData.swift in Sources */,
 				03F2E7641B6E8CD300A098CC /* GroupItemModel.swift in Sources */,
