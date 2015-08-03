@@ -19,7 +19,7 @@
 @interface ColorCollectionViewController () <ColorSectionHeaderDelegate, ColorSectionFooterDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, weak) UICollectionView * collectionView;
-@property (nonatomic) int currentSelection;
+
 
 - (void)insertSectionAtIndex:(NSUInteger)index;
 - (void)deleteSectionAtIndex:(NSUInteger)index;
@@ -74,6 +74,18 @@
 
     // Add to view
     [self.view addSubview:collectionView];
+}
+
+- (BOOL) isComplete {
+    BOOL result = true;
+    
+    for (ModifierSection * sec in self.sectionModifiers) {
+        if (sec.selectedOptionIndex == -1) {
+            result = false;
+            break;
+        }
+    }
+    return result;
 }
 
 #pragma mark - Object insert/remove
@@ -207,18 +219,23 @@
     [selectedSection toggleOption:selectedOption];
     BOOL notSelectedAfterToggle = selectedSection.selectedOptionIndex == -1;
     if (wasNotYetSelected) {
-        if (self.currentSelection < self.sectionModifiers.count) {
+        if (self.currentSelection < self.sectionModifiers.count-1) {
             [self insertSectionAtIndex:self.currentSelection+1];
+        } else {
+            [self.collectionView reloadData];
         }
     } else {
         if (notSelectedAfterToggle){
             for (int i = [self getSectionCount]-1; i > indexPath.section; i--) {
+                [(ModifierSection*) [self.sectionModifiers objectAtIndex:i] unselect];
                 [self deleteSectionAtIndex:i];
             }
         } else {
             [self.collectionView reloadData];
         }
     }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"modifierSelectChange" object:self];
 }
 
 

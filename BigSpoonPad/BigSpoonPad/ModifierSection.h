@@ -39,7 +39,7 @@
 
 + (ModifierSection*) sectionWithDict: (NSDictionary*) dict;
 - (void) toggleOption: (ModifierOption*) option;
-
+- (void) unselect;
 @end
 
 @interface ModifierSection (DummyData)

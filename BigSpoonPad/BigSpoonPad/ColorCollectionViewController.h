@@ -10,4 +10,6 @@
 
 @interface ColorCollectionViewController : UIViewController
 @property (nonatomic, strong) NSMutableArray * sectionModifiers;
+@property (nonatomic) int currentSelection;
+- (BOOL) isComplete;
 @end

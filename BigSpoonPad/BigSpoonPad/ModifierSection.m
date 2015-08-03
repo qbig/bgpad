@@ -37,7 +37,14 @@
     } else {
         self.selectedOptionIndex = -1;
     }
-    
+}
+
+- (void) unselect {
+    self.selectedOptionIndex = -1;
+    for (int i = 0; i < self.options.count; i++){
+        ModifierOption* op = (ModifierOption*)self.options[i];
+        op.selected = false;
+    }
 }
 
 @end

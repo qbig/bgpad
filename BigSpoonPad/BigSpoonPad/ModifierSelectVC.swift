@@ -7,14 +7,34 @@
 //
 
 import UIKit
+import Foundation
 
 class ModifierSelectVC: UIViewController {
     var modifierCollectionsVC: ColorCollectionViewController!
+    var currentItem: ItemModel?
     @IBOutlet weak var selectedItemLabel: UILabel!
+    @IBOutlet weak var nextButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        if let item = BGData.sharedDataContainer.currentOrder?.itemIndex {
+            if let group = BGData.sharedDataContainer.currentOrder?.fromGroup {
+                currentItem = BGData.sharedDataContainer.groupItems?[group].items?[item]
+                self.selectedItemLabel.text = currentItem?.name
+            }
+        }
+        nextButton.hidden = true;
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("modSelectHandler:"), name: BgConst.Key.NotifModSelectChange, object: nil)
+    }
+    
+    func modSelectHandler(notification: NSNotification) {
+        println("mod change")
+        modifierCollectionsVC = notification.object as! ColorCollectionViewController
+        if (modifierCollectionsVC.isComplete()){
+            nextButton.hidden = false
+            BGData.sharedDataContainer.modifiers = modifierCollectionsVC.sectionModifiers as NSArray as? [ModifierSection]
+        } else {
+            nextButton.hidden = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,6 +57,9 @@ class ModifierSelectVC: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ModifierCollection" {
             modifierCollectionsVC = segue.destinationViewController as! ColorCollectionViewController
+            for modSec in BGData.sharedDataContainer.modifiers! {
+                modSec.unselect()
+            }
             modifierCollectionsVC.sectionModifiers = NSMutableArray(array: BGData.sharedDataContainer.modifiers!)
         } else if segue.identifier == "ModToConfirm" {
             

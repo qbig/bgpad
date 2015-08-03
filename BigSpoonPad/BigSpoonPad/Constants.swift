@@ -22,5 +22,6 @@ struct BgConst {
         static let Token = "webToken"
         static let NotifTokenDone = "tokenDone"
         static let NotifNewOrderCreated = "newOrderCreated"
+        static let NotifModSelectChange = "modifierSelectChange"
     }
 }

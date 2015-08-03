@@ -30,6 +30,10 @@ class GroupTabCollectionVC: UIViewController, UICollectionViewDelegate, UIScroll
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabCollectionView.backgroundColor = UIColor.clearColor();
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         var path = NSIndexPath(forRow: BGData.sharedDataContainer.currentOrder!.fromGroup!, inSection: 0)
         let cell = self.tabCollectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: path) as! GroupTabCollectionViewCell
         var destinIndicatorFrame = self.tabSelectIndicator.frame
