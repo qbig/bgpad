@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func loadModifierData() {
-        BGData.sharedDataContainer
+        BGData.sharedDataContainer.loadModifierData()
     }
     
     func loadItemAttributeData() {

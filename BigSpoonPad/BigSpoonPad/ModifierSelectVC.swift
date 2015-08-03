@@ -37,6 +37,7 @@ class ModifierSelectVC: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ModifierCollection" {
             modifierCollectionsVC = segue.destinationViewController as! ColorCollectionViewController
+            modifierCollectionsVC.sectionModifiers = NSMutableArray(array: BGData.sharedDataContainer.modifiers!)
         } else if segue.identifier == "ModToConfirm" {
             
         }

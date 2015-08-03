@@ -12,14 +12,24 @@ import Haneke
 class MainGroupSelectVC: UIViewController, UICollectionViewDelegate,
 UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     let reuseIdentifier = "mainGroupSelect"
-    let numOfSections = 1
-    let numOfOptions = 8
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 5.0, bottom: 10.0, right: 5.0)
-    let titles = ["Terror", "Fresh", "Texture", "Rich", "Sparkling", "Sour", "Scent", "Unique"]
-    let descriptions = ["Single-estate teas, whole leaves, exquisite iced teas", "Mild fruity notes and cold-pressed juice concentrates", "Handmade fruit jellies, mochi textures, natural fibers", "Intensity and creaminess of milk tea",
-        "Single-estate teas, whole leaves, exquisite iced teas", "Mild fruity notes and cold-pressed juice concentrates", "Handmade fruit jellies, mochi textures, natural fibers", "Intensity and creaminess of milk tea"]
+    let titles = BGData.sharedDataContainer.groupItems?.map({
+        groupItem in
+        groupItem.name
+    })
+//    ["Terror", "Fresh", "Texture", "Rich", "Sparkling", "Sour", "Scent", "Unique"]
+    let descriptions = BGData.sharedDataContainer.groupItems?.map({
+        groupItem in
+        groupItem.groupDescription
+    })
+    let photos = BGData.sharedDataContainer.groupItems?.map({
+        groupItem in
+        groupItem.photo?.stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+    })
+//    ["Single-estate teas, whole leaves, exquisite iced teas", "Mild fruity notes and cold-pressed juice concentrates", "Handmade fruit jellies, mochi textures, natural fibers", "Intensity and creaminess of milk tea",
+//        "Single-estate teas, whole leaves, exquisite iced teas", "Mild fruity notes and cold-pressed juice concentrates", "Handmade fruit jellies, mochi textures, natural fibers", "Intensity and creaminess of milk tea"]
 
-    
+    let numOfSections = 1
     @IBOutlet weak var groupSelectCollectionView: UICollectionView!
 
     override func viewDidLoad() {
@@ -45,7 +55,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var scrollNextButton: UIButton!
     @IBAction func scrollNextPressed() {
-        var lastItemIndex = NSIndexPath(forItem: numOfOptions - 1, inSection: 0)
+        var lastItemIndex = NSIndexPath(forItem: titles!.count - 1, inSection: 0)
         self.groupSelectCollectionView.scrollToItemAtIndexPath(lastItemIndex, atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
     }
     
@@ -56,17 +66,19 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return numOfOptions
+        return titles!.count
     }
     
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! MainGroupSelectCell
-        cell.groupTitle.text = self.titles[indexPath.row]
-        cell.groupDescription.text = self.descriptions[indexPath.row]
-        let curr = indexPath.row % 5  + 1
-        let imgName = "pin\(curr).jpg"
-        cell.GroupOptionImage.image = UIImage(named: imgName)
+        cell.groupTitle.text = self.titles?[indexPath.row]
+        cell.groupDescription.text = self.descriptions?[indexPath.row]
+        //let curr = indexPath.row % 5  + 1
+        //let imgName = "pin\(curr).jpg"
+        //cell.GroupOptionImage.image = UIImage(named: imgName)
+        let url = NSURL(string: photos![indexPath.row]!)
+        cell.GroupOptionImage.hnk_setImageFromURL(url!)
         return cell
 
     }
@@ -85,6 +97,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
+        BGData.sharedDataContainer.currentOrder!.fromGroup = indexPath.item
         performSegueWithIdentifier("MainToItem", sender: nil);
     }
     

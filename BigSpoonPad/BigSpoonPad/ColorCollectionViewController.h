@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ColorCollectionViewController : UIViewController
-
+@property (nonatomic, strong) NSMutableArray * sectionModifiers;
 @end

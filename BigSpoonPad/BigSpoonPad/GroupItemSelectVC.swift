@@ -12,15 +12,13 @@ class GroupItemSelectVC: UIViewController, TabCollectionProtocol , UICollectionV
 UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     @IBOutlet weak var selectedGroupDescription: UILabel!
     @IBOutlet weak var selectedGroupLabel: UILabel!
-    let titles = ["Terror", "Fresh", "Texture", "Rich", "Sparkling", "Sour", "Scent", "Unique"]
-    let descriptions = ["Single-estate teas, whole leaves, exquisite iced teas", "Mild fruity notes and cold-pressed juice concentrates", "Handmade fruit jellies, mochi textures, natural fibers", "Intensity and creaminess of milk tea",
-        "Single-estate teas, whole leaves, exquisite iced teas", "Mild fruity notes and cold-pressed juice concentrates", "Handmade fruit jellies, mochi textures, natural fibers", "Intensity and creaminess of milk tea"]
-    let items = ["Royal Milk Tea", "Afternoon Milk Tea", "Thai Shaved Ice Milk Tea", "Espresso Milk Tea", "Royal Milk Tea", "Afternoon Milk Tea", "Thai Shaved Ice Milk Tea", "Espresso Milk Tea"]
-    let itemDescription = ["Mild fruity notes and cold-pressed juice concentrates", "Floral blossoms and nectarine pairings", "Accentuated refreshing flavors with bubbles", "Intensity and creaminess of milk tea","Mild fruity notes and cold-pressed juice concentrates", "Floral blossoms and nectarine pairings", "Accentuated refreshing flavors with bubbles", "Intensity and creaminess of milk tea"]
-    
+//    let titles = ["Terror", "Fresh", "Texture", "Rich", "Sparkling", "Sour", "Scent", "Unique"]
+//    let descriptions = ["Single-estate teas, whole leaves, exquisite iced teas", "Mild fruity notes and cold-pressed juice concentrates", "Handmade fruit jellies, mochi textures, natural fibers", "Intensity and creaminess of milk tea",
+//        "Single-estate teas, whole leaves, exquisite iced teas", "Mild fruity notes and cold-pressed juice concentrates", "Handmade fruit jellies, mochi textures, natural fibers", "Intensity and creaminess of milk tea"]
+    var currentGroup: GroupItemModel?
     @IBOutlet weak var scrollNextBtn: UIButton!
     @IBAction func scrollNextPressed(sender: AnyObject) {
-        var lastItemIndex = NSIndexPath(forItem: numOfOptions - 1, inSection: 0)
+        var lastItemIndex = NSIndexPath(forItem:  currentGroup!.items!.count - 1, inSection: 0)
         self.itemSelectCollectionView.scrollToItemAtIndexPath(lastItemIndex, atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
 
     }
@@ -33,11 +31,13 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     let reuseIdentifier = "ItemSelectCell"
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 5.0, bottom: 10.0, right: 5.0)
     let numOfSections = 1
-    let numOfOptions = 8
     @IBOutlet var itemSelectCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.itemSelectCollectionView.backgroundColor = UIColor.clearColor()
+        if let currentSecIndex = BGData.sharedDataContainer.currentOrder?.fromGroup {
+            currentGroup = BGData.sharedDataContainer.groupItems?[currentSecIndex]
+        }
     }
     
     @IBAction func backPressed() {
@@ -56,6 +56,10 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
     func tabSelected(controller:GroupTabCollectionVC, cellSelcted:GroupTabCollectionViewCell) {
         // TODO: update items select collection view
+        if let currentSecIndex = BGData.sharedDataContainer.currentOrder?.fromGroup {
+            currentGroup = BGData.sharedDataContainer.groupItems?[currentSecIndex]
+        }
+        self.itemSelectCollectionView.reloadData()
     }
     
     @IBOutlet weak var scrollBackButton: UIButton!
@@ -66,7 +70,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
     @IBOutlet weak var scrollNextButton: UIButton!
     @IBAction func scrollNextPressed() {
-        var lastItemIndex = NSIndexPath(forItem: numOfOptions - 1, inSection: 0)
+        var lastItemIndex = NSIndexPath(forItem:  currentGroup!.items!.count - 1, inSection: 0)
         self.itemSelectCollectionView.scrollToItemAtIndexPath(lastItemIndex, atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
     }
     
@@ -77,16 +81,17 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return numOfOptions
+        return  currentGroup!.items!.count
     }
     
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ItemSelectCell
-        cell.itemName.text = self.items[indexPath.row]
-        cell.itemDescriptionLabel.text = self.itemDescription[indexPath.row]
-        cell.itemPriceLabel.text = "$5.9, $6.3"
-        
+        if let currentItem = currentGroup!.items?[indexPath.row] {
+            cell.itemName.text = currentItem.name
+            cell.itemDescriptionLabel.text = currentItem.itemDescription
+            cell.itemPriceLabel.text = "$\(currentItem.price!/100), $6.3"
+        }
         return cell
         
     }
@@ -105,6 +110,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
+        BGData.sharedDataContainer.currentOrder!.itemIndex = indexPath.item
         performSegueWithIdentifier("ItemToMod", sender: nil);
     }
 

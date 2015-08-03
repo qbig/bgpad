@@ -14,11 +14,15 @@ protocol TabCollectionProtocol {
 
 class GroupTabCollectionVC: UIViewController, UICollectionViewDelegate, UIScrollViewDelegate, NSObjectProtocol, UICollectionViewDataSource {
     let reuseIdentifier = "GroupTabCell"
-    let charLength = 10
+    let charLength = 8
     let numOfSections = 1
-    let numOfOptions = 8
     let sectionInsets = UIEdgeInsets(top: 1.0, left: 1.0, bottom: 1.0, right: 1.0)
-    let titles = ["Terror", "Fresh", "Texture", "Rich", "Sparkling", "Sour", "Scent", "Unique"]
+    let initPos = BGData.sharedDataContainer.currentOrder!.fromGroup
+//    let titles = ["Terror", "Fresh", "Texture", "Rich", "Sparkling", "Sour", "Scent", "Unique"]
+    let titles = BGData.sharedDataContainer.groupItems?.map({
+        groupItem in
+        groupItem.name
+    })
     @IBOutlet var tabCollectionView: UICollectionView!
     var delegate: TabCollectionProtocol!
     @IBOutlet weak var tabSelectIndicator: UIView!
@@ -26,6 +30,12 @@ class GroupTabCollectionVC: UIViewController, UICollectionViewDelegate, UIScroll
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabCollectionView.backgroundColor = UIColor.clearColor();
+        var path = NSIndexPath(forRow: BGData.sharedDataContainer.currentOrder!.fromGroup!, inSection: 0)
+        let cell = self.tabCollectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: path) as! GroupTabCollectionViewCell
+        var destinIndicatorFrame = self.tabSelectIndicator.frame
+        destinIndicatorFrame.origin.x = cell.frame.origin.x
+        destinIndicatorFrame.size.width = cell.frame.size.width
+        self.tabSelectIndicator.frame = destinIndicatorFrame
     }
     
     @IBOutlet weak var scrollBackButton: UIButton!
@@ -36,7 +46,7 @@ class GroupTabCollectionVC: UIViewController, UICollectionViewDelegate, UIScroll
     
     @IBOutlet weak var scrollNextButton: UIButton!
     @IBAction func scrollNextPressed() {
-        var lastItemIndex = NSIndexPath(forItem: numOfOptions - 1, inSection: 0)
+        var lastItemIndex = NSIndexPath(forItem: self.titles!.count - 1, inSection: 0)
         self.tabCollectionView.scrollToItemAtIndexPath(lastItemIndex, atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
     }
     
@@ -47,23 +57,21 @@ class GroupTabCollectionVC: UIViewController, UICollectionViewDelegate, UIScroll
     
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return numOfOptions
+        return self.titles!.count
     }
     
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! GroupTabCollectionViewCell
-        cell.groupNameLabel.text = self.titles[indexPath.row % 5]
-        
+        cell.groupNameLabel.text = self.titles?[indexPath.row]
         return cell
-        
     }
     
     
     func collectionView(collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-            return CGSize(width: count(titles[indexPath.item]) * charLength + 4, height: 21)
+            return CGSize(width: count(self.titles![indexPath.row]!) * charLength + 4, height: 21)
     }
     
     func collectionView(collectionView: UICollectionView,
@@ -75,7 +83,9 @@ class GroupTabCollectionVC: UIViewController, UICollectionViewDelegate, UIScroll
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! GroupTabCollectionViewCell
         println("Tab selected; \(indexPath.item)")
+        BGData.sharedDataContainer.currentOrder!.fromGroup = indexPath.item
         self.delegate.tabSelected(self, cellSelcted:cell)
+
         UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseOut, animations:  {
             var destinIndicatorFrame = self.tabSelectIndicator.frame
             destinIndicatorFrame.origin.x = cell.frame.origin.x

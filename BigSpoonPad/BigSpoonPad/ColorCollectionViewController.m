@@ -19,11 +19,7 @@
 @interface ColorCollectionViewController () <ColorSectionHeaderDelegate, ColorSectionFooterDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, weak) UICollectionView * collectionView;
-
-@property (nonatomic, strong) NSMutableArray * sectionModifiers;
-
-- (void)addNewItemInSection:(NSUInteger)section;
-- (void)deleteItemAtIndexPath:(NSIndexPath*)indexPath;
+@property (nonatomic) int currentSelection;
 
 - (void)insertSectionAtIndex:(NSUInteger)index;
 - (void)deleteSectionAtIndex:(NSUInteger)index;
@@ -37,8 +33,8 @@
     [super viewDidLoad];
     
     // This array will contain the ColorName objects that populate the CollectionView, one array per section
-    self.sectionModifiers = [NSMutableArray arrayWithObjects: [ModifierSection getDummyData] , nil];
-    
+    // self.sectionModifiers = [NSMutableArray arrayWithObjects: [ModifierSection getDummyData] , nil];
+    self.currentSelection = 0;
     // Allocate and configure the layout.
     LessBoringFlowLayout *layout = [[LessBoringFlowLayout alloc] init];
     layout.minimumInteritemSpacing = 20.f;
@@ -82,26 +78,12 @@
 
 #pragma mark - Object insert/remove
 
-- (void)addNewItemInSection:(NSUInteger)section
-{
-//    ColorName *cn = [ColorName randomColorName];
-//    NSMutableArray *colorNames = self.sectionedColorNames[section];
-//    [colorNames addObject:cn];
-//    [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:colorNames.count-1 inSection:section]]];
-}
-
-- (void)deleteItemAtIndexPath:(NSIndexPath *)indexPath
-{
-//    NSMutableArray *colorNames = self.sectionedColorNames[indexPath.section];
-//    [colorNames removeObjectAtIndex:indexPath.item];
-//    [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
-}
-
 - (void)insertSectionAtIndex:(NSUInteger)index
 {
-    [self.sectionModifiers insertObject:[ModifierSection getDummyData] atIndex:index];
+    //[self.sectionModifiers insertObject:[ModifierSection getDummyData] atIndex:index];
     
     // Batch this so the other sections will be updated on completion
+    self.currentSelection++;
     [self.collectionView performBatchUpdates:^{
         [self.collectionView insertSections:[NSIndexSet indexSetWithIndex:index]];
     }
@@ -113,8 +95,8 @@
 - (void)deleteSectionAtIndex:(NSUInteger)index
 {
     // no checking if section exists - this is somewhat unsafe
-    [self.sectionModifiers removeObjectAtIndex:index];
-    
+    // [self.sectionModifiers removeObjectAtIndex:index];
+    self.currentSelection--;
     // Batch this so the other sections will be updated on completion
     [self.collectionView performBatchUpdates:^{
         [self.collectionView deleteSections:[NSIndexSet indexSetWithIndex:index]];
@@ -145,9 +127,13 @@
 
 #pragma mark - UICollectionView Data Source
 
+- (NSInteger) getSectionCount {
+    return self.currentSelection >= self.sectionModifiers.count ? self.sectionModifiers.count : self.currentSelection + 1;
+}
+
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return self.sectionModifiers.count;
+    return [self getSectionCount];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -221,10 +207,12 @@
     [selectedSection toggleOption:selectedOption];
     BOOL notSelectedAfterToggle = selectedSection.selectedOptionIndex == -1;
     if (wasNotYetSelected) {
-        [self insertSectionAtIndex:self.sectionModifiers.count];
+        if (self.currentSelection < self.sectionModifiers.count) {
+            [self insertSectionAtIndex:self.currentSelection+1];
+        }
     } else {
         if (notSelectedAfterToggle){
-            for (int i = self.sectionModifiers.count-1; i > indexPath.section; i--) {
+            for (int i = [self getSectionCount]-1; i > indexPath.section; i--) {
                 [self deleteSectionAtIndex:i];
             }
         } else {

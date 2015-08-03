@@ -18,9 +18,7 @@ This is the "Swift way" to define string constants.
 */
 struct DefaultsKeys
 {
-    static let someString  = "someString"
-    static let someOtherString  = "someOtherString"
-    static let someInt  = "someInt"
+    static let tokenKey  = "tokenKey"
 }
 
 /**
@@ -63,9 +61,7 @@ class BGData
         //-----------------------------------------------------------------------------
         //This code reads the singleton's properties from NSUserDefaults.
         //edit this code to load your custom properties
-        someString = defaults.objectForKey(DefaultsKeys.someString) as! String?
-        someOtherString = defaults.objectForKey(DefaultsKeys.someOtherString) as! String?
-        someInt = defaults.objectForKey(DefaultsKeys.someInt) as! Int?
+        webToken = defaults.objectForKey(DefaultsKeys.tokenKey) as! String?
         //-----------------------------------------------------------------------------
         
         //Add an obsever for the UIApplicationDidEnterBackgroundNotification.
@@ -80,9 +76,7 @@ class BGData
                 //-----------------------------------------------------------------------------
                 //This code saves the singleton's properties to NSUserDefaults.
                 //edit this code to save your custom properties
-                defaults.setObject( self.someString, forKey: DefaultsKeys.someString)
-                defaults.setObject( self.someOtherString, forKey: DefaultsKeys.someOtherString)
-                defaults.setObject( self.someInt, forKey: DefaultsKeys.someInt)
+                defaults.setObject( self.webToken, forKey: DefaultsKeys.tokenKey)
                 //-----------------------------------------------------------------------------
                 
                 //Tell NSUserDefaults to save to disk now.

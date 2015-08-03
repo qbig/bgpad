@@ -414,6 +414,8 @@
 			children = (
 				03D5AA6F1B677AF200ABFF7E /* GroupItemSelectVC.swift */,
 				036C34A21B6BEEA7001541EB /* ItemSelectCell.swift */,
+				03D665401B6B7A4400402F23 /* GroupTabCollectionVC.swift */,
+				03D665431B6B7AA300402F23 /* GroupTabCollectionViewCell.swift */,
 			);
 			name = GroupItemSelect;
 			sourceTree = "<group>";
@@ -422,8 +424,6 @@
 			isa = PBXGroup;
 			children = (
 				03F2E73F1B6C0B1700A098CC /* ModifierSelectVC.swift */,
-				03D665401B6B7A4400402F23 /* GroupTabCollectionVC.swift */,
-				03D665431B6B7AA300402F23 /* GroupTabCollectionViewCell.swift */,
 			);
 			name = ModiferSelect;
 			sourceTree = "<group>";

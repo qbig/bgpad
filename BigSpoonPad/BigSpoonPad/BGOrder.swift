@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+
 //            {
 //                "product_uuid":2,
 //                "qty": 1,
@@ -26,6 +27,12 @@ import SwiftyJSON
 class BGOrder: NSObject {
     var productId:Int?
     var quantity: Int? = 1
+    var fromGroup: Int?
+    var itemIndex: Int? {
+        didSet {
+            productId = BGData.sharedDataContainer.groupItems?[fromGroup!].items![itemIndex!].uuid
+        }
+    }
     var modifiers: [Dictionary<String, String>]?
     
     func getParams() -> Dictionary<String, AnyObject>{
