@@ -25,8 +25,21 @@ class ModifierSelectVC: UIViewController {
             }
         }
         nextButton.hidden = true;
+    }
+    
+    func addNotificationListeners() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("modSelectHandler:"), name: BgConst.Key.NotifModSelectChange, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("cancelCurrentOrderHandler"), name: BgConst.Key.NotifModalConfirmBtnPressed, object: nil)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        addNotificationListeners()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     func modSelectHandler(notification: NSNotification) {
@@ -55,7 +68,6 @@ class ModifierSelectVC: UIViewController {
     }
     
     @IBAction func backPressed() {
-        //self.navigationController?.popViewControllerAnimated(true)
         var settings = Modal.Settings()
         settings.backgroundColor = .whiteColor()
         settings.shadowType = .Hover

@@ -14,8 +14,14 @@ class ConfirmOrderVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("orderCompleteHandler:"), name: BgConst.Key.NotifOrderItemsAdded, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("cancelCurrentOrderHandler"), name: BgConst.Key.NotifModalConfirmBtnPressed, object: nil)
     }
-
+    
+    func cancelCurrentOrderHandler() {
+        BGData.sharedDataContainer.newOrderCreated = false
+        self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -38,7 +44,19 @@ class ConfirmOrderVC: UIViewController {
     }
     
     @IBAction func cancelOrderBtnPressed(sender: AnyObject) {
-        
+        var settings = Modal.Settings()
+        settings.backgroundColor = .whiteColor()
+        settings.shadowType = .Hover
+        settings.padding = CGFloat(30)
+        settings.shadowRadius = CGFloat(5)
+        settings.shadowOffset = CGSize(width: 0, height: 0)
+        settings.shadowOpacity = 0.05
+        settings.overlayBlurStyle = .Light
+        settings.confirmText = "Okay"
+        settings.dismissText = "Dismiss"
+        let body = "Your current order is not complete. Leave this screen and discard your current order?"
+        Modal(title: "", body: body, status: .Warning, settings: settings).show()
+
     }
     
     // MARK: - Navigation
