@@ -19,6 +19,9 @@ This is the "Swift way" to define string constants.
 struct DefaultsKeys
 {
     static let tokenKey  = "tokenKey"
+    static let itemKey = "itemKey"
+    static let modifierKey = "modifierKey"
+    static let lastSyncKey = "lastSyncKey"
 }
 
 /**
@@ -36,17 +39,14 @@ class BGData
     
     //------------------------------------------------------------
     //Add properties here that you want to share accross your app
-    var someString: String?
-    var someOtherString: String?
-    var someInt: Int?
     var webToken: String?
     var lastSync: String?
     var groupItemJson : JSON?
+    var groupItems: [GroupItemModel]?
     var modiferJson : JSON?
     var modifiers: [ModifierSection]?
     var attributesJson : JSON?
     var tableJson : JSON?
-    var groupItems: [GroupItemModel]?
     var currentOrders:[BGOrder]?
     var currentOrder: BGOrder?
     var currentOrderJson: JSON?
@@ -63,6 +63,17 @@ class BGData
         //This code reads the singleton's properties from NSUserDefaults.
         //edit this code to load your custom properties
         webToken = defaults.objectForKey(DefaultsKeys.tokenKey) as! String?
+        lastSync = defaults.objectForKey(DefaultsKeys.lastSyncKey) as! String?
+        groupItemJson = JSON((defaults.objectForKey(DefaultsKeys.itemKey) as! String?)!)
+        if (groupItemJson != nil) {
+            groupItems = groupItemJson!.arrayValue.map({groupJson in
+                GroupItemModel(json:groupJson)
+            })
+        }
+        modiferJson = JSON((defaults.objectForKey(DefaultsKeys.modifierKey) as! String?)!)
+        if (modiferJson != nil) {
+            self.populateModWithJson()
+        }
         //-----------------------------------------------------------------------------
         
         //Add an obsever for the UIApplicationDidEnterBackgroundNotification.
@@ -78,6 +89,9 @@ class BGData
                 //This code saves the singleton's properties to NSUserDefaults.
                 //edit this code to save your custom properties
                 defaults.setObject( self.webToken, forKey: DefaultsKeys.tokenKey)
+                defaults.setObject( self.lastSync, forKey: DefaultsKeys.lastSyncKey)
+                defaults.setObject( self.groupItemJson?.stringValue, forKey: DefaultsKeys.itemKey)
+                defaults.setObject( self.modiferJson?.stringValue, forKey: DefaultsKeys.modifierKey)
                 //-----------------------------------------------------------------------------
                 
                 //Tell NSUserDefaults to save to disk now.
@@ -248,19 +262,23 @@ class BGData
     func loadModifierData() {
         loadData(BgConst.Url.Modifier).responseJSON { request, response, RawJSON, error in
             BGData.sharedDataContainer.modiferJson = JSON(RawJSON!)
-            BGData.sharedDataContainer.modifiers = [ModifierSection]()
-            for modJson in BGData.sharedDataContainer.modiferJson!.arrayValue {
-                let descrip = modJson["description"].stringValue
-                let price:Double = modJson["price"].doubleValue
-                let name = modJson["name"].stringValue
-                let uuid = modJson["uuid"].stringValue
-                var opts = [AnyObject]()
-                for op in modJson["radio_options"].arrayValue {
-                    opts.append(["name":op["name"].stringValue, "price":op["price"].numberValue])
-                }
-                let dict = ["name": name, "description": descrip, "price": price, "options": opts, "uuid":uuid]
-                BGData.sharedDataContainer.modifiers?.append(ModifierSection(dict:dict as [NSObject : AnyObject]))
+            self.populateModWithJson()
+        }
+    }
+    
+    func populateModWithJson() {
+        BGData.sharedDataContainer.modifiers = [ModifierSection]()
+        for modJson in BGData.sharedDataContainer.modiferJson!.arrayValue {
+            let descrip = modJson["description"].stringValue
+            let price:Double = modJson["price"].doubleValue
+            let name = modJson["name"].stringValue
+            let uuid = modJson["uuid"].stringValue
+            var opts = [AnyObject]()
+            for op in modJson["radio_options"].arrayValue {
+                opts.append(["name":op["name"].stringValue, "price":op["price"].numberValue])
             }
+            let dict = ["name": name, "description": descrip, "price": price, "options": opts, "uuid":uuid]
+            BGData.sharedDataContainer.modifiers?.append(ModifierSection(dict:dict as [NSObject : AnyObject]))
         }
     }
     
