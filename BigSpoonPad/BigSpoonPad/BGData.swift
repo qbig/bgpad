@@ -64,16 +64,22 @@ class BGData
         //edit this code to load your custom properties
         webToken = defaults.objectForKey(DefaultsKeys.tokenKey) as! String?
         lastSync = defaults.objectForKey(DefaultsKeys.lastSyncKey) as! String?
-        groupItemJson = JSON((defaults.objectForKey(DefaultsKeys.itemKey) as! String?)!)
-        if (groupItemJson != nil) {
-            groupItems = groupItemJson!.arrayValue.map({groupJson in
-                GroupItemModel(json:groupJson)
-            })
+        if let groupItemJsonStr = defaults.objectForKey(DefaultsKeys.itemKey) as! String? {
+            groupItemJson = JSON(groupItemJsonStr)
+            if (groupItemJson != nil) {
+                groupItems = groupItemJson!.arrayValue.map({groupJson in
+                    GroupItemModel(json:groupJson)
+                })
+            }
         }
-        modiferJson = JSON((defaults.objectForKey(DefaultsKeys.modifierKey) as! String?)!)
-        if (modiferJson != nil) {
-            self.populateModWithJson()
+        
+        if let modiferJsonStr = defaults.objectForKey(DefaultsKeys.modifierKey) as! String? {
+            modiferJson = JSON(modiferJsonStr)
+            if (modiferJson != nil) {
+                self.populateModWithJson()
+            }
         }
+        
         //-----------------------------------------------------------------------------
         
         //Add an obsever for the UIApplicationDidEnterBackgroundNotification.
