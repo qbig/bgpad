@@ -24,7 +24,7 @@ class ModifierSelectVC: UIViewController {
                 self.selectedItemLabel.text = currentItem?.name
             }
         }
-        nextButton.hidden = true;
+//        nextButton.hidden = true;
     }
     
     func addNotificationListeners() {
@@ -53,7 +53,7 @@ class ModifierSelectVC: UIViewController {
                 Int(modSec.selectedOptionIndex)
             })
         } else {
-            nextButton.hidden = true
+//            nextButton.hidden = true
         }
     }
     

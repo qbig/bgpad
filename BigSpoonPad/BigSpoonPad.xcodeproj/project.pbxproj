@@ -81,6 +81,8 @@
 		03F2E7751B6F8D1E00A098CC /* InputText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2E7711B6F8D1E00A098CC /* InputText.swift */; };
 		03F2E7761B6F8D1E00A098CC /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2E7721B6F8D1E00A098CC /* Modal.swift */; };
 		03F2E7771B6F8D1E00A098CC /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2E7731B6F8D1E00A098CC /* UIColor.swift */; };
+		03F2E7881B70EC5400A098CC /* SideSummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2E7871B70EC5400A098CC /* SideSummaryVC.swift */; };
+		03F2E78A1B70EE9000A098CC /* SummaryOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2E7891B70EE9000A098CC /* SummaryOrderCell.swift */; };
 		50EBBAD25FE42E276604BEE8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B26B1FF0D978DED2A9EA9DF /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -182,6 +184,8 @@
 		03F2E7711B6F8D1E00A098CC /* InputText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputText.swift; sourceTree = "<group>"; };
 		03F2E7721B6F8D1E00A098CC /* Modal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
 		03F2E7731B6F8D1E00A098CC /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		03F2E7871B70EC5400A098CC /* SideSummaryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideSummaryVC.swift; sourceTree = "<group>"; };
+		03F2E7891B70EE9000A098CC /* SummaryOrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryOrderCell.swift; sourceTree = "<group>"; };
 		3BC70519A8858C79E2D2F4F8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		4B26B1FF0D978DED2A9EA9DF /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80EEFB123042BA5F2434615C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -352,6 +356,8 @@
 				03F2E7621B6E54B500A098CC /* ModiferSelect */,
 				03F2E74D1B6CFD7400A098CC /* ConfirmOrderVC.swift */,
 				03F2E74F1B6CFD8B00A098CC /* CheckoutVC.swift */,
+				03F2E7871B70EC5400A098CC /* SideSummaryVC.swift */,
+				03F2E7891B70EE9000A098CC /* SummaryOrderCell.swift */,
 				03B245C41B63B947002A31DE /* Main.storyboard */,
 				03B245C71B63B947002A31DE /* Images.xcassets */,
 				03B245C91B63B947002A31DE /* LaunchScreen.xib */,
@@ -674,9 +680,11 @@
 				03F2E7641B6E8CD300A098CC /* GroupItemModel.swift in Sources */,
 				03D5AA6A1B67530800ABFF7E /* MainGroupSelectVC.swift in Sources */,
 				0320EB7B1B64CE6700E91EBB /* SwiftColors.swift in Sources */,
+				03F2E7881B70EC5400A098CC /* SideSummaryVC.swift in Sources */,
 				03F2E7501B6CFD8B00A098CC /* CheckoutVC.swift in Sources */,
 				0397C7DE1B6B3CE600F43E6D /* LessBoringFlowLayout.m in Sources */,
 				03D665411B6B7A4400402F23 /* GroupTabCollectionVC.swift in Sources */,
+				03F2E78A1B70EE9000A098CC /* SummaryOrderCell.swift in Sources */,
 				03F2E74E1B6CFD7400A098CC /* ConfirmOrderVC.swift in Sources */,
 				036C34A31B6BEEA7001541EB /* ItemSelectCell.swift in Sources */,
 				03F2E7431B6C153800A098CC /* UIColor+ColorFromHex.m in Sources */,

@@ -9,13 +9,14 @@
 
 struct BgConst {
     struct Url {
-        static let Base = "http://104.199.131.157?webToken="
-        static let Login = "http://104.199.131.157/auth/login?posGuid=ghi"
-        static let Modifier = "http://104.199.131.157/provisioning/product/modifiers"
-        static let GroupItems = "http://104.199.131.157/provisioning/product/groups"
-        static let ItemsAttributes = "http://104.199.131.157/product_attribute"
-        static let Order = "http://104.199.131.157/order"
-        static let Table = "http://104.199.131.157/table"
+        //http://104.199.131.157
+        static let Base = "http://private-ef689-matrixposauth.apiary-mock.com?webToken="
+        static let Login = "http://private-ef689-matrixposauth.apiary-mock.com/auth/login?posGuid=ghi"
+        static let Modifier = "http://private-ef689-matrixposauth.apiary-mock.com/provisioning/product/modifiers"
+        static let GroupItems = "http://private-ef689-matrixposauth.apiary-mock.com/provisioning/product/groups"
+        static let ItemsAttributes = "http://private-ef689-matrixposauth.apiary-mock.com/product_attribute"
+        static let Order = "http://private-ef689-matrixposauth.apiary-mock.com/order"
+        static let Table = "http://private-ef689-matrixposauth.apiary-mock.com/table"
     }
     
     struct Key {
