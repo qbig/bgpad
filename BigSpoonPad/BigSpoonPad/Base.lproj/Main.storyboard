@@ -178,7 +178,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eOY-Fz-dI8">
                                 <rect key="frame" x="794" y="0.0" width="230" height="768"/>
                                 <connections>
-                                    <segue destination="oDt-wE-aAO" kind="embed" id="xSU-Oq-8nr"/>
+                                    <segue destination="oDt-wE-aAO" kind="embed" identifier="SideInMain" id="xSU-Oq-8nr"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -492,7 +492,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u8b-dL-Mai">
                                 <rect key="frame" x="794" y="0.0" width="230" height="768"/>
                                 <connections>
-                                    <segue destination="oDt-wE-aAO" kind="embed" id="VYa-su-6Cu"/>
+                                    <segue destination="oDt-wE-aAO" kind="embed" identifier="SideInConfirm" id="VYa-su-6Cu"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -888,6 +888,6 @@
         <image name="yellow-right-border.png" width="234" height="768"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YXa-MO-cka"/>
+        <segue reference="VYa-su-6Cu"/>
     </inferredMetricsTieBreakers>
 </document>

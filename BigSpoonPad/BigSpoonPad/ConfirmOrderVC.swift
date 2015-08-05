@@ -10,11 +10,16 @@ import UIKit
 import SwiftOverlays
 
 class ConfirmOrderVC: UIViewController {
-
+    var sideSummaryVC : SideSummaryVC?
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("orderCompleteHandler:"), name: BgConst.Key.NotifOrderItemsAdded, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("cancelCurrentOrderHandler"), name: BgConst.Key.NotifModalConfirmBtnPressed, object: nil)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        sideSummaryVC?.tableView.reloadData()
     }
     
     func cancelCurrentOrderHandler() {
@@ -64,6 +69,8 @@ class ConfirmOrderVC: UIViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ConfirmToCheckout" {
+            
+        } else if segue.identifier == "SideInConfirm" {
             
         }
     }

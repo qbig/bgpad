@@ -17,7 +17,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
         groupItem in
         groupItem.name
     })
-//    ["Terror", "Fresh", "Texture", "Rich", "Sparkling", "Sour", "Scent", "Unique"]
+
     let descriptions = BGData.sharedDataContainer.groupItems?.map({
         groupItem in
         groupItem.groupDescription
@@ -26,17 +26,21 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
         groupItem in
         groupItem.photo?.stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
     })
-//    ["Single-estate teas, whole leaves, exquisite iced teas", "Mild fruity notes and cold-pressed juice concentrates", "Handmade fruit jellies, mochi textures, natural fibers", "Intensity and creaminess of milk tea",
-//        "Single-estate teas, whole leaves, exquisite iced teas", "Mild fruity notes and cold-pressed juice concentrates", "Handmade fruit jellies, mochi textures, natural fibers", "Intensity and creaminess of milk tea"]
 
     let numOfSections = 1
+    
+    var sideSummaryVC : SideSummaryVC?
     @IBOutlet weak var groupSelectCollectionView: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.groupSelectCollectionView.backgroundColor = UIColor.clearColor();
     }
-   
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.sideSummaryVC?.tableView.reloadData()
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -99,6 +103,12 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
         BGData.sharedDataContainer.currentOrder!.fromGroup = indexPath.item
         performSegueWithIdentifier("MainToItem", sender: nil);
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "SideInMain"){
+            sideSummaryVC = segue.destinationViewController as! SideSummaryVC
+        }
     }
     
 }

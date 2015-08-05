@@ -103,7 +103,7 @@ class ModifierSelectVC: UIViewController {
         } else if (segue.identifier == "SideInModSelect"){
             sideSummaryVC = segue.destinationViewController as! SideSummaryVC
         } else if segue.identifier == "ModToConfirm" {
-            
+            BGData.sharedDataContainer.currentOrder = BGOrder()
         }
     }
 
