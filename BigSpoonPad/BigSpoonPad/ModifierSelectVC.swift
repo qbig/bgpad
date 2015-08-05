@@ -12,6 +12,7 @@ import Foundation
 
 class ModifierSelectVC: UIViewController {
     var modifierCollectionsVC: ColorCollectionViewController!
+    var sideSummaryVC: SideSummaryVC!
     var currentItem: ItemModel?
     var modChoices: [Int]?
     @IBOutlet weak var selectedItemLabel: UILabel!
@@ -24,7 +25,7 @@ class ModifierSelectVC: UIViewController {
                 self.selectedItemLabel.text = currentItem?.name
             }
         }
-//        nextButton.hidden = true;
+        nextButton.hidden = true;
     }
     
     func addNotificationListeners() {
@@ -45,15 +46,17 @@ class ModifierSelectVC: UIViewController {
     func modSelectHandler(notification: NSNotification) {
         println("mod change")
         modifierCollectionsVC = notification.object as! ColorCollectionViewController
+        BGData.sharedDataContainer.modifiers = modifierCollectionsVC.sectionModifiers as NSArray as? [ModifierSection]
+        BGData.sharedDataContainer.currentOrder?.modChoices = BGData.sharedDataContainer.modifiers!.map({
+            modSec in
+            Int(modSec.selectedOptionIndex)
+        })
+        sideSummaryVC.tableView.reloadData()
+        
         if (modifierCollectionsVC.isComplete()){
             nextButton.hidden = false
-            BGData.sharedDataContainer.modifiers = modifierCollectionsVC.sectionModifiers as NSArray as? [ModifierSection]
-            BGData.sharedDataContainer.currentOrder?.modChoices = BGData.sharedDataContainer.modifiers!.map({
-                modSec in
-                Int(modSec.selectedOptionIndex)
-            })
         } else {
-//            nextButton.hidden = true
+            nextButton.hidden = true
         }
     }
     
@@ -97,6 +100,8 @@ class ModifierSelectVC: UIViewController {
             }
             modifierCollectionsVC.sectionModifiers = NSMutableArray(array: BGData.sharedDataContainer.modifiers!)
             modChoices = [Int]()
+        } else if (segue.identifier == "SideInModSelect"){
+            sideSummaryVC = segue.destinationViewController as! SideSummaryVC
         } else if segue.identifier == "ModToConfirm" {
             
         }

@@ -10,7 +10,7 @@
 
 @interface ModifierOption : NSObject
 @property (nonatomic, strong) NSString * name;
-@property (nonatomic) float price;
+@property (nonatomic) double price;
 @property (nonatomic) BOOL selected;
 
  + (ModifierOption*)optionWithPrice:(float)price name:(NSString*)name;

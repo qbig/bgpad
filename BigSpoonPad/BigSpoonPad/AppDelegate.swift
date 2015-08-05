@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func tokenReadyHandler() {
         Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders = ["X-Web-Token": BGData.sharedDataContainer.webToken!]
         loadOrderData()
-        createNewOrder()
+        //createNewOrder()
         loadTableData()
         loadGroupItemData()
         loadModifierData()

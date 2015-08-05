@@ -18,8 +18,8 @@ class SideSummaryVC: UIViewController,  UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var bottomTotalView: UIView!
     @IBOutlet weak var buttonTotalLabel: UILabel!
     @IBOutlet weak var bottomTotalViewUnder: UIView!
-    
-    let showsArray = ["House of Cards","Arrested Development","Orange is the New Black","Unbreakable","Daredevil","The Killing","BoJack Horseman","Mad Men","Breaking Bad","Bates Motel"]
+    @IBOutlet weak var bottomTotalViewUnderLabel: UILabel!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,11 +28,23 @@ class SideSummaryVC: UIViewController,  UITableViewDataSource, UITableViewDelega
         
         tableView.dataSource = self
         tableView.delegate = self
+
         updateUI()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("cleanCell"), name: BgConst.Key.NotifCancelOrderFromSummary, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("cleanCell"), name: BgConst.Key.NotifEditOrderFromSummary, object: nil)
+    }
+    
+    func cleanCell() {
+        tableView.reloadData()
+    }
+    
+    func setLabel(totalPrice: Double) {
+        self.buttonTotalLabel.text = "$\(totalPrice)"
+        self.bottomTotalViewUnderLabel.text = "$\(totalPrice)"
     }
     
     func updateUI() {
-        if BGData.sharedDataContainer.currentOrder?.itemIndex != nil && BGData.sharedDataContainer.currentOrders?.count != 0{
+        if BGData.sharedDataContainer.currentOrders?.count != 0{
             self.backgroundImageView.image = UIImage(named: activeImageName)
             self.topLabel.hidden = false
             var tableFrame:CGRect = self.tableView.frame
@@ -42,7 +54,7 @@ class SideSummaryVC: UIViewController,  UITableViewDataSource, UITableViewDelega
             self.bottomTotalView.hidden = false
             self.bottomTotalViewUnder.hidden = true
             self.headToCheckoutBtn.hidden = false
-        } else  if BGData.sharedDataContainer.currentOrder?.itemIndex == nil  && BGData.sharedDataContainer.currentOrders?.count == 0{
+        } else  if BGData.sharedDataContainer.currentOrder?.itemIndex == nil {
             self.backgroundImageView.image = UIImage(named: inactiveImageName)
             var tableFrame:CGRect = self.tableView.frame
             tableFrame.size.height = 566 + 98 + 50
@@ -52,7 +64,7 @@ class SideSummaryVC: UIViewController,  UITableViewDataSource, UITableViewDelega
             self.bottomTotalView.hidden = true
             self.bottomTotalViewUnder.hidden = true
             self.headToCheckoutBtn.hidden = true
-        } else if BGData.sharedDataContainer.currentOrders?.count == 0 {
+        } else {
             self.backgroundImageView.image = UIImage(named: activeImageName)
             var tableFrame:CGRect = self.tableView.frame
             tableFrame.size.height = 566 + 98
@@ -61,21 +73,7 @@ class SideSummaryVC: UIViewController,  UITableViewDataSource, UITableViewDelega
             self.topLabel.hidden = false
             self.bottomTotalView.hidden = true
             self.bottomTotalViewUnder.hidden = false
-            var bottomFrame:CGRect = self.bottomTotalView.frame
-            bottomFrame.origin.y = CGFloat(670)
-            
-            UIView.animateWithDuration(0.3,
-                delay: 0,
-                options: .CurveEaseInOut ,
-                animations: {
-            self.bottomTotalView.frame = bottomFrame
-                },
-                completion: { finished in
-                    println("Bug moved left!")
-                    
-            })
-
-            self.headToCheckoutBtn.hidden = true    
+            self.headToCheckoutBtn.hidden = true
         }
     }
     
@@ -110,14 +108,70 @@ class SideSummaryVC: UIViewController,  UITableViewDataSource, UITableViewDelega
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return showsArray.count
+        var cnt = 0
+        if let doneOrder = BGData.sharedDataContainer.currentOrders?.count  {
+            cnt += doneOrder
+        }
+        
+        if BGData.sharedDataContainer.currentOrder?.itemIndex != nil {
+            cnt += 1
+        }
+        
+        return cnt
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let retCell = tableView.dequeueReusableCellWithIdentifier("SummaryOrderCell") as! SummaryOrderCell
+        var frame = retCell.hiddenOptionsView.frame
+        if (retCell.selected) {
+            frame.origin.x = 296 - 130
+        } else {
+            frame.origin.x = 296
+        }
         
-        retCell.orderNameLabel.text = self.showsArray[indexPath.row]
+        retCell.hiddenOptionsView.frame = frame
+        if BGData.sharedDataContainer.currentOrder?.itemIndex != nil {
+            if indexPath.row == 0 {
+                if let currentOrder = BGData.sharedDataContainer.currentOrder {
+                    retCell.orderNameLabel.text = currentOrder.productName
+                    retCell.itemPriceLabel.text = "$\(currentOrder.productPriceFinal!/100)"
+                    retCell.hidModlabels()
+                    if let modAns = currentOrder.modifierAns {
+                        for (index: Int, modOption:String) in enumerate(modAns){
+                            retCell.labels?[index].hidden = false
+                            retCell.labels?[index].text = "- \(modOption)"
+                        }
+                    }
+                }
+                
+            } else {
+                if let currentOrder = BGData.sharedDataContainer.currentOrders?[indexPath.item - 1] {
+                    retCell.orderNameLabel.text = currentOrder.productName
+                    retCell.itemPriceLabel.text = "$\(currentOrder.productPriceFinal!/100)"
+                    retCell.hidModlabels()
+                    if let modAns = currentOrder.modifierAns {
+                        for (index: Int, modOption:String) in enumerate(modAns){
+                            retCell.labels?[index].hidden = false
+                            retCell.labels?[index].text = "- \(modOption)"
+                        }
+                    }
+                }
+            }
+ 
+        } else {
+            if let currentOrder = BGData.sharedDataContainer.currentOrders?[indexPath.item] {
+                retCell.orderNameLabel.text = currentOrder.productName
+                retCell.itemPriceLabel.text = "$\(currentOrder.productPriceFinal!/100)"
+                retCell.hidModlabels()
+                if let modAns = currentOrder.modifierAns {
+                    for (index: Int, modOption:String) in enumerate(modAns){
+                        retCell.labels?[index].hidden = false
+                        retCell.labels?[index].text = "- \(modOption)"
+                    }
+                }
+            }
+        }
         
         return retCell
     }
@@ -129,19 +183,22 @@ class SideSummaryVC: UIViewController,  UITableViewDataSource, UITableViewDelega
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        let myCell = tableView.cellForRowAtIndexPath(indexPath) as! SummaryOrderCell
         
-        UIView.animateWithDuration(0.3,
+        let myCell = tableView.cellForRowAtIndexPath(indexPath) as! SummaryOrderCell
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        if (myCell.hiddenOptionsView.frame.origin.x != 296) {
+            self.tableView.reloadData()
+        }
+        
+        UIView.animateWithDuration(0.2,
             delay: 0,
             options: .CurveEaseInOut ,
             animations: {
                 var frame = myCell.hiddenOptionsView.frame
-                frame.origin.x = 0
+                frame.origin.x = 296 - 130
                 myCell.hiddenOptionsView.frame = frame
             },
             completion: { finished in
-                println("Bug moved left!")
                 
         })
     }
