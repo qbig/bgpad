@@ -40,7 +40,7 @@ class Button: UIButton
     }
   }
   
-  required init(coder aDecoder: NSCoder)
+  required init?(coder aDecoder: NSCoder)
   {
     super.init(coder: aDecoder)
     setup()
@@ -84,7 +84,7 @@ class Button: UIButton
     rippleForegroundView.layer.cornerRadius = corner
   }
   
-  override func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent) -> Bool
+  override func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool
   {
     rippleForegroundView.center = touch.locationInView(self)
     
@@ -120,7 +120,7 @@ class Button: UIButton
     return super.beginTrackingWithTouch(touch, withEvent: event)
   }
   
-  override func endTrackingWithTouch(touch: UITouch, withEvent event: UIEvent)
+  override func endTrackingWithTouch(touch: UITouch?, withEvent event: UIEvent?)
   {
     super.endTrackingWithTouch(touch, withEvent: event)
     
@@ -135,7 +135,7 @@ class Button: UIButton
     
     UIView.animateWithDuration(0.7,
       delay: 0,
-      options: .CurveEaseOut | .BeginFromCurrentState,
+      options: UIViewAnimationOptions.CurveEaseOut.union(UIViewAnimationOptions.BeginFromCurrentState),
       animations: {
         self.rippleForegroundView.transform = CGAffineTransformIdentity
         

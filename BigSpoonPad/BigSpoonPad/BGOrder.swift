@@ -37,7 +37,7 @@ class BGOrder: NSObject {
             modifiers = [Dictionary<String, String>]()
             modifierAns = [String]()
             productPriceFinal = productPrice
-            for (index, choice) in enumerate(modChoices!){
+            for (index, choice) in modChoices!.enumerate(){
                 if (choice == -1) {
                     continue 
                 }

@@ -15,7 +15,7 @@ class CheckoutVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         var uuid = BGData.sharedDataContainer.currentOrderJson!["uuid"].stringValue
-        var index1 = advance(uuid.endIndex, -3)
+        var index1 = uuid.endIndex.advancedBy(-3)
         var substringFromUuid = uuid.substringFromIndex(index1)
         self.queueNumLabel.text? = substringFromUuid
         self.tapToEndLabel.addTarget(self, action: Selector("endBtnPressed:"), forControlEvents: UIControlEvents.TouchDown)
@@ -38,7 +38,7 @@ class CheckoutVC: UIViewController {
     }
     
     @IBAction func endBtnPressed(sender: AnyObject) {
-        println("End pressed")
+        print("End pressed")
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
 

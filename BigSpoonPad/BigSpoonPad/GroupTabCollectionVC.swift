@@ -12,7 +12,7 @@ protocol TabCollectionProtocol {
     func tabSelected(controller:GroupTabCollectionVC, cellSelcted:GroupTabCollectionViewCell)
 }
 
-class GroupTabCollectionVC: UIViewController, UICollectionViewDelegate, UIScrollViewDelegate, NSObjectProtocol, UICollectionViewDataSource {
+class GroupTabCollectionVC: UIViewController, UICollectionViewDelegate, UIScrollViewDelegate, UICollectionViewDataSource {
     let reuseIdentifier = "GroupTabCell"
     let charLength = 8
     let numOfSections = 1
@@ -75,7 +75,7 @@ class GroupTabCollectionVC: UIViewController, UICollectionViewDelegate, UIScroll
     func collectionView(collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-            return CGSize(width: count(self.titles![indexPath.row]!) * charLength + 4, height: 21)
+            return CGSize(width: (self.titles![indexPath.row]!).characters.count * charLength + 4, height: 21)
     }
     
     func collectionView(collectionView: UICollectionView,
@@ -86,7 +86,7 @@ class GroupTabCollectionVC: UIViewController, UICollectionViewDelegate, UIScroll
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! GroupTabCollectionViewCell
-        println("Tab selected; \(indexPath.item)")
+        print("Tab selected; \(indexPath.item)")
         BGData.sharedDataContainer.currentOrder!.fromGroup = indexPath.item
         self.delegate.tabSelected(self, cellSelcted:cell)
 
@@ -95,6 +95,6 @@ class GroupTabCollectionVC: UIViewController, UICollectionViewDelegate, UIScroll
             destinIndicatorFrame.origin.x = cell.frame.origin.x
             destinIndicatorFrame.size.width = cell.frame.size.width
             self.tabSelectIndicator.frame = destinIndicatorFrame
-            }, completion: {finished in println("indicator anim done")})
+            }, completion: {finished in print("indicator anim done")})
     }
 }

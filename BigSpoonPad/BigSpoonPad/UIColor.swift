@@ -11,7 +11,7 @@ extension UIColor
     
     if rgba.hasPrefix("#")
     {
-      let index   = advance(rgba.startIndex, 1)
+      let index   = rgba.startIndex.advancedBy(1)
       let hex     = rgba.substringFromIndex(index)
       let scanner = NSScanner(string: hex)
       var hexValue: CUnsignedLongLong = 0
@@ -24,7 +24,7 @@ extension UIColor
       }
       else
       {
-        println("scan hex error, your string should be a hex string of 7 chars. ie: #ebb100")
+      print("scan hex error, your string should be a hex string of 7 chars. ie: #ebb100")
       }
     }
     else

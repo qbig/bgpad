@@ -23,12 +23,12 @@ class SummaryOrderCell: UITableViewCell {
     var labels:[UILabel]?
     
     @IBAction func cancelBtnPressed(sender: AnyObject) {
-        println("cancel pressed")
+        print("cancel pressed")
         NSNotificationCenter.defaultCenter().postNotificationName(BgConst.Key.NotifCancelOrderFromSummary, object: nil)
     }
 
     @IBAction func editBtnPressed(sender: AnyObject) {
-        println("edit pressed")
+        print("pressed")
         NSNotificationCenter.defaultCenter().postNotificationName(BgConst.Key.NotifEditOrderFromSummary, object: nil)
     }
     

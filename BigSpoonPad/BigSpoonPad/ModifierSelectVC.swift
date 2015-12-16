@@ -44,7 +44,7 @@ class ModifierSelectVC: UIViewController {
     }
     
     func modSelectHandler(notification: NSNotification) {
-        println("mod change")
+        print("mod change")
         modifierCollectionsVC = notification.object as! ColorCollectionViewController
         BGData.sharedDataContainer.modifiers = modifierCollectionsVC.sectionModifiers as NSArray as? [ModifierSection]
         BGData.sharedDataContainer.currentOrder?.modChoices = BGData.sharedDataContainer.modifiers!.map({
@@ -65,7 +65,7 @@ class ModifierSelectVC: UIViewController {
         if BGData.sharedDataContainer.currentOrders?.count > 0 {
             self.performSegueWithIdentifier("ModToConfirm", sender: nil)
         } else {
-            self.navigationController?.popToViewController(self.navigationController?.viewControllers![1] as! UIViewController, animated: true)
+            self.navigationController?.popToViewController(self.navigationController?.viewControllers[1] as UIViewController!, animated: true)
         }
         
     }

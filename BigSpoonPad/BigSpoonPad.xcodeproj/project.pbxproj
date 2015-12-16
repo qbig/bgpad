@@ -83,7 +83,7 @@
 		03F2E7771B6F8D1E00A098CC /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2E7731B6F8D1E00A098CC /* UIColor.swift */; };
 		03F2E7881B70EC5400A098CC /* SideSummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2E7871B70EC5400A098CC /* SideSummaryVC.swift */; };
 		03F2E78A1B70EE9000A098CC /* SummaryOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2E7891B70EE9000A098CC /* SummaryOrderCell.swift */; };
-		50EBBAD25FE42E276604BEE8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B26B1FF0D978DED2A9EA9DF /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		50EBBAD25FE42E276604BEE8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B26B1FF0D978DED2A9EA9DF /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -521,7 +521,8 @@
 		03B245B31B63B946002A31DE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Qiao Liang";
 				TargetAttributes = {
 					03B245BA1B63B946002A31DE = {
@@ -753,6 +754,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -827,6 +829,7 @@
 				);
 				INFOPLIST_FILE = BigSpoonPad/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "sg.bigspoon.www.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "BigSpoonPad/BigSpoonPad-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -846,6 +849,7 @@
 				);
 				INFOPLIST_FILE = BigSpoonPad/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "sg.bigspoon.www.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "BigSpoonPad/BigSpoonPad-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 2;
@@ -866,6 +870,7 @@
 				);
 				INFOPLIST_FILE = BigSpoonPadTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "sg.bigspoon.www.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BigSpoonPad.app/BigSpoonPad";
 			};
@@ -881,6 +886,7 @@
 				);
 				INFOPLIST_FILE = BigSpoonPadTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "sg.bigspoon.www.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BigSpoonPad.app/BigSpoonPad";
 			};

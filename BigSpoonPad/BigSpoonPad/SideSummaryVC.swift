@@ -138,7 +138,7 @@ class SideSummaryVC: UIViewController,  UITableViewDataSource, UITableViewDelega
                     retCell.itemPriceLabel.text = "$\(currentOrder.productPriceFinal!/100)"
                     retCell.hidModlabels()
                     if let modAns = currentOrder.modifierAns {
-                        for (index: Int, modOption:String) in enumerate(modAns){
+                        for (index, modOption) in modAns.enumerate(){
                             retCell.labels?[index].hidden = false
                             retCell.labels?[index].text = "- \(modOption)"
                         }
@@ -151,7 +151,7 @@ class SideSummaryVC: UIViewController,  UITableViewDataSource, UITableViewDelega
                     retCell.itemPriceLabel.text = "$\(currentOrder.productPriceFinal!/100)"
                     retCell.hidModlabels()
                     if let modAns = currentOrder.modifierAns {
-                        for (index: Int, modOption:String) in enumerate(modAns){
+                        for (index, modOption) in modAns.enumerate(){
                             retCell.labels?[index].hidden = false
                             retCell.labels?[index].text = "- \(modOption)"
                         }
@@ -165,7 +165,7 @@ class SideSummaryVC: UIViewController,  UITableViewDataSource, UITableViewDelega
                 retCell.itemPriceLabel.text = "$\(currentOrder.productPriceFinal!/100)"
                 retCell.hidModlabels()
                 if let modAns = currentOrder.modifierAns {
-                    for (index: Int, modOption:String) in enumerate(modAns){
+                    for (index, modOption) in modAns.enumerate(){
                         retCell.labels?[index].hidden = false
                         retCell.labels?[index].text = "- \(modOption)"
                     }

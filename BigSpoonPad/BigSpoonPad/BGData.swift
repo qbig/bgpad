@@ -108,15 +108,25 @@ class BGData
     func fetchToken () {
         Alamofire.request(.POST, BgConst.Url.Login)
             .authenticate(user: "1234", password: "1234")
-            .responseJSON { _, _, RawJSON, error in
-                let jsonData = JSON(RawJSON!)
+            .responseJSON {response in
+                guard let value = response.result.value else {
+                    print("Error: did not receive data")
+                    return
+                }
+                
+                guard response.result.error == nil else {
+                    print("error calling GET on /posts/1")
+                    print(response.result.error)
+                    return
+                }
+
+                let jsonData = JSON(value)
                 if let webToken = jsonData[BgConst.Key.Token].string {
                     BGData.sharedDataContainer.webToken = webToken
                     NSNotificationCenter.defaultCenter().postNotificationName(BgConst.Key.NotifTokenDone, object:nil)
                 }
-                println(jsonData)
-                println(error)
-                println("======= login done =======")
+                print(jsonData)
+                print("======= login done =======")
         }
     }
     
@@ -126,16 +136,26 @@ class BGData
             "type": "eat-in"
         ]
         Alamofire.request(.POST, BgConst.Url.Order, parameters:postBody)
-            .responseJSON { _, _, rawJson, error in
-                println("error: \(error)")
-                println("======= load \(BgConst.Url.Order) done =======")
-                println(JSON(rawJson!))
-                if (error == nil) {
+            .responseJSON {response in
+                guard let value = response.result.value else {
+                    print("Error: did not receive data")
+                    return
+                }
+                
+                guard response.result.error == nil else {
+                    print("error calling GET on /posts/1")
+                    print(response.result.error)
+                    return
+                }
+
+                print("======= load \(BgConst.Url.Order) done =======")
+                print(JSON(value))
+
                     BGData.sharedDataContainer.currentOrders = []
                     BGData.sharedDataContainer.currentOrder = BGOrder()
-                    BGData.sharedDataContainer.currentOrderJson = JSON(rawJson!)
+                    BGData.sharedDataContainer.currentOrderJson = JSON(value)
                     NSNotificationCenter.defaultCenter().postNotificationName(BgConst.Key.NotifNewOrderCreated, object: nil)
-                }
+
         }
         //        CREATE
         //        {
@@ -189,50 +209,63 @@ class BGData
             postBody.append(order.getParams())
         }
         if let uuid = BGData.sharedDataContainer.currentOrderJson?["uuid"].string {
-            var url = "\(BgConst.Url.Order)/\(uuid)/item"
+            let url = "\(BgConst.Url.Order)/\(uuid)/item"
             let URL = NSURL(string: url)
-            var request = NSMutableURLRequest(URL: URL!)
+            let request = NSMutableURLRequest(URL: URL!)
             request.HTTPMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.setValue(webToken, forHTTPHeaderField: "X-Web-Token")
-            var error: NSError?
-            request.HTTPBody = NSJSONSerialization.dataWithJSONObject(postBody, options: nil, error: &error)
-            Alamofire.request(request)
-                .responseJSON { request, response, rawJson, error in
-                    println("error: \(error)")
-                    println("======= load \(url) ,add Items =======")
-                    println(JSON(rawJson!))
-                    if (error == nil) {
-                        BGData.sharedDataContainer.currentOrders = []
-                        BGData.sharedDataContainer.currentOrder = BGOrder()
-                        BGData.sharedDataContainer.currentOrderJson = JSON(rawJson!)
-                        NSNotificationCenter.defaultCenter().postNotificationName(BgConst.Key.NotifOrderItemsAdded, object: nil)
-                    }
+            do {
+                try request.HTTPBody = NSJSONSerialization.dataWithJSONObject(postBody, options: [])
+                Alamofire.request(request)
+                    .responseJSON { response in
+                        guard let value = response.result.value else {
+                            print("Error: did not receive data")
+                            return
+                        }
+                        
+                        guard response.result.error == nil else {
+                            print("error calling GET on /posts/1")
+                            print(response.result.error)
+                            return
+                        }
+                        
+                        print("======= load \(url) ,add Items =======")
+                        print(JSON(value))
+
+                            BGData.sharedDataContainer.currentOrders = []
+                            BGData.sharedDataContainer.currentOrder = BGOrder()
+                            BGData.sharedDataContainer.currentOrderJson = JSON(value)
+                            NSNotificationCenter.defaultCenter().postNotificationName(BgConst.Key.NotifOrderItemsAdded, object: nil)
+
+                }
+            } catch let error as NSError {
+                print(error.localizedDescription)
             }
         }
     }
     
     func startSocketIO() {
-        println("startSocketIO called.")
+        print("startSocketIO called.")
         //        let options = ["connectParams":["webToken" :BGData.sharedDataContainer.webToken!]]
-        println(BgConst.Url.Base + BGData.sharedDataContainer.webToken!)
+        print(BgConst.Url.Base + BGData.sharedDataContainer.webToken!)
         let socket = SocketIOClient(socketURL: BgConst.Url.Base + BGData.sharedDataContainer.webToken!)
         
         socket.on("connect") {data, ack in
-            println("socket connected")
+            print("socket connected")
         }
         
         socket.on("productattribute") {data, ack in
-            println("something is out of stock!")
+            print("something is out of stock!")
         }
         
         socket.on("error") {data, ack in
-            println("socket connected FAILED")
-            println(data)
-            println(ack)
+            print("socket connected FAILED")
+            print(data)
+            print(ack)
         }
         socket.onAny{event in
-            println(event)
+            print(event)
         }
         
         socket.connect()
@@ -240,24 +273,56 @@ class BGData
     
     
     func loadOrderData() {
-        loadData(BgConst.Url.Order).responseJSON { request, response, RawJSON, error in
+        loadData(BgConst.Url.Order).responseJSON {response in
+            guard let _ = response.result.value else {
+                print("Error: did not receive data")
+                return
+            }
             
+            guard response.result.error == nil else {
+                print("error calling GET on /posts/1")
+                print(response.result.error)
+                return
+            }
         }
     }
     
     func loadTableData() {
-        loadData(BgConst.Url.Table).responseJSON { request, response, RawJSON, error in
-            BGData.sharedDataContainer.tableJson = JSON(RawJSON!)
+        loadData(BgConst.Url.Table).responseJSON { response in
+            debugPrint(response)
+            guard let value = response.result.value else {
+                print("Error: did not receive data")
+                return
+            }
+            
+            guard response.result.error == nil else {
+                print("error calling GET on /posts/1")
+                print(response.result.error)
+                return
+            }
+            BGData.sharedDataContainer.tableJson = JSON(value)
         }
     }
     
     func loadGroupItemData() {
-        loadData(BgConst.Url.GroupItems).responseJSON { request, response, RawJSON, error in
-            if let lastSync = response?.allHeaderFields["Date"]  as? String{
-                println(lastSync)
+        loadData(BgConst.Url.GroupItems).responseJSON {response in
+            debugPrint(response)
+            guard let value = response.result.value else {
+                print("Error: did not receive data")
+                return
+            }
+            
+            guard response.result.error == nil else {
+                print("error calling GET on /posts/1")
+                print(response.result.error)
+                return
+            }
+            
+            if let lastSync = response.response?.allHeaderFields["Date"]  as? String{
+                print(lastSync)
                 BGData.sharedDataContainer.lastSync = lastSync
             }
-            var json = JSON(RawJSON!)
+            let json = JSON(value)
             BGData.sharedDataContainer.groupItemJson = json
             BGData.sharedDataContainer.groupItems = json.arrayValue.map({groupJson in
                 GroupItemModel(json:groupJson)
@@ -266,8 +331,18 @@ class BGData
     }
     
     func loadModifierData() {
-        loadData(BgConst.Url.Modifier).responseJSON { request, response, RawJSON, error in
-            BGData.sharedDataContainer.modiferJson = JSON(RawJSON!)
+        loadData(BgConst.Url.Modifier).responseJSON {response in
+            guard let value = response.result.value else {
+                print("Error: did not receive data")
+                return
+            }
+            
+            guard response.result.error == nil else {
+                print("error calling GET on /posts/1")
+                print(response.result.error)
+                return
+            }
+            BGData.sharedDataContainer.modiferJson = JSON(value)
             self.populateModWithJson()
         }
     }
@@ -284,21 +359,42 @@ class BGData
                 opts.append(["name":op["name"].stringValue, "price":op["price"].numberValue])
             }
             let dict = ["name": name, "description": descrip, "price": price, "options": opts, "uuid":uuid]
-            BGData.sharedDataContainer.modifiers?.append(ModifierSection(dict:dict as [NSObject : AnyObject]))
+            BGData.sharedDataContainer.modifiers?.append(ModifierSection(dict:dict as! [NSObject : AnyObject]))
         }
     }
     
     func loadItemAttributeData() {
-        loadData(BgConst.Url.ItemsAttributes).responseJSON { request, response, RawJSON, error in
-            BGData.sharedDataContainer.attributesJson = JSON(RawJSON!)
+        loadData(BgConst.Url.ItemsAttributes).responseJSON { response in
+            debugPrint(response)
+            guard let value = response.result.value else {
+                print("Error: did not receive data")
+                return
+            }
+            
+            guard response.result.error == nil else {
+                print("error calling GET on /posts/1")
+                print(response.result.error)
+                return
+            }
+            BGData.sharedDataContainer.attributesJson = JSON(value)
         }
     }
     
     func loadData(url:String) -> Request{
-        return Alamofire.request(.GET, url).responseJSON { _, _, rawJson, error in
-            println("error: \(error)")
-            println("======= load \(url) done =======")
-            println(JSON(rawJson!))
+        return Alamofire.request(.GET, url).responseJSON {response in
+            guard let value = response.result.value else {
+                print("Error: did not receive data")
+                return
+            }
+            
+            guard response.result.error == nil else {
+                print("error calling GET on /posts/1")
+                print(response.result.error)
+                return
+            }
+
+            print("======= load \(url) done =======")
+            print(JSON(value))
         }
     }
 

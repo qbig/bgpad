@@ -121,13 +121,14 @@ public class Modal: UIViewController
     
     // Set up main view
     view.frame = UIScreen.mainScreen().bounds
-    view.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
+    let resizeSetting = UIViewAutoresizing.FlexibleHeight.union(UIViewAutoresizing.FlexibleWidth)
+    view.autoresizingMask = resizeSetting
     view.backgroundColor = _settings.overlayColor
     view.addSubview(_overlay)
     
     // Overlay
     _overlay.frame = view.frame
-    _overlay.autoresizingMask = .FlexibleHeight | .FlexibleWidth
+    _overlay.autoresizingMask = resizeSetting
     _overlay.addSubview(dialog)
     
     // Dialog
@@ -233,7 +234,7 @@ public class Modal: UIViewController
         let ctrl = UIControl()
         ctrl.sendAction(btn.selector, to:btn.target, forEvent:nil)
       default :
-        println("Unknow action type for button")
+        print("Unknow action type for button")
     }
 
     hide()
@@ -244,7 +245,7 @@ public class Modal: UIViewController
     view.alpha = 0
     dialog.frame.origin.y = -view.frame.height
     
-    if let rv = UIApplication.sharedApplication().keyWindow?.subviews.first as? UIView
+    if let rv = UIApplication.sharedApplication().keyWindow?.subviews.first as UIView!
     {
       rv.addSubview(view)
       view.frame = rv.bounds
